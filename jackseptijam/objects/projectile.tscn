@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctymkhicnamcp"]
+
+[ext_resource type="Script" uid="uid://cfqrw0rdsvnub" path="res://scripts/projectile.gd" id="1_x17f1"]
+
+[sub_resource type="Curve3D" id="Curve3D_p6r4k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x17f1"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_x17f1"]
+material = SubResource("StandardMaterial3D_x17f1")
+radius = 0.2
+height = 0.4
+
+[node name="Projectile" type="Path3D"]
+curve = SubResource("Curve3D_p6r4k")
+script = ExtResource("1_x17f1")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PathFollow3D"]
+mesh = SubResource("SphereMesh_x17f1")
+skeleton = NodePath("../..")

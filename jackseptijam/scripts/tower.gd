@@ -4,8 +4,8 @@ enum targetting_mode {STRONGEST, NEAREST, LAST, FIRST}
 
 @export var target_mode: targetting_mode = targetting_mode.NEAREST
 
-@export var range: float = 8
-
+@export var fire_range: float = 8
+@export var projectile_scene: PackedScene
 @export var cooldown: float = 1.2
 @export var damage: float = 3.0
 
@@ -17,27 +17,27 @@ var did_call: bool = false
 
 func _ready() -> void:
 	$RangeDisplayMesh.mesh = $RangeDisplayMesh.mesh.duplicate()
-	$RangeDisplayMesh.mesh.top_radius = range
-	$RangeDisplayMesh.mesh.bottom_radius = range
+	$RangeDisplayMesh.mesh.top_radius = fire_range
+	$RangeDisplayMesh.mesh.bottom_radius = fire_range
 	
 	await StoatStash.repeat_call(shoot, cooldown)
 	
 
 func _process(delta: float) -> void:
-	target = choose_target()
-	if target == null: return
+	if target == null: 
+		target = choose_target()
 
 func shoot():
-	print(target)
 	if(target == null): return
-	target.health -= damage
-	print(target.health)
+	var projectile: Projectile = projectile_scene.instantiate()
+	get_parent().add_child(projectile)
+	projectile.setup_projectile(%Spawnpoint.global_position,target)
 
 func choose_target():
 	var possibilities = get_tree().get_nodes_in_group("enemy")
 	enemylist.clear()
 	for enemy: Enemy in possibilities:
-		if enemy.global_position.distance_to(global_position) < range:
+		if enemy.global_position.distance_squared_to(global_position) < fire_range*fire_range:
 			enemylist.append(enemy)
 	
 	if(enemylist.is_empty()): 
