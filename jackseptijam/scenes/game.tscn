@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmafrs8n2rh5q"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mwb40"]
+size = Vector2(300, 300)
+
+[node name="Game" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_mwb40")
