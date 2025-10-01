@@ -18,12 +18,12 @@ func _process(delta: float) -> void:
 				button.disabled = false
 		which_button_update = false
 	
-	if(button_stack.get(0)):
+	if(button_stack.size() > 0):
 		$UI/BuyMenu/Slot1.texture = button_stack[0][1]
 	else:
 		$UI/BuyMenu/Slot1.texture = null
-	if(button_stack.get(1)):
-		$UI/BuyMenu/Slot2.texture = button_stack[0][1]
+	if(button_stack.size() > 1):
+		$UI/BuyMenu/Slot2.texture = button_stack[1][1]
 	else:
 		$UI/BuyMenu/Slot2.texture = null
 	

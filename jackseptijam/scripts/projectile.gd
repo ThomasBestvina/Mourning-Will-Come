@@ -38,7 +38,6 @@ func _process(delta: float) -> void:
 	
 	path_follow.progress += speed * delta
 	
-	
 	if path_follow.progress_ratio < max_value:
 		on_hit_target()
 	else:
