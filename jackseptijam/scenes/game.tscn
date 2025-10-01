@@ -1,9 +1,81 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmafrs8n2rh5q"]
+[gd_scene load_steps=12 format=3 uid="uid://dmafrs8n2rh5q"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_mwb40"]
-size = Vector2(300, 300)
+[ext_resource type="Script" uid="uid://chusptfwrxiit" path="res://scripts/game.gd" id="1_iywne"]
+[ext_resource type="Texture2D" uid="uid://wno7gug5ytr3" path="res://assets/2d/textures/texture_13.png" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://xdui408ip2dk" path="res://objects/enemy.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://ck4v5k0b02c0l" path="res://objects/tower.tscn" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://dee7t312eiqvf" path="res://player.gd" id="4_lbhrr"]
+
+[sub_resource type="Curve3D" id="Curve3D_uwrxv"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -28.835, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lbhrr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iywne"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqjtg"]
+albedo_texture = ExtResource("1_uwrxv")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lnu2h"]
+material = SubResource("StandardMaterial3D_yqjtg")
+size = Vector2(100, 40)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lbhrr"]
+data = PackedVector3Array(14.0824995, 0, 9.094999, -14.0824995, 0, 9.094999, 14.0824995, 0, -9.094999, -14.0824995, 0, 9.094999, -14.0824995, 0, -9.094999, 14.0824995, 0, -9.094999)
 
 [node name="Game" type="Node3D"]
+script = ExtResource("1_iywne")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_mwb40")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.45670974, 0.8896158, 0, -0.8896158, -0.45670974, 0, 9.7903805, -13.127592)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.665103, 0.30932164, 0.5165911)
+curve = SubResource("Curve3D_uwrxv")
+
+[node name="Enemy" parent="Path3D" instance=ExtResource("2_yqjtg")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Tower" parent="." instance=ExtResource("3_lnu2h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.038626)
+
+[node name="Tower2" parent="." instance=ExtResource("3_lnu2h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.794917, 0, -6.961187)
+range = 3.0
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7917337, 0)
+script = ExtResource("4_lbhrr")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_lbhrr")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_iywne")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.40515748, 0.9142469, 0, -0.9142469, 0.40515748, 0, 5.631076, 2.32019)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_lnu2h")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_lbhrr")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 4.0
+offset_top = 615.0
+offset_right = 59.0
+offset_bottom = 646.0
+text = "Shake"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
