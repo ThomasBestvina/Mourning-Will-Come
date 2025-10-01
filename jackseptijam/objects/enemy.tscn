@@ -4,7 +4,7 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_2gpic"]
 
-[node name="Enemy" type="PathFollow3D"]
+[node name="Enemy" type="PathFollow3D" groups=["enemy"]]
 script = ExtResource("1_882u1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

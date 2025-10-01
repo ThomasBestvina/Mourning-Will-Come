@@ -1,9 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck4v5k0b02c0l"]
+[gd_scene load_steps=5 format=3 uid="uid://ck4v5k0b02c0l"]
 
 [ext_resource type="Script" uid="uid://dh6mmpbe3b5gk" path="res://scripts/tower.gd" id="1_dhgxi"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_sf0al"]
-radius = 6.455
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_sf0al"]
 
@@ -22,18 +19,9 @@ height = 0.1
 [node name="Tower" type="Node3D"]
 script = ExtResource("1_dhgxi")
 
-[node name="target_area" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="target_area"]
-shape = SubResource("SphereShape3D_sf0al")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.009613, 0)
 mesh = SubResource("CylinderMesh_sf0al")
 
 [node name="RangeDisplayMesh" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("CylinderMesh_dhgxi")
-
-[connection signal="body_entered" from="target_area" to="." method="_on_target_area_body_entered"]
-[connection signal="body_exited" from="target_area" to="." method="_on_target_area_body_exited"]
