@@ -121,6 +121,7 @@ offset_bottom = 362.0
 
 [node name="Wood" type="TextureButton" parent="UI/BuyMenu/FirstSlotButtons"]
 layout_mode = 2
+toggle_mode = true
 texture_normal = SubResource("AtlasTexture_kvpfn")
 texture_pressed = SubResource("AtlasTexture_dinhu")
 texture_hover = SubResource("AtlasTexture_vtaks")
@@ -132,6 +133,7 @@ texture = ExtResource("6_gee14")
 
 [node name="Plague" type="TextureButton" parent="UI/BuyMenu/FirstSlotButtons"]
 layout_mode = 2
+toggle_mode = true
 texture_normal = SubResource("AtlasTexture_kvpfn")
 texture_pressed = SubResource("AtlasTexture_dinhu")
 texture_hover = SubResource("AtlasTexture_vtaks")
@@ -143,6 +145,7 @@ texture = ExtResource("7_0tnpc")
 
 [node name="Fire" type="TextureButton" parent="UI/BuyMenu/FirstSlotButtons"]
 layout_mode = 2
+toggle_mode = true
 texture_normal = SubResource("AtlasTexture_kvpfn")
 texture_pressed = SubResource("AtlasTexture_dinhu")
 texture_hover = SubResource("AtlasTexture_vtaks")
@@ -154,6 +157,7 @@ texture = ExtResource("6_gee14")
 
 [node name="Metal" type="TextureButton" parent="UI/BuyMenu/FirstSlotButtons"]
 layout_mode = 2
+toggle_mode = true
 texture_normal = SubResource("AtlasTexture_kvpfn")
 texture_pressed = SubResource("AtlasTexture_dinhu")
 texture_hover = SubResource("AtlasTexture_vtaks")
@@ -165,6 +169,7 @@ texture = ExtResource("6_gee14")
 
 [node name="Candy" type="TextureButton" parent="UI/BuyMenu/FirstSlotButtons"]
 layout_mode = 2
+toggle_mode = true
 texture_normal = SubResource("AtlasTexture_kvpfn")
 texture_pressed = SubResource("AtlasTexture_dinhu")
 texture_hover = SubResource("AtlasTexture_vtaks")
@@ -184,6 +189,7 @@ offset_bottom = 362.0
 
 [node name="Wood" type="TextureButton" parent="UI/BuyMenu/SecondSlotButtons"]
 layout_mode = 2
+toggle_mode = true
 texture_normal = SubResource("AtlasTexture_kvpfn")
 texture_pressed = SubResource("AtlasTexture_dinhu")
 texture_hover = SubResource("AtlasTexture_vtaks")
@@ -195,6 +201,7 @@ texture = ExtResource("6_gee14")
 
 [node name="Plague" type="TextureButton" parent="UI/BuyMenu/SecondSlotButtons"]
 layout_mode = 2
+toggle_mode = true
 texture_normal = SubResource("AtlasTexture_kvpfn")
 texture_pressed = SubResource("AtlasTexture_dinhu")
 texture_hover = SubResource("AtlasTexture_vtaks")
@@ -206,6 +213,7 @@ texture = ExtResource("7_0tnpc")
 
 [node name="Fire" type="TextureButton" parent="UI/BuyMenu/SecondSlotButtons"]
 layout_mode = 2
+toggle_mode = true
 texture_normal = SubResource("AtlasTexture_kvpfn")
 texture_pressed = SubResource("AtlasTexture_dinhu")
 texture_hover = SubResource("AtlasTexture_vtaks")
@@ -217,6 +225,7 @@ texture = ExtResource("6_gee14")
 
 [node name="Metal" type="TextureButton" parent="UI/BuyMenu/SecondSlotButtons"]
 layout_mode = 2
+toggle_mode = true
 texture_normal = SubResource("AtlasTexture_kvpfn")
 texture_pressed = SubResource("AtlasTexture_dinhu")
 texture_hover = SubResource("AtlasTexture_vtaks")
@@ -228,6 +237,7 @@ texture = ExtResource("6_gee14")
 
 [node name="Candy" type="TextureButton" parent="UI/BuyMenu/SecondSlotButtons"]
 layout_mode = 2
+toggle_mode = true
 texture_normal = SubResource("AtlasTexture_kvpfn")
 texture_pressed = SubResource("AtlasTexture_dinhu")
 texture_hover = SubResource("AtlasTexture_vtaks")
@@ -262,14 +272,14 @@ text = "Buy!"
 [node name="ballista" parent="." instance=ExtResource("10_vtaks")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.480523, 0, -3.6622834)
 
-[connection signal="pressed" from="UI/BuyMenu/FirstSlotButtons/Wood" to="." method="_on_wood_pressed"]
-[connection signal="pressed" from="UI/BuyMenu/FirstSlotButtons/Plague" to="." method="_on_plague_pressed"]
-[connection signal="pressed" from="UI/BuyMenu/FirstSlotButtons/Fire" to="." method="_on_fire_pressed"]
-[connection signal="pressed" from="UI/BuyMenu/FirstSlotButtons/Metal" to="." method="_on_metal_pressed"]
-[connection signal="pressed" from="UI/BuyMenu/FirstSlotButtons/Candy" to="." method="_on_candy_pressed"]
-[connection signal="pressed" from="UI/BuyMenu/SecondSlotButtons/Wood" to="." method="_on_wood_pressed2"]
-[connection signal="pressed" from="UI/BuyMenu/SecondSlotButtons/Plague" to="." method="_on_plague_pressed2"]
-[connection signal="pressed" from="UI/BuyMenu/SecondSlotButtons/Fire" to="." method="_on_fire_pressed2"]
-[connection signal="pressed" from="UI/BuyMenu/SecondSlotButtons/Metal" to="." method="_on_metal_pressed2"]
-[connection signal="pressed" from="UI/BuyMenu/SecondSlotButtons/Candy" to="." method="_on_candy_pressed3"]
+[connection signal="toggled" from="UI/BuyMenu/FirstSlotButtons/Wood" to="." method="_on_wood_toggled"]
+[connection signal="toggled" from="UI/BuyMenu/FirstSlotButtons/Plague" to="." method="_on_plague_toggled"]
+[connection signal="toggled" from="UI/BuyMenu/FirstSlotButtons/Fire" to="." method="_on_fire_toggled"]
+[connection signal="toggled" from="UI/BuyMenu/FirstSlotButtons/Metal" to="." method="_on_metal_toggled"]
+[connection signal="toggled" from="UI/BuyMenu/FirstSlotButtons/Candy" to="." method="_on_candy_toggled"]
+[connection signal="toggled" from="UI/BuyMenu/SecondSlotButtons/Wood" to="." method="_on_wood_toggled2"]
+[connection signal="toggled" from="UI/BuyMenu/SecondSlotButtons/Plague" to="." method="_on_plague_toggled2"]
+[connection signal="toggled" from="UI/BuyMenu/SecondSlotButtons/Fire" to="." method="_on_fire_toggled2"]
+[connection signal="toggled" from="UI/BuyMenu/SecondSlotButtons/Metal" to="." method="_on_metal_toggled2"]
+[connection signal="toggled" from="UI/BuyMenu/SecondSlotButtons/Candy" to="." method="_on_candy_toggled2"]
 [connection signal="pressed" from="UI/BuyMenu/BuyButton" to="." method="_on_buy_button_pressed"]

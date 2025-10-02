@@ -9,6 +9,7 @@ enum targetting_mode {STRONGEST, NEAREST, LAST, FIRST}
 @export var projectile_scene: PackedScene
 @export var cooldown: float = 1.2
 @export var damage: float = 3.0
+@export var range_display_mesh: MeshInstance3D
 
 var enemylist = []
 
@@ -25,8 +26,11 @@ func _ready() -> void:
 	$RangeDisplayMesh.show()
 
 func place():
-	await StoatStash.repeat_call(shoot, cooldown)
-	$RangeDisplayMesh.hide()
+	range_display_mesh.visible = false
+	if(secondary == Globals.CANDY):
+		await StoatStash.repeat_call(shoot, cooldown-cooldown/20)
+	else:
+		await StoatStash.repeat_call(shoot, cooldown)
 
 func _process(delta: float) -> void:
 	if target == null or target.global_position.distance_squared_to(global_position) >= fire_range**2: 
@@ -36,7 +40,11 @@ func shoot():
 	if(target == null): return
 	var projectile: Projectile = projectile_scene.instantiate()
 	get_parent().add_child(projectile)
+	projectile.effect = secondary
 	projectile.setup_projectile(spawn_point.global_position,target)
+	projectile.damage = damage
+	if(secondary == Globals.METAL):
+		projectile_scene.damage += damage / 4
 
 func choose_target():
 	var possibilities = get_tree().get_nodes_in_group("enemy")

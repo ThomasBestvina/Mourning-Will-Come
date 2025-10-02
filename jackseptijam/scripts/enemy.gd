@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	var death = false
+	var plague = false
 	for modifier in modifier_stack.duplicate():
 		modifier[1] -= delta
 		if(modifier[1] <= 0):
@@ -38,13 +38,13 @@ func _physics_process(delta: float) -> void:
 		match modifier[0]:
 			"plague":
 				if StoatStash.chance(0.05):
-					take_damage(max_health/10)
-				speed = max_speed / 4
-				death = true
+					take_damage(max_health/30)
+				speed = max_speed - max_speed / 4
+				plague = true
 			"fire":
 				if StoatStash.chance(0.1):
 					take_damage(5)
-	if not death:
+	if not plague:
 		speed = max_speed
 	
 
