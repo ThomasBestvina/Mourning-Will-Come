@@ -5,5 +5,7 @@
 
 [node name="TreeEnemy" type="PathFollow3D"]
 script = ExtResource("1_xwjgf")
+max_drops = 2
+drop_chance = 0.5
 
 [node name="placeHolderTree" parent="." instance=ExtResource("2_mysul")]

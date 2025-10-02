@@ -21,6 +21,24 @@ var amount_fire = 0
 var amount_metal = 0
 var amount_candy = 0
 
+const WOOD_COST_PRIMARY = 5
+const PLAGUE_COST_PRIMARY = 2
+const FIRE_COST_PRIMARY = 5
+const METAL_COST_PRIMARY = 5
+const CANDY_COST_PRIMARY = 5
+
+const WOOD_COST_SECONDARY = 5
+const PLAGUE_COST_SECONDARY = 5
+const FIRE_COST_SECONDARY = 5
+const METAL_COST_SECONDARY = 5
+const CANDY_COST_SECONDARY = 9
+
+const WOOD_COLOR = "[color=fcb103]"
+const PLAGUE_COLOR = "[color=222e38]"
+const FIRE_COLOR = "[color=ff1231]"
+const METAL_COLOR = "[color=2e2e2e]"
+const CANDY_COLOR = "[color=ff21ed]"
+
 var enemies = {
 	1: [preload("res://objects/enemies/rat_enemy.tscn")],
 	3: [preload("res://objects/enemies/tree_enemy.tscn")]
@@ -32,6 +50,39 @@ func _process(delta: float) -> void:
 
 func process_ui():
 	$UI/Health.text = "Health: " + str(player_health)
+	$UI/BuyMenu/WoodAmount.text = WOOD_COLOR+str(amount_wood)
+	$UI/BuyMenu/PlagueAmount.text = PLAGUE_COLOR+ str(amount_plague)
+	$UI/BuyMenu/MetalAmount.text = METAL_COLOR+ str(amount_metal)
+	$UI/BuyMenu/FireAmount.text = FIRE_COLOR+ str(amount_fire)
+	$UI/BuyMenu/CandyAmount.text = CANDY_COLOR+ str(amount_candy)
+	
+	match primary:
+		Globals.ETypes.WOOD:
+			$UI/BuyMenu/CostPrimary.text = WOOD_COLOR+str(WOOD_COST_PRIMARY)
+		Globals.ETypes.PLAGUE:
+			$UI/BuyMenu/CostPrimary.text = PLAGUE_COLOR+str(PLAGUE_COST_PRIMARY)
+		Globals.ETypes.FIRE:
+			$UI/BuyMenu/CostPrimary.text = FIRE_COLOR+str(FIRE_COST_PRIMARY)
+		Globals.ETypes.METAL:
+			$UI/BuyMenu/CostPrimary.text = METAL_COLOR+str(METAL_COST_PRIMARY)
+		Globals.ETypes.CANDY:
+			$UI/BuyMenu/CostPrimary.text = CANDY_COLOR+str(CANDY_COST_PRIMARY)
+	match secondary:
+		Globals.ETypes.WOOD:
+			$UI/BuyMenu/CostSecondary.text = WOOD_COLOR+ str(WOOD_COST_PRIMARY)
+		Globals.ETypes.PLAGUE:
+			$UI/BuyMenu/CostSecondary.text = PLAGUE_COLOR+str(PLAGUE_COST_PRIMARY)
+		Globals.ETypes.FIRE:
+			$UI/BuyMenu/CostSecondary.text = FIRE_COLOR+str(FIRE_COST_PRIMARY)
+		Globals.ETypes.METAL:
+			$UI/BuyMenu/CostSecondary.text = METAL_COLOR+str(METAL_COST_PRIMARY)
+		Globals.ETypes.CANDY:
+			$UI/BuyMenu/CostSecondary.text = CANDY_COLOR+str(CANDY_COST_PRIMARY)
+			
+
+	$UI/BuyMenu/Slot1Background.frame = 0 if primary else 1
+	$UI/BuyMenu/Slot2Background.frame = 0 if secondary else 1
+
 
 func enemy_win(point):
 	player_health -= point
