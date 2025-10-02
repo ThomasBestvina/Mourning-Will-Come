@@ -1,7 +1,5 @@
 extends Node3D
 
-enum {WOOD, PLAGUE, FIRE, METAL, CANDY}
-
 var button_stack = []
 
 var which_button_update = false
@@ -9,7 +7,7 @@ var which_button_update = false
 var buying_tower = false
 var bought_tower: Node3D = null
 
-@export var ballista: PackedScene
+@export var ballista_tower: PackedScene
 @export var plague_tower: PackedScene
 
 
@@ -19,7 +17,10 @@ func _process(delta: float) -> void:
 
 func manage_player_input():
 	if buying_tower:
-		
+		bought_tower.position = StoatStash.get_mouse_world_position_3d_collision($CharacterBody3D/Camera3D)
+		if Input.is_action_just_pressed("place_tower"):
+			bought_tower = null
+			buying_tower = false
 
 func manage_ui():
 	if len(button_stack) == 2 and not which_button_update:
@@ -43,9 +44,18 @@ func manage_ui():
 		$UI/BuyMenu/Slot2.texture = null
 
 func _on_buy_button_pressed() -> void:
-	if(button_stack != 2): return
+	if(len(button_stack) != 2): return
 	
+	match button_stack[0][0]:
+		Globals.WOOD:
+			bought_tower = ballista_tower.instantiate()
+		Globals.PLAGUE:
+			bought_tower = plague_tower.instantiate()
+	
+	bought_tower.secondary = button_stack[1][0]
+	add_child(bought_tower)
 	buying_tower = true
+	
 	
 
 func button_toggle_handler(toggled_on: bool, type):
@@ -55,16 +65,16 @@ func button_toggle_handler(toggled_on: bool, type):
 		button_stack.append(type)
 
 func _on_wood_toggled(toggled_on: bool) -> void:
-	button_toggle_handler(toggled_on, [WOOD, %GridContainer/Wood/Sprite.texture])
+	button_toggle_handler(toggled_on, [Globals.WOOD, %GridContainer/Wood/Sprite.texture])
 
 func _on_plague_toggled(toggled_on: bool) -> void:
-	button_toggle_handler(toggled_on, [PLAGUE, %GridContainer/Plague/Sprite.texture])
+	button_toggle_handler(toggled_on, [Globals.PLAGUE, %GridContainer/Plague/Sprite.texture])
 
 func _on_fire_toggled(toggled_on: bool) -> void:
-	button_toggle_handler(toggled_on, [FIRE, %GridContainer/Fire/Sprite.texture])
+	button_toggle_handler(toggled_on, [Globals.FIRE, %GridContainer/Fire/Sprite.texture])
 
 func _on_metal_toggled(toggled_on: bool) -> void:
-	button_toggle_handler(toggled_on, [METAL, %GridContainer/Metal/Sprite.texture])
+	button_toggle_handler(toggled_on, [Globals.METAL, %GridContainer/Metal/Sprite.texture])
 
 func _on_candy_toggled(toggled_on: bool) -> void:
-	button_toggle_handler(toggled_on, [CANDY, %GridContainer/Candy/Sprite.texture])
+	button_toggle_handler(toggled_on, [Globals.CANDY, %GridContainer/Candy/Sprite.texture])

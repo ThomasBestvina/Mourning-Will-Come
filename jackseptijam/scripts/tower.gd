@@ -14,14 +14,19 @@ var enemylist = []
 
 var target: Enemy
 
+var secondary = Globals.WOOD
+
 var did_call: bool = false
 
 func _ready() -> void:
 	$RangeDisplayMesh.mesh = $RangeDisplayMesh.mesh.duplicate()
 	$RangeDisplayMesh.mesh.top_radius = fire_range
 	$RangeDisplayMesh.mesh.bottom_radius = fire_range
-	
+	$RangeDisplayMesh.show()
+
+func place():
 	await StoatStash.repeat_call(shoot, cooldown)
+	$RangeDisplayMesh.hide()
 
 func _process(delta: float) -> void:
 	if target == null or target.global_position.distance_squared_to(global_position) >= fire_range**2: 

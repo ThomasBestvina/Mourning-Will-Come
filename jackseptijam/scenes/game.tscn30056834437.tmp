@@ -1,10 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://dmafrs8n2rh5q"]
+[gd_scene load_steps=20 format=3 uid="uid://dmafrs8n2rh5q"]
 
 [ext_resource type="Script" uid="uid://chusptfwrxiit" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://wno7gug5ytr3" path="res://assets/2d/textures/texture_13.png" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://xdui408ip2dk" path="res://objects/enemy.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://ck4v5k0b02c0l" path="res://objects/tower.tscn" id="3_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://l246u8chero8" path="res://objects/plague_tower.tscn" id="3_vtaks"]
 [ext_resource type="Script" uid="uid://dee7t312eiqvf" path="res://player.gd" id="4_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://bynwiofaudko" path="res://assets/2d/textures/Elements/woodElement.png" id="6_gee14"]
 [ext_resource type="Texture2D" uid="uid://5o03e0oo3bwx" path="res://assets/2d/hud/inventoryTile.png" id="6_vtaks"]
@@ -51,8 +50,6 @@ region = Rect2(114, 0, 38, 38)
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_iywne")
-ballista_tower = ExtResource("10_vtaks")
-plague_tower = ExtResource("3_vtaks")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.45670974, 0.8896158, 0, -0.8896158, -0.45670974, 0, 9.7903805, -13.127592)
@@ -198,8 +195,6 @@ offset_left = 1025.0
 offset_top = 595.0
 offset_right = 1067.0
 offset_bottom = 626.0
-shortcut_feedback = false
-shortcut_in_tooltip = false
 text = "Buy!"
 
 [node name="ballista" parent="." instance=ExtResource("10_vtaks")]

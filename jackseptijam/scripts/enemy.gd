@@ -5,11 +5,18 @@ signal enemy_win
 
 signal died
 
-@export var speed = 2.0
-@export var health = 10.0
+@export var max_speed = 2.0
+var speed = 2.0
+@export var max_health = 10.0
+var health = 10.0
 @export var strength_score = 1.0
 
+# modifiers are just arrays [mod_type, duration]
 var modifier_stack = []
+
+func _ready() -> void:
+	health = max_health
+	speed = max_speed
 
 func _process(delta: float) -> void:
 	set_progress(get_progress() + speed * delta)
@@ -20,6 +27,26 @@ func _process(delta: float) -> void:
 	if(get_progress_ratio() >= 0.99):
 		emit_signal("enemy_win")
 		queue_free()
+	
+
+func _physics_process(delta: float) -> void:
+	var death = false
+	for modifier in modifier_stack.duplicate():
+		modifier[1] -= delta
+		if(modifier[1] <= 0):
+			modifier_stack.erase(modifier)
+		match modifier[0]:
+			"plague":
+				if StoatStash.chance(0.05):
+					take_damage(max_health/10)
+				speed = max_speed / 4
+				death = true
+			"fire":
+				if StoatStash.chance(0.1):
+					take_damage(5)
+	if not death:
+		speed = max_speed
+	
 
 func take_damage(damage: float):
 	health -= damage
