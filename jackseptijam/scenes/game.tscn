@@ -1,11 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmafrs8n2rh5q"]
+[gd_scene load_steps=16 format=3 uid="uid://dmafrs8n2rh5q"]
 
 [ext_resource type="Script" uid="uid://chusptfwrxiit" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://wno7gug5ytr3" path="res://assets/2d/textures/texture_13.png" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://xdui408ip2dk" path="res://objects/enemy.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://ck4v5k0b02c0l" path="res://objects/tower.tscn" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://dee7t312eiqvf" path="res://player.gd" id="4_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://bynwiofaudko" path="res://assets/2d/textures/Elements/woodElement.png" id="6_gee14"]
 [ext_resource type="Texture2D" uid="uid://wbyhx762jjpd" path="res://icon.svg" id="6_p57ef"]
+[ext_resource type="Texture2D" uid="uid://1sujlq2p4md6" path="res://assets/2d/textures/Elements/plagueElement.png" id="7_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://dl4nfo7ngcsjr" path="res://kj.svg" id="7_u5sy4"]
 
 [sub_resource type="Curve3D" id="Curve3D_uwrxv"]
@@ -95,28 +97,24 @@ offset_bottom = 648.0
 grow_horizontal = 0
 
 [node name="Wood" type="TextureButton" parent="UI/BuyMenu"]
-modulate = Color(0.7079651, 0.45716244, 0, 1)
 layout_mode = 0
 offset_left = 954.0
 offset_top = 4.9999995
-offset_right = 1082.0
-offset_bottom = 133.0
-scale = Vector2(0.3833358, 0.32948324)
+offset_right = 986.0
+offset_bottom = 37.0
 toggle_mode = true
-texture_normal = ExtResource("6_p57ef")
-texture_pressed = ExtResource("7_u5sy4")
+texture_normal = ExtResource("6_gee14")
+texture_pressed = ExtResource("6_gee14")
 
 [node name="Plague" type="TextureButton" parent="UI/BuyMenu"]
-modulate = Color(0.59198004, 0.0010311533, 0.71865207, 1)
 layout_mode = 0
 offset_left = 1017.0
 offset_top = 4.9999995
-offset_right = 1145.0
-offset_bottom = 133.0
-scale = Vector2(0.3833358, 0.32948324)
+offset_right = 1049.0
+offset_bottom = 37.0
 toggle_mode = true
-texture_normal = ExtResource("6_p57ef")
-texture_pressed = ExtResource("7_u5sy4")
+texture_normal = ExtResource("7_0tnpc")
+texture_pressed = ExtResource("7_0tnpc")
 
 [node name="Fire" type="TextureButton" parent="UI/BuyMenu"]
 modulate = Color(0.73139983, 0, 0.06315998, 1)
@@ -132,19 +130,15 @@ texture_pressed = ExtResource("7_u5sy4")
 
 [node name="Slot1" type="Sprite2D" parent="UI/BuyMenu"]
 position = Vector2(1017.2, 380.2)
-scale = Vector2(0.425, 0.425)
 
 [node name="Slot2" type="Sprite2D" parent="UI/BuyMenu"]
 position = Vector2(1090.1998, 380.2)
-scale = Vector2(0.425, 0.425)
 
 [node name="EqualSlotforeground" type="Sprite2D" parent="UI/BuyMenu"]
 position = Vector2(1052, 458)
-scale = Vector2(0.425, 0.425)
 
 [node name="EqualBackground" type="Sprite2D" parent="UI/BuyMenu"]
 position = Vector2(1052, 458)
-scale = Vector2(0.425, 0.425)
 
 [connection signal="toggled" from="UI/BuyMenu/Wood" to="." method="_on_wood_toggled"]
 [connection signal="toggled" from="UI/BuyMenu/Plague" to="." method="_on_plague_toggled"]

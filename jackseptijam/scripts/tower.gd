@@ -1,9 +1,10 @@
 extends Node3D
+class_name Tower
 
 enum targetting_mode {STRONGEST, NEAREST, LAST, FIRST}
 
 @export var target_mode: targetting_mode = targetting_mode.NEAREST
-
+@export var spawn_point: Node3D
 @export var fire_range: float = 8
 @export var projectile_scene: PackedScene
 @export var cooldown: float = 1.2
@@ -24,14 +25,14 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	if target == null: 
+	if target == null or target.global_position.distance_squared_to(global_position) >= fire_range**2: 
 		target = choose_target()
 
 func shoot():
 	if(target == null): return
 	var projectile: Projectile = projectile_scene.instantiate()
 	get_parent().add_child(projectile)
-	projectile.setup_projectile(%Spawnpoint.global_position,target)
+	projectile.setup_projectile(spawn_point.global_position,target)
 
 func choose_target():
 	var possibilities = get_tree().get_nodes_in_group("enemy")
