@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://l246u8chero8"]
+
+[ext_resource type="PackedScene" uid="uid://nqahudnwmpwy" path="res://assets/3d/towers/placeHolderPlague.glb" id="1_chh1s"]
+
+[node name="plague_tower" type="Node3D"]
+
+[node name="placeHolderPlague" parent="." instance=ExtResource("1_chh1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32922196, 0)

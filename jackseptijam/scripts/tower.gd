@@ -22,7 +22,6 @@ func _ready() -> void:
 	$RangeDisplayMesh.mesh.bottom_radius = fire_range
 	
 	await StoatStash.repeat_call(shoot, cooldown)
-	
 
 func _process(delta: float) -> void:
 	if target == null or target.global_position.distance_squared_to(global_position) >= fire_range**2: 

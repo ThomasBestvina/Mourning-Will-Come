@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dmafrs8n2rh5q"]
+[gd_scene load_steps=20 format=3 uid="uid://dmafrs8n2rh5q"]
 
 [ext_resource type="Script" uid="uid://chusptfwrxiit" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://wno7gug5ytr3" path="res://assets/2d/textures/texture_13.png" id="1_uwrxv"]
@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://ck4v5k0b02c0l" path="res://objects/tower.tscn" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://dee7t312eiqvf" path="res://player.gd" id="4_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://bynwiofaudko" path="res://assets/2d/textures/Elements/woodElement.png" id="6_gee14"]
-[ext_resource type="Texture2D" uid="uid://wbyhx762jjpd" path="res://icon.svg" id="6_p57ef"]
+[ext_resource type="Texture2D" uid="uid://5o03e0oo3bwx" path="res://assets/2d/hud/inventoryTile.png" id="6_vtaks"]
 [ext_resource type="Texture2D" uid="uid://1sujlq2p4md6" path="res://assets/2d/textures/Elements/plagueElement.png" id="7_0tnpc"]
-[ext_resource type="Texture2D" uid="uid://dl4nfo7ngcsjr" path="res://kj.svg" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://dtsy105q3ettd" path="res://objects/ballista.tscn" id="10_vtaks"]
 
 [sub_resource type="Curve3D" id="Curve3D_uwrxv"]
 _data = {
@@ -32,6 +32,22 @@ size = Vector2(100, 40)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_iywne"]
 data = PackedVector3Array(50, 0, 20, -50, 0, 20, 50, 0, -20, -50, 0, 20, -50, 0, -20, 50, 0, -20)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvpfn"]
+atlas = ExtResource("6_vtaks")
+region = Rect2(0, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dinhu"]
+atlas = ExtResource("6_vtaks")
+region = Rect2(76, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtaks"]
+atlas = ExtResource("6_vtaks")
+region = Rect2(38, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvuet"]
+atlas = ExtResource("6_vtaks")
+region = Rect2(114, 0, 38, 38)
+
 [node name="Game" type="Node3D"]
 script = ExtResource("1_iywne")
 
@@ -47,10 +63,6 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 
 [node name="Tower" parent="." instance=ExtResource("3_lnu2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.038626)
-
-[node name="Tower2" parent="." instance=ExtResource("3_lnu2h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.794917, 0, -6.961187)
-fire_range = 4.0
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7917337, 0)
@@ -96,37 +108,74 @@ offset_right = 1110.885
 offset_bottom = 648.0
 grow_horizontal = 0
 
-[node name="Wood" type="TextureButton" parent="UI/BuyMenu"]
+[node name="GridContainer" type="GridContainer" parent="UI/BuyMenu"]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 954.0
-offset_top = 4.9999995
-offset_right = 986.0
-offset_bottom = 37.0
-toggle_mode = true
-texture_normal = ExtResource("6_gee14")
-texture_pressed = ExtResource("6_gee14")
+offset_left = 931.0
+offset_top = 4.0
+offset_right = 1053.0
+offset_bottom = 44.0
+columns = 5
 
-[node name="Plague" type="TextureButton" parent="UI/BuyMenu"]
-layout_mode = 0
-offset_left = 1017.0
-offset_top = 4.9999995
-offset_right = 1049.0
-offset_bottom = 37.0
+[node name="Wood" type="TextureButton" parent="UI/BuyMenu/GridContainer"]
+layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("7_0tnpc")
-texture_pressed = ExtResource("7_0tnpc")
+texture_normal = SubResource("AtlasTexture_kvpfn")
+texture_pressed = SubResource("AtlasTexture_dinhu")
+texture_hover = SubResource("AtlasTexture_vtaks")
+texture_disabled = SubResource("AtlasTexture_kvuet")
 
-[node name="Fire" type="TextureButton" parent="UI/BuyMenu"]
-modulate = Color(0.73139983, 0, 0.06315998, 1)
-layout_mode = 0
-offset_left = 1076.0
-offset_top = 4.9999995
-offset_right = 1204.0
-offset_bottom = 133.0
-scale = Vector2(0.3833358, 0.32948324)
+[node name="Sprite" type="Sprite2D" parent="UI/BuyMenu/GridContainer/Wood"]
+position = Vector2(20, 19)
+texture = ExtResource("6_gee14")
+
+[node name="Plague" type="TextureButton" parent="UI/BuyMenu/GridContainer"]
+layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("6_p57ef")
-texture_pressed = ExtResource("7_u5sy4")
+texture_normal = SubResource("AtlasTexture_kvpfn")
+texture_pressed = SubResource("AtlasTexture_dinhu")
+texture_hover = SubResource("AtlasTexture_vtaks")
+texture_disabled = SubResource("AtlasTexture_kvuet")
+
+[node name="Sprite" type="Sprite2D" parent="UI/BuyMenu/GridContainer/Plague"]
+position = Vector2(20, 19)
+texture = ExtResource("7_0tnpc")
+
+[node name="Fire" type="TextureButton" parent="UI/BuyMenu/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_kvpfn")
+texture_pressed = SubResource("AtlasTexture_dinhu")
+texture_hover = SubResource("AtlasTexture_vtaks")
+texture_disabled = SubResource("AtlasTexture_kvuet")
+
+[node name="Sprite" type="Sprite2D" parent="UI/BuyMenu/GridContainer/Fire"]
+position = Vector2(20, 19)
+texture = ExtResource("6_gee14")
+
+[node name="Metal" type="TextureButton" parent="UI/BuyMenu/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_kvpfn")
+texture_pressed = SubResource("AtlasTexture_dinhu")
+texture_hover = SubResource("AtlasTexture_vtaks")
+texture_disabled = SubResource("AtlasTexture_kvuet")
+
+[node name="Sprite" type="Sprite2D" parent="UI/BuyMenu/GridContainer/Metal"]
+position = Vector2(20, 19)
+texture = ExtResource("6_gee14")
+
+[node name="Candy" type="TextureButton" parent="UI/BuyMenu/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_kvpfn")
+texture_pressed = SubResource("AtlasTexture_dinhu")
+texture_hover = SubResource("AtlasTexture_vtaks")
+texture_disabled = SubResource("AtlasTexture_kvuet")
+
+[node name="Sprite" type="Sprite2D" parent="UI/BuyMenu/GridContainer/Candy"]
+position = Vector2(20, 19)
+texture = ExtResource("6_gee14")
 
 [node name="Slot1" type="Sprite2D" parent="UI/BuyMenu"]
 position = Vector2(1017.2, 380.2)
@@ -140,6 +189,20 @@ position = Vector2(1052, 458)
 [node name="EqualBackground" type="Sprite2D" parent="UI/BuyMenu"]
 position = Vector2(1052, 458)
 
-[connection signal="toggled" from="UI/BuyMenu/Wood" to="." method="_on_wood_toggled"]
-[connection signal="toggled" from="UI/BuyMenu/Plague" to="." method="_on_plague_toggled"]
-[connection signal="toggled" from="UI/BuyMenu/Fire" to="." method="_on_fire_toggled"]
+[node name="BuyButton" type="Button" parent="UI/BuyMenu"]
+layout_mode = 0
+offset_left = 1025.0
+offset_top = 595.0
+offset_right = 1067.0
+offset_bottom = 626.0
+text = "Buy!"
+
+[node name="ballista" parent="." instance=ExtResource("10_vtaks")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.480523, 0, -3.6622834)
+
+[connection signal="toggled" from="UI/BuyMenu/GridContainer/Wood" to="." method="_on_wood_toggled"]
+[connection signal="toggled" from="UI/BuyMenu/GridContainer/Plague" to="." method="_on_plague_toggled"]
+[connection signal="toggled" from="UI/BuyMenu/GridContainer/Fire" to="." method="_on_fire_toggled"]
+[connection signal="toggled" from="UI/BuyMenu/GridContainer/Metal" to="." method="_on_metal_toggled"]
+[connection signal="toggled" from="UI/BuyMenu/GridContainer/Candy" to="." method="_on_candy_toggled"]
+[connection signal="pressed" from="UI/BuyMenu/BuyButton" to="." method="_on_buy_button_pressed"]

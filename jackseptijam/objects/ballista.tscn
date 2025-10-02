@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=4 uid="uid://dtsy105q3ettd"]
+[gd_scene load_steps=17 format=4 uid="uid://dtsy105q3ettd"]
 
 [ext_resource type="Script" uid="uid://hnb0jev4jijq" path="res://scripts/ballista.gd" id="1_cjyl8"]
 [ext_resource type="Texture2D" uid="uid://db1vdmlx05lka" path="res://assets/3d/towers/placeHolderBallista_woodPallete.png" id="1_headl"]
+[ext_resource type="PackedScene" uid="uid://ctymkhicnamcp" path="res://objects/projectile.tscn" id="2_wugx5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbdjj"]
 resource_name = "Material.001"
@@ -170,8 +171,22 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v2w61")
 
-[node name="ballista" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhgxi"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.4467258, 0.49452716, 0.30588236)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cjyl8"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_dhgxi")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.1
+
+[node name="ballista" type="Node3D" node_paths=PackedStringArray("spawn_point")]
 script = ExtResource("1_cjyl8")
+spawn_point = NodePath("rotator/Spawnpoint")
+projectile_scene = ExtResource("2_wugx5")
 
 [node name="rotator" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1478444, 0, 0, 0, 0.12375579, 0, 0, 0, 0.3177755, 0, 1.6582562, 0)
@@ -200,3 +215,6 @@ skeleton = NodePath("")
 transform = Transform3D(0.5644805, 0, 0, 0, 0.1667028, 0, 0, 0, 0.5644805, 0, 1.4873374, 0)
 mesh = SubResource("ArrayMesh_ijvc3")
 skeleton = NodePath("")
+
+[node name="RangeDisplayMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_cjyl8")
