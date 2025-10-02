@@ -1,15 +1,17 @@
-[gd_scene load_steps=21 format=3 uid="uid://dmafrs8n2rh5q"]
+[gd_scene load_steps=24 format=3 uid="uid://dmafrs8n2rh5q"]
 
 [ext_resource type="Script" uid="uid://chusptfwrxiit" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://wno7gug5ytr3" path="res://assets/2d/textures/texture_13.png" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://xdui408ip2dk" path="res://objects/enemy.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://ck4v5k0b02c0l" path="res://objects/tower.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://l246u8chero8" path="res://objects/plague_tower.tscn" id="3_vtaks"]
-[ext_resource type="Script" uid="uid://dee7t312eiqvf" path="res://player.gd" id="4_lbhrr"]
+[ext_resource type="Script" uid="uid://dee7t312eiqvf" path="res://scripts/player.gd" id="4_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://bynwiofaudko" path="res://assets/2d/textures/Elements/woodElement.png" id="6_gee14"]
 [ext_resource type="Texture2D" uid="uid://5o03e0oo3bwx" path="res://assets/2d/hud/inventoryTile.png" id="6_vtaks"]
 [ext_resource type="Texture2D" uid="uid://1sujlq2p4md6" path="res://assets/2d/textures/Elements/plagueElement.png" id="7_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://dtsy105q3ettd" path="res://objects/ballista.tscn" id="10_vtaks"]
+[ext_resource type="Texture2D" uid="uid://ctw85qo28ojiy" path="res://assets/2d/textures/Elements/fireElement.png" id="11_kvuet"]
+[ext_resource type="Texture2D" uid="uid://cwhtohvweyj5" path="res://assets/2d/textures/Elements/metalElement.png" id="12_trtic"]
+[ext_resource type="Texture2D" uid="uid://cem0o12dbfpk2" path="res://assets/2d/textures/Elements/candyElement.png" id="13_ir15t"]
 
 [sub_resource type="Curve3D" id="Curve3D_uwrxv"]
 _data = {
@@ -49,6 +51,10 @@ region = Rect2(38, 0, 38, 38)
 atlas = ExtResource("6_vtaks")
 region = Rect2(114, 0, 38, 38)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_trtic"]
+atlas = ExtResource("6_vtaks")
+region = Rect2(0, 0, 38.436073, 38)
+
 [node name="Game" type="Node3D"]
 script = ExtResource("1_iywne")
 ballista_tower = ExtResource("10_vtaks")
@@ -60,9 +66,6 @@ transform = Transform3D(1, 0, 0, 0, -0.45670974, 0.8896158, 0, -0.8896158, -0.45
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.44362, 0.30932164, 0.5165911)
 curve = SubResource("Curve3D_uwrxv")
-
-[node name="Enemy" parent="Path3D" instance=ExtResource("2_yqjtg")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="Tower" parent="." instance=ExtResource("3_lnu2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.038626)
@@ -97,9 +100,13 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="BuyMenu" type="Control" parent="UI"]
-anchors_preset = 0
-offset_right = 40.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
 offset_bottom = 40.0
+grow_horizontal = 0
 
 [node name="Panel" type="Panel" parent="UI/BuyMenu"]
 layout_mode = 1
@@ -150,7 +157,7 @@ texture_disabled = SubResource("AtlasTexture_kvuet")
 
 [node name="Sprite" type="Sprite2D" parent="UI/BuyMenu/FirstSlotButtons/Fire"]
 position = Vector2(20, 19)
-texture = ExtResource("6_gee14")
+texture = ExtResource("11_kvuet")
 
 [node name="Metal" type="TextureButton" parent="UI/BuyMenu/FirstSlotButtons"]
 layout_mode = 2
@@ -161,7 +168,7 @@ texture_disabled = SubResource("AtlasTexture_kvuet")
 
 [node name="Sprite" type="Sprite2D" parent="UI/BuyMenu/FirstSlotButtons/Metal"]
 position = Vector2(20, 19)
-texture = ExtResource("6_gee14")
+texture = ExtResource("12_trtic")
 
 [node name="Candy" type="TextureButton" parent="UI/BuyMenu/FirstSlotButtons"]
 layout_mode = 2
@@ -172,7 +179,7 @@ texture_disabled = SubResource("AtlasTexture_kvuet")
 
 [node name="Sprite" type="Sprite2D" parent="UI/BuyMenu/FirstSlotButtons/Candy"]
 position = Vector2(20, 19)
-texture = ExtResource("6_gee14")
+texture = ExtResource("13_ir15t")
 
 [node name="SecondSlotButtons" type="VBoxContainer" parent="UI/BuyMenu"]
 unique_name_in_owner = true
@@ -213,7 +220,7 @@ texture_disabled = SubResource("AtlasTexture_kvuet")
 
 [node name="Sprite" type="Sprite2D" parent="UI/BuyMenu/SecondSlotButtons/Fire"]
 position = Vector2(20, 19)
-texture = ExtResource("6_gee14")
+texture = ExtResource("11_kvuet")
 
 [node name="Metal" type="TextureButton" parent="UI/BuyMenu/SecondSlotButtons"]
 layout_mode = 2
@@ -224,7 +231,7 @@ texture_disabled = SubResource("AtlasTexture_kvuet")
 
 [node name="Sprite" type="Sprite2D" parent="UI/BuyMenu/SecondSlotButtons/Metal"]
 position = Vector2(20, 19)
-texture = ExtResource("6_gee14")
+texture = ExtResource("12_trtic")
 
 [node name="Candy" type="TextureButton" parent="UI/BuyMenu/SecondSlotButtons"]
 layout_mode = 2
@@ -235,13 +242,21 @@ texture_disabled = SubResource("AtlasTexture_kvuet")
 
 [node name="Sprite" type="Sprite2D" parent="UI/BuyMenu/SecondSlotButtons/Candy"]
 position = Vector2(20, 19)
-texture = ExtResource("6_gee14")
+texture = ExtResource("13_ir15t")
+
+[node name="Slot1Background" type="Sprite2D" parent="UI/BuyMenu"]
+position = Vector2(1018, 415)
+texture = SubResource("AtlasTexture_trtic")
+
+[node name="Slot2Background" type="Sprite2D" parent="UI/BuyMenu"]
+position = Vector2(1094, 415)
+texture = SubResource("AtlasTexture_trtic")
 
 [node name="Slot1" type="Sprite2D" parent="UI/BuyMenu"]
-position = Vector2(1017.2, 380.2)
+position = Vector2(1019, 415)
 
 [node name="Slot2" type="Sprite2D" parent="UI/BuyMenu"]
-position = Vector2(1090.1998, 380.2)
+position = Vector2(1095, 415)
 
 [node name="EqualSlotforeground" type="Sprite2D" parent="UI/BuyMenu"]
 position = Vector2(1052, 458)
@@ -258,6 +273,14 @@ offset_bottom = 626.0
 shortcut_feedback = false
 shortcut_in_tooltip = false
 text = "Buy!"
+
+[node name="Health" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 933.0
+offset_top = 3.0
+offset_right = 985.0
+offset_bottom = 26.0
+text = "Health: 100"
 
 [node name="ballista" parent="." instance=ExtResource("10_vtaks")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.480523, 0, -3.6622834)

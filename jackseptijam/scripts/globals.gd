@@ -1,3 +1,3 @@
 extends Node
 
-enum {WOOD, PLAGUE, FIRE, METAL, CANDY}
+enum ETypes {WOOD, PLAGUE, FIRE, METAL, CANDY}

@@ -54,7 +54,7 @@ func on_hit_target():
 	if target_enemy and target_enemy.has_method("take_damage"):
 		target_enemy.take_damage(damage)
 	
-	if effect == Globals.PLAGUE:
+	if effect == Globals.ETypes.PLAGUE:
 		target_enemy.modifier_stack.append([Globals.PLAGUE, 3.0])
 	
 	queue_free()

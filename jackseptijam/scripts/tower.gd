@@ -15,7 +15,7 @@ var enemylist = []
 
 var target: Enemy
 
-var secondary = Globals.WOOD
+var secondary = Globals.ETypes.WOOD
 
 var did_call: bool = false
 
@@ -27,7 +27,7 @@ func _ready() -> void:
 
 func place():
 	range_display_mesh.visible = false
-	if(secondary == Globals.CANDY):
+	if(secondary == Globals.ETypes.CANDY):
 		await StoatStash.repeat_call(shoot, cooldown-cooldown/20)
 	else:
 		await StoatStash.repeat_call(shoot, cooldown)
@@ -43,7 +43,7 @@ func shoot():
 	projectile.effect = secondary
 	projectile.setup_projectile(spawn_point.global_position,target)
 	projectile.damage = damage
-	if(secondary == Globals.METAL):
+	if(secondary == Globals.ETypes.METAL):
 		projectile_scene.damage += damage / 4
 
 func choose_target():

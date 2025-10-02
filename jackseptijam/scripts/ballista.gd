@@ -6,9 +6,9 @@ func _ready() -> void:
 	for i in lst:
 		i.set_surface_override_material(0,i.get_active_material(0).duplicate())
 		match secondary:
-			Globals.WOOD:
+			Globals.ETypes.WOOD:
 				i.get_surface_override_material(0).set_texture(0, preload("res://assets/3d/towers/placeHolderBallista_woodPallete.png"))
-			Globals.PLAGUE:
+			Globals.ETypes.PLAGUE:
 				i.get_surface_override_material(0).set_texture(0, preload("res://assets/3d/towers/placeHolderPlague_Plague.png"))
 
 
