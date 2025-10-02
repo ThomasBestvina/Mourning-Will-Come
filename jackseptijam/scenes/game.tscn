@@ -1,8 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://dmafrs8n2rh5q"]
+[gd_scene load_steps=29 format=3 uid="uid://dmafrs8n2rh5q"]
 
 [ext_resource type="Script" uid="uid://chusptfwrxiit" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://wno7gug5ytr3" path="res://assets/2d/textures/texture_13.png" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://ck4v5k0b02c0l" path="res://objects/tower.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://l246u8chero8" path="res://objects/plague_tower.tscn" id="3_vtaks"]
 [ext_resource type="Script" uid="uid://dee7t312eiqvf" path="res://scripts/player.gd" id="4_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://bynwiofaudko" path="res://assets/2d/textures/Elements/woodElement.png" id="6_gee14"]
@@ -108,9 +107,6 @@ transform = Transform3D(1, 0, 0, 0, -0.45670974, 0.8896158, 0, -0.8896158, -0.45
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.44362, 0.30932164, 0.5165911)
 curve = SubResource("Curve3D_uwrxv")
 
-[node name="Tower" parent="." instance=ExtResource("3_lnu2h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.038626)
-
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7917337, 0)
 script = ExtResource("4_lbhrr")
@@ -142,30 +138,35 @@ offset_bottom = 40.0
 
 [node name="BuyMenu" type="Control" parent="UI"]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 3
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+anchor_bottom = 1.0
+offset_left = 1072.0
+offset_top = 607.0
+offset_right = 1112.0
+offset_bottom = 647.0
 grow_horizontal = 0
+grow_vertical = 0
 
 [node name="Panel" type="Panel" parent="UI/BuyMenu"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 885.0
-offset_right = 1110.885
-offset_bottom = 648.0
+offset_left = -229.0
+offset_top = -648.0
+offset_right = -3.1149902
 grow_horizontal = 0
 
 [node name="FirstSlotButtons" type="VBoxContainer" parent="UI/BuyMenu"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 999.0
-offset_top = 156.0
-offset_right = 1205.0
-offset_bottom = 362.0
+offset_left = -115.0
+offset_top = -492.0
+offset_right = 91.0
+offset_bottom = -286.0
 
 [node name="Wood" type="TextureButton" parent="UI/BuyMenu/FirstSlotButtons"]
 layout_mode = 2
@@ -225,10 +226,10 @@ texture = ExtResource("13_ir15t")
 [node name="SecondSlotButtons" type="VBoxContainer" parent="UI/BuyMenu"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1075.0
-offset_top = 156.0
-offset_right = 1281.0
-offset_bottom = 362.0
+offset_left = -39.0
+offset_top = -492.0
+offset_right = 167.0
+offset_bottom = -286.0
 
 [node name="Wood" type="TextureButton" parent="UI/BuyMenu/SecondSlotButtons"]
 layout_mode = 2
@@ -286,42 +287,42 @@ position = Vector2(20, 19)
 texture = ExtResource("13_ir15t")
 
 [node name="Slot1Background" type="AnimatedSprite2D" parent="UI/BuyMenu"]
-position = Vector2(1018, 415)
+position = Vector2(-96, -233)
 sprite_frames = SubResource("SpriteFrames_ca42v")
 
 [node name="Slot2Background" type="AnimatedSprite2D" parent="UI/BuyMenu"]
-position = Vector2(1094, 415)
+position = Vector2(-20, -233)
 sprite_frames = SubResource("SpriteFrames_264po")
 frame_progress = 0.61571544
 
 [node name="Slot1" type="Sprite2D" parent="UI/BuyMenu"]
-position = Vector2(1019, 415)
+position = Vector2(-95, -233)
 
 [node name="Slot2" type="Sprite2D" parent="UI/BuyMenu"]
-position = Vector2(1095, 415)
+position = Vector2(-19, -233)
 
 [node name="EqualSlotforeground" type="Sprite2D" parent="UI/BuyMenu"]
-position = Vector2(1052, 458)
+position = Vector2(-62, -190)
 
 [node name="EqualBackground" type="Sprite2D" parent="UI/BuyMenu"]
-position = Vector2(1052, 458)
+position = Vector2(-62, -190)
 
 [node name="BuyButton" type="Button" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = 1025.0
-offset_top = 595.0
-offset_right = 1067.0
-offset_bottom = 626.0
+offset_left = -89.0
+offset_top = -53.0
+offset_right = -47.0
+offset_bottom = -22.0
 shortcut_feedback = false
 shortcut_in_tooltip = false
 text = "Buy!"
 
 [node name="WoodAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = 1036.0
-offset_top = 164.0
-offset_right = 1076.0
-offset_bottom = 187.0
+offset_left = -78.0
+offset_top = -484.0
+offset_right = -38.0
+offset_bottom = -461.0
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 bbcode_enabled = true
 text = "5"
@@ -329,10 +330,10 @@ horizontal_alignment = 1
 
 [node name="PlagueAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = 1036.0
-offset_top = 205.0
-offset_right = 1076.0
-offset_bottom = 228.0
+offset_left = -78.0
+offset_top = -443.0
+offset_right = -38.0
+offset_bottom = -420.0
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 bbcode_enabled = true
 text = "5"
@@ -340,10 +341,10 @@ horizontal_alignment = 1
 
 [node name="FireAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = 1036.0
-offset_top = 248.0
-offset_right = 1076.0
-offset_bottom = 271.0
+offset_left = -78.0
+offset_top = -400.0
+offset_right = -38.0
+offset_bottom = -377.0
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 bbcode_enabled = true
 text = "5"
@@ -351,10 +352,10 @@ horizontal_alignment = 1
 
 [node name="MetalAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = 1036.0
-offset_top = 289.0
-offset_right = 1076.0
-offset_bottom = 312.0
+offset_left = -78.0
+offset_top = -359.0
+offset_right = -38.0
+offset_bottom = -336.0
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 bbcode_enabled = true
 text = "5"
@@ -362,10 +363,10 @@ horizontal_alignment = 1
 
 [node name="CandyAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = 1036.0
-offset_top = 333.0
-offset_right = 1076.0
-offset_bottom = 356.0
+offset_left = -78.0
+offset_top = -315.0
+offset_right = -38.0
+offset_bottom = -292.0
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 bbcode_enabled = true
 text = "5"
@@ -373,10 +374,10 @@ horizontal_alignment = 1
 
 [node name="CostPrimary" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = 998.0
-offset_top = 381.0
-offset_right = 1038.0
-offset_bottom = 404.0
+offset_left = -116.0
+offset_top = -267.0
+offset_right = -76.0
+offset_bottom = -244.0
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 bbcode_enabled = true
 text = "5"
@@ -384,25 +385,32 @@ horizontal_alignment = 1
 
 [node name="CostSecondary" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = 1074.0
-offset_top = 381.0
-offset_right = 1114.0
-offset_bottom = 404.0
+offset_left = -40.0
+offset_top = -267.0
+offset_bottom = -244.0
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 bbcode_enabled = true
 text = "5"
 horizontal_alignment = 1
 
 [node name="Health" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = 933.0
-offset_top = 3.0
-offset_right = 985.0
-offset_bottom = 26.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 832.0
+offset_top = -24.0
+offset_right = 920.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
 text = "Health: 100"
 
-[node name="ballista" parent="." instance=ExtResource("10_vtaks")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.480523, 0, -3.6622834)
+[node name="Towers" type="Node3D" parent="."]
+
+[node name="ballista" parent="Towers" instance=ExtResource("10_vtaks")]
 
 [connection signal="pressed" from="UI/BuyMenu/FirstSlotButtons/Wood" to="." method="_on_wood_pressed"]
 [connection signal="pressed" from="UI/BuyMenu/FirstSlotButtons/Plague" to="." method="_on_plague_pressed"]

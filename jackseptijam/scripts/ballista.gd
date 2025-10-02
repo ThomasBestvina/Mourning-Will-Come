@@ -1,6 +1,7 @@
 extends Tower
 
 func _ready() -> void:
+	$Selector/CollisionShape3D.disabled = true
 	super._ready()
 	var lst = [$rotator,$rotator/Cube_003,$rotator/Cube_004,$Cube,$Cube_001]
 	for i in lst:
@@ -11,7 +12,8 @@ func _ready() -> void:
 			Globals.ETypes.PLAGUE:
 				i.get_surface_override_material(0).set_texture(0, preload("res://assets/3d/towers/placeHolderPlague_Plague.png"))
 
-
+func place():
+	$Selector/CollisionShape3D.disabled = false
 
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -19,3 +21,10 @@ func _process(delta: float) -> void:
 		$rotator.look_at(target.global_position)
 		$rotator.rotation.x = 0
 		$rotator.rotation.z = 0
+
+
+func _on_selector_mouse_entered() -> void:
+	hovered = true
+
+func _on_selector_mouse_exited() -> void:
+	hovered = false

@@ -2,8 +2,8 @@ extends Node3D
 
 @export var player_health = 100
 
-var current_difficulty = 1
-var points = 1
+var current_difficulty: int = 1
+var points: int = 2
 
 var buying_tower = false
 var bought_tower: Node3D = null
@@ -12,8 +12,12 @@ var secondary
 var which_button_primary_update = false
 var which_button_secondary_update = false
 
+var selected_tower: Node3D
+
 @export var ballista_tower: PackedScene
 @export var plague_tower: PackedScene
+
+var placed_first_turret: bool = false
 
 var amount_wood = 0
 var amount_plague = 0
@@ -44,9 +48,20 @@ var enemies = {
 	3: [preload("res://objects/enemies/tree_enemy.tscn")]
 }
 
+
 func _process(delta: float) -> void:
 	manage_player_input()
 	process_ui()
+
+func increase_difficulty():
+	current_difficulty += 1
+
+func increase_points():
+	points += current_difficulty * 2.5
+
+func spawn_wave():
+	if StoatStash.chance(0.4):
+		spawn_enemies()
 
 func process_ui():
 	$UI/Health.text = "Health: " + str(player_health)
@@ -107,6 +122,8 @@ func spawn_enemies():
 		$Path3D.add_child(thing)
 		StoatStash.safe_signal_connect(thing.enemy_win, enemy_win)
 		StoatStash.safe_signal_connect(thing.died, enemy_die)
+		await get_tree().create_timer(0.9).timeout
+		
 
 # use points to spawn enemies of various values
 func get_spawns():
@@ -156,15 +173,33 @@ func get_spawns():
 		spawns.append(enemy_options[randi() % enemy_options.size()])
 		remaining_points -= selected_cost
 	
+	points = remaining_points
 	return spawns
 
 func manage_player_input():
 	if buying_tower:
 		bought_tower.position = StoatStash.get_mouse_world_position_3d_collision($CharacterBody3D/Camera3D)
 		if Input.is_action_just_pressed("place_tower"):
+			StoatStash.safe_signal_connect(bought_tower.selected, selected)
+			StoatStash.safe_signal_connect(bought_tower.deselected, deslected)
 			bought_tower.place()
 			bought_tower = null
 			buying_tower = false
+			if(not placed_first_turret):
+				StoatStash.repeat_call(increase_difficulty, 30.0)
+				StoatStash.repeat_call(increase_points, 10.0)
+				StoatStash.repeat_call(spawn_wave, 12.0)
+				placed_first_turret = true
+
+func selected(tower: Node3D):
+	for i in $Towers.get_children():
+		if(tower != i):
+			i.is_selected = false
+	selected_tower = tower
+
+func deslected(tower: Node3D):
+	if(selected_tower == tower):
+		selected_tower == null
 
 func _on_buy_button_pressed() -> void:
 	if primary == null or secondary == null: return
@@ -172,8 +207,10 @@ func _on_buy_button_pressed() -> void:
 	match primary:
 		Globals.ETypes.WOOD:
 			bought_tower = ballista_tower.instantiate()
+			amount_wood -= amount_wood
 		Globals.ETypes.PLAGUE:
 			bought_tower = plague_tower.instantiate()
+			amount_plague -= amount_plague
 	
 	bought_tower.secondary = secondary
 	add_child(bought_tower)

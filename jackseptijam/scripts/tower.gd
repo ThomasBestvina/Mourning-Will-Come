@@ -1,6 +1,9 @@
 extends Node3D
 class_name Tower
 
+signal selected(obj: Node3D)
+signal deselected(obj: Node3D)
+
 enum targetting_mode {STRONGEST, NEAREST, LAST, FIRST}
 
 @export var target_mode: targetting_mode = targetting_mode.NEAREST
@@ -19,6 +22,11 @@ var secondary = Globals.ETypes.WOOD
 
 var did_call: bool = false
 
+var hovered: bool = false
+var is_selected: bool = false
+
+var is_placed: bool = false
+
 func _ready() -> void:
 	$RangeDisplayMesh.mesh = $RangeDisplayMesh.mesh.duplicate()
 	$RangeDisplayMesh.mesh.top_radius = fire_range
@@ -26,6 +34,7 @@ func _ready() -> void:
 	$RangeDisplayMesh.show()
 
 func place():
+	is_placed = true
 	range_display_mesh.visible = false
 	if(secondary == Globals.ETypes.CANDY):
 		await StoatStash.repeat_call(shoot, cooldown-cooldown/20)
@@ -35,6 +44,15 @@ func place():
 func _process(delta: float) -> void:
 	if target == null or target.global_position.distance_squared_to(global_position) >= fire_range**2: 
 		target = choose_target()
+	
+	if hovered and Input.is_action_just_pressed("place_tower"):
+		emit_signal("selected", self)
+		is_selected = true
+	if not hovered and Input.is_action_just_pressed("place_tower"):
+		emit_signal("deselected",self)
+		is_selected = false
+	
+	$RangeDisplayMesh.visible = hovered or is_selected or not is_placed
 
 func shoot():
 	if(target == null): return

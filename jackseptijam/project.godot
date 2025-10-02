@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 StoatStash="*res://scripts/stoat_stash.gd"
 Globals="*res://scripts/globals.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 enemy=""

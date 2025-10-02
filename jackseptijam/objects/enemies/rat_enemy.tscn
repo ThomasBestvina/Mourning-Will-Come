@@ -8,3 +8,5 @@ script = ExtResource("1_4trik")
 type = 1
 
 [node name="placeHolderRat" parent="." instance=ExtResource("2_kinil")]
+
+[editable path="placeHolderRat"]

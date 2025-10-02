@@ -1,6 +1,7 @@
 extends Path3D
 class_name Projectile
 
+
 @export var speed: float = 10.0
 @export var damage: float = 1.0
 
