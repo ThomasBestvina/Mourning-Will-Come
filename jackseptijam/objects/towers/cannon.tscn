@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bxr7itrf8ypo6" path="res://scripts/cannon.gd" id="1_a53et"]
 [ext_resource type="Texture2D" uid="uid://c8gh0363jpnue" path="res://assets/3d/towers/cannon_firePallette.png" id="2_6wwdh"]
-[ext_resource type="PackedScene" uid="uid://bb5oc1bby1ma0" path="res://objects/projectiles/ballista_projectile.tscn" id="2_p0m71"]
+[ext_resource type="PackedScene" uid="uid://bc6ynf8nflbtn" path="res://objects/projectiles/cannon_projectile.tscn" id="2_84g5q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6n6qf"]
 resource_name = "Material"
@@ -298,8 +298,8 @@ height = 0.05
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_a53et")
 spawn_point = NodePath("Rotator/Spawnpoint")
-fire_range = 2.5
-projectile_scene = ExtResource("2_p0m71")
+fire_range = 4.4
+projectile_scene = ExtResource("2_84g5q")
 range_display_mesh = NodePath("RangeDisplayMesh")
 
 [node name="Rotator" type="Node3D" parent="."]

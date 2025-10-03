@@ -8,7 +8,6 @@ func _ready() -> void:
 	for i in $Rotator.get_children()+$candyCornMG.get_children():
 		if i is MeshInstance3D and i.name != "RangeDisplayMesh":
 			lst.append(i)
-	print(lst)
 	for i in lst:
 		i.set_surface_override_material(0,i.get_active_material(0).duplicate())
 		match secondary:

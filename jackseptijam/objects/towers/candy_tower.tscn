@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bc3l1i1h8ex6k" path="res://scripts/candy_tower.gd" id="1_a4r8e"]
 [ext_resource type="Texture2D" uid="uid://c2kda7jel8ix1" path="res://assets/3d/towers/candyCornMG_candyPallette.png" id="2_e5xpn"]
-[ext_resource type="PackedScene" uid="uid://bb5oc1bby1ma0" path="res://objects/projectiles/ballista_projectile.tscn" id="2_fee88"]
+[ext_resource type="PackedScene" uid="uid://bgr8stuxpef08" path="res://objects/projectiles/candy_projectile.tscn" id="2_l8dqi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l35ky"]
 resource_name = "Material.001"
@@ -368,7 +368,7 @@ height = 0.1
 script = ExtResource("1_a4r8e")
 spawn_point = NodePath("Rotator/Node3D")
 fire_range = 3.5
-projectile_scene = ExtResource("2_fee88")
+projectile_scene = ExtResource("2_l8dqi")
 cooldown = 0.4
 damage = 2.5
 range_display_mesh = NodePath("RangeDisplayMesh")

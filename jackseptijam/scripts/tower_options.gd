@@ -37,12 +37,11 @@ func _process(delta: float) -> void:
 		StoatStash.animate_ui_slide_in(self, Vector2.DOWN, in_pos)
 		just_selected = false
 
-
 func _on_button_pressed() -> void:
 	if game.selected_tower != null and game.selected_tower is Tower:
 		var tower: Tower = game.selected_tower
 		tower.target_mode = target_mode_order[ (target_mode_order.find(tower.target_mode)+1) % 4 ]
-
+		tower.choose_target()
 
 func _on_sell_pressed() -> void:
 	if game.selected_tower == null: return

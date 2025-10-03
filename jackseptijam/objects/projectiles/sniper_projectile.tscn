@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b78ua4solvi1"]
+
+[ext_resource type="Script" uid="uid://cfqrw0rdsvnub" path="res://scripts/projectile.gd" id="1_h4ulh"]
+
+[sub_resource type="Curve3D" id="Curve3D_ligi4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5hmw3"]
+shading_mode = 0
+albedo_color = Color(0.113283105, 0.05286581, 0.003209136, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xjfm1"]
+material = SubResource("StandardMaterial3D_5hmw3")
+
+[node name="SniperProjectile" type="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.7243834)
+curve = SubResource("Curve3D_ligi4")
+script = ExtResource("1_h4ulh")
+speed = 120.0
+damage = 10.0
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PathFollow3D"]
+transform = Transform3D(0.033136703, 0, 0, 0, 0.024562355, 0, 0, 0, 3.4553337, 0, 0, 0)
+mesh = SubResource("BoxMesh_xjfm1")

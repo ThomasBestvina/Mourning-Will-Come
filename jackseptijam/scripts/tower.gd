@@ -32,10 +32,11 @@ var is_placed: bool = false
 var is_on_ground: bool = false
 
 func _ready() -> void:
-	$RangeDisplayMesh.mesh = $RangeDisplayMesh.mesh.duplicate()
-	$RangeDisplayMesh.mesh.top_radius = fire_range
-	$RangeDisplayMesh.mesh.bottom_radius = fire_range
-	$RangeDisplayMesh.show()
+	if($RangeDisplayMesh.mesh):
+		$RangeDisplayMesh.mesh = $RangeDisplayMesh.mesh.duplicate()
+		$RangeDisplayMesh.mesh.top_radius = fire_range
+		$RangeDisplayMesh.mesh.bottom_radius = fire_range
+		$RangeDisplayMesh.show()
 
 func place():
 	is_placed = true

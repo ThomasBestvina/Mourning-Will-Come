@@ -127,11 +127,16 @@ func enemy_die(type, amount):
 			amount_metal += amount
 
 func spawn_enemies():
-	print("spawning enemies")
+	var alternator = false
 	var lst = get_spawns()
 	for i: PackedScene in lst:
 		var thing: Enemy = i.instantiate()
-		$Path3D.add_child(thing)
+		if(alternator):
+			$Prim.add_child(thing)
+			alternator = !alternator
+		else:
+			$Second.add_child(thing)
+			alternator = !alternator
 		StoatStash.safe_signal_connect(thing.enemy_win, enemy_win)
 		StoatStash.safe_signal_connect(thing.died, enemy_die)
 		await get_tree().create_timer(0.9).timeout

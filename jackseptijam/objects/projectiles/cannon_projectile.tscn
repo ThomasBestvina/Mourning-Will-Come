@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc6ynf8nflbtn"]
+
+[ext_resource type="Script" uid="uid://cfqrw0rdsvnub" path="res://scripts/projectile.gd" id="1_l6fxl"]
+
+[sub_resource type="Curve3D" id="Curve3D_ligi4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l6fxl"]
+shading_mode = 0
+albedo_color = Color(0.9999997, 0.14805132, 0.13634375, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_l6fxl"]
+material = SubResource("StandardMaterial3D_l6fxl")
+
+[node name="BallistaProjectile" type="Path3D"]
+curve = SubResource("Curve3D_ligi4")
+script = ExtResource("1_l6fxl")
+speed = 5.0
+damage = 12.0
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PathFollow3D"]
+mesh = SubResource("SphereMesh_l6fxl")

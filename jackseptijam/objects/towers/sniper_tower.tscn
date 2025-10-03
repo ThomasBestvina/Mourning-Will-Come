@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cryv6folxuoem" path="res://scripts/sniper_tower.gd" id="1_5bjvm"]
 [ext_resource type="Texture2D" uid="uid://dibtk7wt672ku" path="res://assets/3d/towers/sniper_metalPallette.png" id="1_yl0fn"]
-[ext_resource type="PackedScene" uid="uid://bb5oc1bby1ma0" path="res://objects/projectiles/ballista_projectile.tscn" id="2_2rlas"]
+[ext_resource type="PackedScene" uid="uid://b78ua4solvi1" path="res://objects/projectiles/sniper_projectile.tscn" id="2_2rlas"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gakq0"]
 resource_name = "Material.001"
@@ -420,21 +420,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qthrg")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n5feu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2rlas"]
 shading_mode = 0
-albedo_color = Color(0.26666668, 0, 0.015686275, 1)
-heightmap_scale = 4.56
+albedo_color = Color(0.8253421, 0, 0.13403705, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_5bjvm"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_n5feu")
-top_radius = 1.0
-bottom_radius = 1.0
-height = 0.1
+[sub_resource type="CylinderMesh" id="CylinderMesh_0bp2x"]
+material = SubResource("StandardMaterial3D_2rlas")
 
 [node name="SniperTower" type="Node3D" node_paths=PackedStringArray("spawn_point", "range_display_mesh")]
 script = ExtResource("1_5bjvm")
 spawn_point = NodePath("Rotator/Node3D")
+fire_range = 10000.0
 projectile_scene = ExtResource("2_2rlas")
 range_display_mesh = NodePath("RangeDisplayMesh")
 
@@ -442,7 +438,7 @@ range_display_mesh = NodePath("RangeDisplayMesh")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="Node3D" type="Node3D" parent="Rotator"]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.054913178, 2.8684762, -0.8661964)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.054913037, 2.8684762, -2.467911)
 
 [node name="gunBase" type="MeshInstance3D" parent="Rotator"]
 transform = Transform3D(-0.03709978, 0, 4.827312e-08, 0, 0.03709978, 0, -3.2433656e-09, 0, -0.5521801, -0.05123767, 2.86969, -0.20611201)
@@ -515,7 +511,8 @@ mesh = SubResource("ArrayMesh_5dssk")
 skeleton = NodePath("")
 
 [node name="RangeDisplayMesh" type="MeshInstance3D" parent="."]
-mesh = SubResource("CylinderMesh_5bjvm")
+transform = Transform3D(2.2866495, 0, 0, 0, 0.070599936, 0, 0, 0, 2.2866495, 0, 0.007237315, 0)
+mesh = SubResource("CylinderMesh_0bp2x")
 
 [connection signal="mouse_entered" from="Selector" to="." method="_on_selector_mouse_entered"]
 [connection signal="mouse_exited" from="Selector" to="." method="_on_selector_mouse_exited"]
