@@ -27,6 +27,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.009613, 0)
 mesh = SubResource("CylinderMesh_sf0al")
 
 [node name="RangeDisplayMesh" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CylinderMesh_dhgxi")
 
 [node name="Spawnpoint" type="Node3D" parent="."]

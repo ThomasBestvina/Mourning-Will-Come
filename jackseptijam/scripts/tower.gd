@@ -1,6 +1,9 @@
 extends Node3D
 class_name Tower
 
+signal selected(obj: Node3D)
+signal deselected(obj: Node3D)
+
 enum targetting_mode {STRONGEST, NEAREST, LAST, FIRST}
 
 @export var target_mode: targetting_mode = targetting_mode.NEAREST
@@ -9,14 +12,20 @@ enum targetting_mode {STRONGEST, NEAREST, LAST, FIRST}
 @export var projectile_scene: PackedScene
 @export var cooldown: float = 1.2
 @export var damage: float = 3.0
+@export var range_display_mesh: MeshInstance3D
 
 var enemylist = []
 
 var target: Enemy
 
-var secondary = Globals.WOOD
+var secondary = Globals.ETypes.WOOD
 
 var did_call: bool = false
+
+var hovered: bool = false
+var is_selected: bool = false
+
+var is_placed: bool = false
 
 func _ready() -> void:
 	$RangeDisplayMesh.mesh = $RangeDisplayMesh.mesh.duplicate()
@@ -25,18 +34,35 @@ func _ready() -> void:
 	$RangeDisplayMesh.show()
 
 func place():
-	await StoatStash.repeat_call(shoot, cooldown)
-	$RangeDisplayMesh.hide()
+	is_placed = true
+	range_display_mesh.visible = false
+	if(secondary == Globals.ETypes.CANDY):
+		await StoatStash.repeat_call(shoot, cooldown-cooldown/20)
+	else:
+		await StoatStash.repeat_call(shoot, cooldown)
 
 func _process(delta: float) -> void:
 	if target == null or target.global_position.distance_squared_to(global_position) >= fire_range**2: 
 		target = choose_target()
+	
+	if hovered and Input.is_action_just_pressed("place_tower"):
+		emit_signal("selected", self)
+		is_selected = true
+	if not hovered and Input.is_action_just_pressed("place_tower"):
+		emit_signal("deselected",self)
+		is_selected = false
+	
+	$RangeDisplayMesh.visible = hovered or is_selected or not is_placed
 
 func shoot():
 	if(target == null): return
 	var projectile: Projectile = projectile_scene.instantiate()
 	get_parent().add_child(projectile)
+	projectile.effect = secondary
 	projectile.setup_projectile(spawn_point.global_position,target)
+	projectile.damage = damage
+	if(secondary == Globals.ETypes.METAL):
+		projectile_scene.damage += damage / 4
 
 func choose_target():
 	var possibilities = get_tree().get_nodes_in_group("enemy")

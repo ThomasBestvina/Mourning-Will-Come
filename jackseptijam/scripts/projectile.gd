@@ -1,14 +1,17 @@
 extends Path3D
 class_name Projectile
 
+
 @export var speed: float = 10.0
 @export var damage: float = 1.0
 
-var target_enemy: Node3D
+var target_enemy: Enemy
 var path_follow: PathFollow3D
 var has_hit: bool = false
 
 var max_value = 0.0
+
+var effect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,5 +54,8 @@ func on_hit_target():
 	
 	if target_enemy and target_enemy.has_method("take_damage"):
 		target_enemy.take_damage(damage)
+	
+	if effect == Globals.ETypes.PLAGUE:
+		target_enemy.modifier_stack.append([Globals.PLAGUE, 3.0])
 	
 	queue_free()
