@@ -1,9 +1,10 @@
 extends Node3D
+class_name Game
 
 @export var player_health = 100
 
 var current_difficulty: int = 1
-var points: int = 2
+var points: int = 1
 
 var buying_tower = false
 var bought_tower: Node3D = null
@@ -16,14 +17,17 @@ var selected_tower: Node3D
 
 @export var ballista_tower: PackedScene
 @export var plague_tower: PackedScene
+@export var fire_tower: PackedScene
+@export var metal_tower: PackedScene
+@export var candy_tower: PackedScene
 
 var placed_first_turret: bool = false
 
-var amount_wood = 0
-var amount_plague = 0
-var amount_fire = 0
-var amount_metal = 0
-var amount_candy = 0
+var amount_wood = 30
+var amount_plague = 30
+var amount_fire = 30
+var amount_metal = 30
+var amount_candy = 30
 
 const WOOD_COST_PRIMARY = 5
 const PLAGUE_COST_PRIMARY = 2
@@ -48,10 +52,11 @@ var enemies = {
 	3: [preload("res://objects/enemies/tree_enemy.tscn")]
 }
 
-
 func _process(delta: float) -> void:
 	manage_player_input()
 	process_ui()
+	if selected_tower != null and not selected_tower.is_selected:
+		selected_tower = null
 
 func increase_difficulty():
 	current_difficulty += 1
@@ -60,7 +65,8 @@ func increase_points():
 	points += current_difficulty * 2.5
 
 func spawn_wave():
-	if StoatStash.chance(0.4):
+	print("trying spawn wave")
+	if StoatStash.chance(0.8):
 		spawn_enemies()
 
 func process_ui():
@@ -84,20 +90,25 @@ func process_ui():
 			$UI/BuyMenu/CostPrimary.text = CANDY_COLOR+str(CANDY_COST_PRIMARY)
 	match secondary:
 		Globals.ETypes.WOOD:
-			$UI/BuyMenu/CostSecondary.text = WOOD_COLOR+ str(WOOD_COST_PRIMARY)
+			$UI/BuyMenu/CostSecondary.text = WOOD_COLOR+ str(WOOD_COST_SECONDARY)
 		Globals.ETypes.PLAGUE:
-			$UI/BuyMenu/CostSecondary.text = PLAGUE_COLOR+str(PLAGUE_COST_PRIMARY)
+			$UI/BuyMenu/CostSecondary.text = PLAGUE_COLOR+str(PLAGUE_COST_SECONDARY)
 		Globals.ETypes.FIRE:
-			$UI/BuyMenu/CostSecondary.text = FIRE_COLOR+str(FIRE_COST_PRIMARY)
+			$UI/BuyMenu/CostSecondary.text = FIRE_COLOR+str(FIRE_COST_SECONDARY)
 		Globals.ETypes.METAL:
-			$UI/BuyMenu/CostSecondary.text = METAL_COLOR+str(METAL_COST_PRIMARY)
+			$UI/BuyMenu/CostSecondary.text = METAL_COLOR+str(METAL_COST_SECONDARY)
 		Globals.ETypes.CANDY:
-			$UI/BuyMenu/CostSecondary.text = CANDY_COLOR+str(CANDY_COST_PRIMARY)
+			$UI/BuyMenu/CostSecondary.text = CANDY_COLOR+str(CANDY_COST_SECONDARY)
 			
 
 	$UI/BuyMenu/Slot1Background.frame = 0 if primary else 1
 	$UI/BuyMenu/Slot2Background.frame = 0 if secondary else 1
 
+func spawn_first_wave():
+	spawn_enemies()
+	await get_tree().create_timer(12).timeout
+	StoatStash.repeat_call(spawn_wave, 8.0)
+	
 
 func enemy_win(point):
 	player_health -= point
@@ -116,6 +127,7 @@ func enemy_die(type, amount):
 			amount_metal += amount
 
 func spawn_enemies():
+	print("spawning enemies")
 	var lst = get_spawns()
 	for i: PackedScene in lst:
 		var thing: Enemy = i.instantiate()
@@ -179,16 +191,16 @@ func get_spawns():
 func manage_player_input():
 	if buying_tower:
 		bought_tower.position = StoatStash.get_mouse_world_position_3d_collision($CharacterBody3D/Camera3D)
-		if Input.is_action_just_pressed("place_tower"):
+		if Input.is_action_just_pressed("place_tower") and bought_tower.is_on_ground:
 			StoatStash.safe_signal_connect(bought_tower.selected, selected)
-			StoatStash.safe_signal_connect(bought_tower.deselected, deslected)
+			StoatStash.safe_signal_connect(bought_tower.deselected, deselected)
 			bought_tower.place()
 			bought_tower = null
 			buying_tower = false
 			if(not placed_first_turret):
 				StoatStash.repeat_call(increase_difficulty, 30.0)
 				StoatStash.repeat_call(increase_points, 10.0)
-				StoatStash.repeat_call(spawn_wave, 12.0)
+				spawn_first_wave()
 				placed_first_turret = true
 
 func selected(tower: Node3D):
@@ -197,7 +209,7 @@ func selected(tower: Node3D):
 			i.is_selected = false
 	selected_tower = tower
 
-func deslected(tower: Node3D):
+func deselected(tower: Node3D):
 	if(selected_tower == tower):
 		selected_tower == null
 
@@ -207,10 +219,31 @@ func _on_buy_button_pressed() -> void:
 	match primary:
 		Globals.ETypes.WOOD:
 			bought_tower = ballista_tower.instantiate()
-			amount_wood -= amount_wood
+			amount_wood -= WOOD_COST_PRIMARY
 		Globals.ETypes.PLAGUE:
 			bought_tower = plague_tower.instantiate()
-			amount_plague -= amount_plague
+			amount_plague -= PLAGUE_COST_PRIMARY
+		Globals.ETypes.FIRE:
+			bought_tower = fire_tower.instantiate()
+			amount_fire -= FIRE_COST_PRIMARY
+		Globals.ETypes.METAL:
+			bought_tower = metal_tower.instantiate()
+			amount_metal -= METAL_COST_PRIMARY
+		Globals.ETypes.CANDY:
+			bought_tower = candy_tower.instantiate()
+			amount_candy -= CANDY_COST_PRIMARY
+	
+	match secondary:
+		Globals.ETypes.WOOD:
+			amount_wood -= WOOD_COST_SECONDARY
+		Globals.ETypes.PLAGUE:
+			amount_plague -= PLAGUE_COST_SECONDARY
+		Globals.ETypes.FIRE:
+			amount_fire -= FIRE_COST_SECONDARY
+		Globals.ETypes.METAL:
+			amount_metal -= METAL_COST_SECONDARY
+		Globals.ETypes.CANDY:
+			amount_candy -= CANDY_COST_SECONDARY
 	
 	bought_tower.secondary = secondary
 	add_child(bought_tower)

@@ -27,6 +27,8 @@ var is_selected: bool = false
 
 var is_placed: bool = false
 
+var is_on_ground: bool = false
+
 func _ready() -> void:
 	$RangeDisplayMesh.mesh = $RangeDisplayMesh.mesh.duplicate()
 	$RangeDisplayMesh.mesh.top_radius = fire_range
@@ -40,17 +42,20 @@ func place():
 		await StoatStash.repeat_call(shoot, cooldown-cooldown/20)
 	else:
 		await StoatStash.repeat_call(shoot, cooldown)
+	await StoatStash.repeat_call(choose_target, 0.2)
 
 func _process(delta: float) -> void:
 	if target == null or target.global_position.distance_squared_to(global_position) >= fire_range**2: 
 		target = choose_target()
 	
-	if hovered and Input.is_action_just_pressed("place_tower"):
+	if hovered and Input.is_action_just_pressed("place_tower") and get_viewport().gui_get_hovered_control() == null:
 		emit_signal("selected", self)
 		is_selected = true
-	if not hovered and Input.is_action_just_pressed("place_tower"):
+	if not hovered and Input.is_action_just_pressed("place_tower") and get_viewport().gui_get_hovered_control() == null:
 		emit_signal("deselected",self)
 		is_selected = false
+
+	is_on_ground = $RayCast3D.is_colliding() and $RayCast3D.get_collider().is_in_group("ground")
 	
 	$RangeDisplayMesh.visible = hovered or is_selected or not is_placed
 
@@ -62,13 +67,13 @@ func shoot():
 	projectile.setup_projectile(spawn_point.global_position,target)
 	projectile.damage = damage
 	if(secondary == Globals.ETypes.METAL):
-		projectile_scene.damage += damage / 4
+		projectile.damage += damage / 4
 
 func choose_target():
 	var possibilities = get_tree().get_nodes_in_group("enemy")
 	enemylist.clear()
 	for enemy: Enemy in possibilities:
-		if enemy.global_position.distance_squared_to(global_position) < fire_range*fire_range:
+		if enemy.global_position.distance_squared_to(global_position) < fire_range**2:
 			enemylist.append(enemy)
 	
 	if(enemylist.is_empty()): 

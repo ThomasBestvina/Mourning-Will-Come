@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bqxxxv1wlrvav"]
+
+[node name="PlagueParticle" type="CPUParticles3D"]
+emission_shape = 1
+emission_sphere_radius = 1.0

@@ -1156,7 +1156,7 @@ func typewriter_text(label: Label, text: String, speed: float = 0.05) -> void:
 		await get_tree().create_timer(safe_speed).timeout
 
 ## Scales UI element in from specified direction
-func animate_ui_slide_in(control: Control, direction: Vector2, duration: float = 0.3, easing: Tween.TransitionType = Tween.TRANS_BACK) -> void:
+func animate_ui_slide_in(control: Control, direction: Vector2, from: Vector2, duration: float = 0.3, easing: Tween.TransitionType = Tween.TRANS_BACK) -> void:
 	if not control or not is_instance_valid(control):
 		push_warning("animate_ui_slide_in: invalid control provided")
 		return
@@ -1168,7 +1168,7 @@ func animate_ui_slide_in(control: Control, direction: Vector2, duration: float =
 	direction = -direction # this allows us to pass in simpley Vector2.UP and it makes sense.
 	
 	var original_pos = control.position
-	var start_pos = original_pos + direction * 500
+	var start_pos = from
 	
 	control.position = start_pos
 	control.visible = true

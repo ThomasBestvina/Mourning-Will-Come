@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://bgd5r8t75elvq" path="res://scripts/enemy.gd" id="1_xwjgf"]
 [ext_resource type="PackedScene" uid="uid://dhodwyg6s4nsh" path="res://assets/3d/enemies/placeHolderTree.glb" id="2_mysul"]
 
-[node name="TreeEnemy" type="PathFollow3D"]
+[node name="TreeEnemy" type="PathFollow3D" groups=["enemy"]]
 script = ExtResource("1_xwjgf")
+max_speed = 1.0
 max_drops = 2
 drop_chance = 0.5
 

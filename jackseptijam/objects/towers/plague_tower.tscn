@@ -1,12 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://l246u8chero8"]
+[gd_scene load_steps=13 format=4 uid="uid://l246u8chero8"]
 
 [ext_resource type="Script" uid="uid://owmes70d5ck" path="res://scripts/plague_tower.gd" id="1_q8iwh"]
 [ext_resource type="Texture2D" uid="uid://dyxammc0axn2h" path="res://assets/3d/towers/placeHolderPlague_Plague.png" id="2_q8iwh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhgxi"]
-transparency = 1
 shading_mode = 0
-albedo_color = Color(1, 0.4467258, 0.49452716, 0.30588236)
+albedo_color = Color(0.33598676, 0, 0.065344736, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_q8iwh"]
 resource_local_to_scene = true
@@ -118,6 +117,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5akel")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q8iwh"]
+height = 0.5930176
+radius = 0.9194336
+
 [node name="plague_tower" type="Node3D"]
 script = ExtResource("1_q8iwh")
 
@@ -141,6 +144,14 @@ mesh = SubResource("ArrayMesh_q68kf")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30480957, 0)
+shape = SubResource("CylinderShape3D_q8iwh")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09360695, 0)
+target_position = Vector3(0, -0.165, 0)
 
 [connection signal="mouse_entered" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_entered"]
 [connection signal="mouse_exited" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_exited"]

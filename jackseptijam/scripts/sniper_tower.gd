@@ -3,7 +3,7 @@ extends Tower
 func _ready() -> void:
 	$Selector/CollisionShape3D.disabled = true
 	super._ready()
-	var lst = [$rotator/rotator,$rotator/Cube_003,$rotator/Cube_004,$Cube,$Cube_001]
+	var lst = [$Rotator/gunBase, $Rotator/scope, $Rotator/scopeConnector, $Rotator/pillarSmall, $Rotator/smallGear2, $Rotator/smallGear1, $PillarTop, $pillarBottom, $base, $mediumGear, $bigGear, $bigGear2]
 	for i in lst:
 		i.set_surface_override_material(0,i.get_active_material(0).duplicate())
 		match secondary:
@@ -25,9 +25,9 @@ func place():
 func _process(delta: float) -> void:
 	super._process(delta)
 	if target:
-		$rotator.look_at(target.global_position)
-		$rotator.rotation.x = 0
-		$rotator.rotation.z = 0
+		$Rotator.look_at(target.global_position)
+		$Rotator.rotation.x = 0
+		$Rotator.rotation.z = 0
 
 
 func _on_selector_mouse_entered() -> void:

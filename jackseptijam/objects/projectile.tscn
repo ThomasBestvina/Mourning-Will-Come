@@ -4,13 +4,10 @@
 
 [sub_resource type="Curve3D" id="Curve3D_p6r4k"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x17f1"]
-shading_mode = 0
+[sub_resource type="BoxMesh" id="BoxMesh_x17f1"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_x17f1"]
-material = SubResource("StandardMaterial3D_x17f1")
-radius = 0.2
-height = 0.4
+[sub_resource type="PrismMesh" id="PrismMesh_x17f1"]
+size = Vector3(0.295, 0.47, 0.225)
 
 [node name="Projectile" type="Path3D"]
 curve = SubResource("Curve3D_p6r4k")
@@ -19,5 +16,9 @@ script = ExtResource("1_x17f1")
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PathFollow3D"]
-mesh = SubResource("SphereMesh_x17f1")
-skeleton = NodePath("../..")
+transform = Transform3D(0.15218192, 0, 0, 0, 0.1422877, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_x17f1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="PathFollow3D"]
+transform = Transform3D(-0.99441373, 0.105276436, 0.0076294234, 0, 0.07228082, -0.9973843, -0.10555253, -0.99181265, -0.07187704, 0, 0, -0.5168096)
+mesh = SubResource("PrismMesh_x17f1")

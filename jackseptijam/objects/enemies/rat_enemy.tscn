@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://bgd5r8t75elvq" path="res://scripts/enemy.gd" id="1_4trik"]
 [ext_resource type="PackedScene" uid="uid://bc1ybw25rq6n5" path="res://assets/3d/enemies/placeHolderRat.glb" id="2_kinil"]
 
-[node name="RatEnemy" type="PathFollow3D"]
+[node name="RatEnemy" type="PathFollow3D" groups=["enemy"]]
 script = ExtResource("1_4trik")
+max_speed = 8.0
+max_health = 3.0
 type = 1
 
 [node name="placeHolderRat" parent="." instance=ExtResource("2_kinil")]

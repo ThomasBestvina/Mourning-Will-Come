@@ -1,17 +1,23 @@
-[gd_scene load_steps=29 format=3 uid="uid://dmafrs8n2rh5q"]
+[gd_scene load_steps=37 format=3 uid="uid://dmafrs8n2rh5q"]
 
 [ext_resource type="Script" uid="uid://chusptfwrxiit" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://wno7gug5ytr3" path="res://assets/2d/textures/texture_13.png" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://l246u8chero8" path="res://objects/plague_tower.tscn" id="3_vtaks"]
+[ext_resource type="PackedScene" uid="uid://l246u8chero8" path="res://objects/towers/plague_tower.tscn" id="3_vtaks"]
+[ext_resource type="PackedScene" uid="uid://cj5xcwhvweylo" path="res://objects/towers/cannon.tscn" id="4_ca42v"]
 [ext_resource type="Script" uid="uid://dee7t312eiqvf" path="res://scripts/player.gd" id="4_lbhrr"]
+[ext_resource type="Script" uid="uid://djbras6egfh4s" path="res://scripts/camera_3d.gd" id="5_kvuet"]
+[ext_resource type="PackedScene" uid="uid://064sb0hxc7hp" path="res://objects/towers/sniper_tower.tscn" id="5_rysoc"]
 [ext_resource type="Texture2D" uid="uid://bynwiofaudko" path="res://assets/2d/textures/Elements/woodElement.png" id="6_gee14"]
 [ext_resource type="Texture2D" uid="uid://5o03e0oo3bwx" path="res://assets/2d/hud/inventoryTile.png" id="6_vtaks"]
 [ext_resource type="Texture2D" uid="uid://1sujlq2p4md6" path="res://assets/2d/textures/Elements/plagueElement.png" id="7_0tnpc"]
-[ext_resource type="PackedScene" uid="uid://dtsy105q3ettd" path="res://objects/ballista.tscn" id="10_vtaks"]
+[ext_resource type="Shader" uid="uid://bhna3cfpoa6pk" path="res://shaders/cel.gdshader" id="8_264po"]
+[ext_resource type="PackedScene" uid="uid://dtsy105q3ettd" path="res://objects/towers/ballista.tscn" id="10_vtaks"]
 [ext_resource type="Texture2D" uid="uid://ctw85qo28ojiy" path="res://assets/2d/textures/Elements/fireElement.png" id="11_kvuet"]
 [ext_resource type="Texture2D" uid="uid://cwhtohvweyj5" path="res://assets/2d/textures/Elements/metalElement.png" id="12_trtic"]
 [ext_resource type="Texture2D" uid="uid://cem0o12dbfpk2" path="res://assets/2d/textures/Elements/candyElement.png" id="13_ir15t"]
 [ext_resource type="FontFile" uid="uid://bfjyly3mynpq8" path="res://assets/fonts/alagard.ttf" id="13_kvuet"]
+[ext_resource type="Script" uid="uid://i4wofkou4gll" path="res://scripts/buy_button.gd" id="13_trtic"]
+[ext_resource type="Script" uid="uid://btgoy25a3q14w" path="res://scripts/tower_options.gd" id="15_ir15t"]
 
 [sub_resource type="Curve3D" id="Curve3D_uwrxv"]
 _data = {
@@ -23,6 +29,33 @@ point_count = 2
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lbhrr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iywne"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_264po"]
+render_priority = 0
+shader = ExtResource("8_264po")
+shader_parameter/zNear = 0.05
+shader_parameter/zFar = 300.0
+shader_parameter/enable_outline = true
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_thickness = 0.5
+shader_parameter/enable_color_limit = true
+shader_parameter/color_levels = 18
+shader_parameter/enable_color_palette = false
+shader_parameter/color1 = Color(1, 0.925, 0.839, 1)
+shader_parameter/color2 = Color(1, 0.831, 0.639, 1)
+shader_parameter/color3 = Color(1, 0.667, 0.369, 1)
+shader_parameter/color4 = Color(0.816, 0.506, 0.349, 1)
+shader_parameter/color5 = Color(0.553, 0.412, 0.478, 1)
+shader_parameter/color6 = Color(0.329, 0.306, 0.408, 1)
+shader_parameter/color7 = Color(0.125, 0.236, 0.337, 1)
+shader_parameter/color8 = Color(0.05, 0.169, 0.271, 1)
+shader_parameter/enable_dithering = true
+shader_parameter/dither_strength = 0.490000023275
+
+[sub_resource type="QuadMesh" id="QuadMesh_rysoc"]
+material = SubResource("ShaderMaterial_264po")
+flip_faces = true
+size = Vector2(25, 25)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqjtg"]
 albedo_texture = ExtResource("1_uwrxv")
@@ -99,9 +132,11 @@ animations = [{
 script = ExtResource("1_iywne")
 ballista_tower = ExtResource("10_vtaks")
 plague_tower = ExtResource("3_vtaks")
+fire_tower = ExtResource("4_ca42v")
+metal_tower = ExtResource("5_rysoc")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.45670974, 0.8896158, 0, -0.8896158, -0.45670974, 0, 9.7903805, -13.127592)
+transform = Transform3D(0.33953205, -0.7796052, 0.5262449, -0.8256161, 0.02103002, 0.5638404, -0.45063984, -0.6259184, -0.6365142, 3.6377206, 6.365942, -13.127592)
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.44362, 0.30932164, 0.5165911)
@@ -119,9 +154,17 @@ skeleton = NodePath("../..")
 shape = SubResource("CapsuleShape3D_iywne")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.40515748, 0.9142469, 0, -0.9142469, 0.40515748, 0, 5.631076, 2.32019)
+transform = Transform3D(1, 0, 0, 0, 0.40515745, 0.9142469, 0, -0.9142469, 0.40515745, 0, 6.1454926, 3.062819)
+projection = 1
+size = 15.0
+near = 0.002
+script = ExtResource("5_kvuet")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8364121, -1.9902701)
+mesh = SubResource("QuadMesh_rysoc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["ground"]]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("PlaneMesh_lnu2h")
@@ -129,6 +172,8 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_iywne")
+
+[node name="Towers" type="Node3D" parent="."]
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -143,9 +188,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1072.0
+offset_left = 1075.0
 offset_top = 607.0
-offset_right = 1112.0
+offset_right = 1115.0
 offset_bottom = 647.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -316,6 +361,7 @@ offset_bottom = -22.0
 shortcut_feedback = false
 shortcut_in_tooltip = false
 text = "Buy!"
+script = ExtResource("13_trtic")
 
 [node name="WoodAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
@@ -400,17 +446,43 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 832.0
+offset_left = 957.0
 offset_top = -24.0
-offset_right = 920.0
+offset_right = 1045.0
 offset_bottom = -1.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Health: 100"
 
-[node name="Towers" type="Node3D" parent="."]
+[node name="TowerOptions" type="Control" parent="UI"]
+anchors_preset = 0
+offset_left = 282.0
+offset_top = 652.0
+offset_right = 322.0
+offset_bottom = 692.0
+script = ExtResource("15_ir15t")
 
-[node name="ballista" parent="Towers" instance=ExtResource("10_vtaks")]
+[node name="Panel" type="Panel" parent="UI/TowerOptions"]
+layout_mode = 0
+offset_right = 410.91
+offset_bottom = 61.95
+
+[node name="NextTargetMode" type="Button" parent="UI/TowerOptions"]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 17.0
+offset_right = 261.0
+offset_bottom = 48.0
+text = ">"
+
+[node name="Label" type="Label" parent="UI/TowerOptions"]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 24.0
+offset_right = 219.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("13_kvuet")
+text = "Nearest"
 
 [connection signal="pressed" from="UI/BuyMenu/FirstSlotButtons/Wood" to="." method="_on_wood_pressed"]
 [connection signal="pressed" from="UI/BuyMenu/FirstSlotButtons/Plague" to="." method="_on_plague_pressed"]
@@ -423,3 +495,4 @@ text = "Health: 100"
 [connection signal="pressed" from="UI/BuyMenu/SecondSlotButtons/Metal" to="." method="_on_metal_pressed2"]
 [connection signal="pressed" from="UI/BuyMenu/SecondSlotButtons/Candy" to="." method="_on_candy_pressed3"]
 [connection signal="pressed" from="UI/BuyMenu/BuyButton" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="UI/TowerOptions/NextTargetMode" to="UI/TowerOptions" method="_on_button_pressed"]
