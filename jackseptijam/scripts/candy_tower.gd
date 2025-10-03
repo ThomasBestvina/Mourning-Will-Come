@@ -1,10 +1,14 @@
 extends Tower
-class_name Balista
+class_name CandyCannon
 
 func _ready() -> void:
 	$Selector/CollisionShape3D.disabled = true
 	super._ready()
-	var lst = [$rotator/rotator,$rotator/Cube_003,$rotator/Cube_004,$Cube,$Cube_001]
+	var lst = []
+	for i in $Rotator.get_children()+$candyCornMG.get_children():
+		if i is MeshInstance3D and i.name != "RangeDisplayMesh":
+			lst.append(i)
+	print(lst)
 	for i in lst:
 		i.set_surface_override_material(0,i.get_active_material(0).duplicate())
 		match secondary:
@@ -26,9 +30,9 @@ func place():
 func _process(delta: float) -> void:
 	super._process(delta)
 	if target:
-		$rotator.look_at(target.global_position)
-		$rotator.rotation.x = 0
-		$rotator.rotation.z = 0
+		$Rotator.look_at(target.global_position)
+		$Rotator.rotation.x = 0
+		$Rotator.rotation.z = 0
 
 
 func _on_selector_mouse_entered() -> void:
@@ -37,8 +41,9 @@ func _on_selector_mouse_entered() -> void:
 func _on_selector_mouse_exited() -> void:
 	hovered = false
 
+
 func sell(percent):
-	game.amount_wood += game.WOOD_COST_PRIMARY * percent
+	game.amount_candy += game.CANDY_COST_PRIMARY * percent
 	
 	match secondary:
 		Globals.ETypes.WOOD:

@@ -4,6 +4,8 @@ class_name Tower
 signal selected(obj: Node3D)
 signal deselected(obj: Node3D)
 
+var game: Game
+
 enum targetting_mode {STRONGEST, NEAREST, LAST, FIRST}
 
 @export var target_mode: targetting_mode = targetting_mode.NEAREST

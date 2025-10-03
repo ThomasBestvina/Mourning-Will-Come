@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dmafrs8n2rh5q"]
+[gd_scene load_steps=38 format=3 uid="uid://dmafrs8n2rh5q"]
 
 [ext_resource type="Script" uid="uid://chusptfwrxiit" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://wno7gug5ytr3" path="res://assets/2d/textures/texture_13.png" id="1_uwrxv"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dee7t312eiqvf" path="res://scripts/player.gd" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://djbras6egfh4s" path="res://scripts/camera_3d.gd" id="5_kvuet"]
 [ext_resource type="PackedScene" uid="uid://064sb0hxc7hp" path="res://objects/towers/sniper_tower.tscn" id="5_rysoc"]
+[ext_resource type="PackedScene" uid="uid://rmu4enb5svyx" path="res://objects/towers/candy_tower.tscn" id="6_264po"]
 [ext_resource type="Texture2D" uid="uid://bynwiofaudko" path="res://assets/2d/textures/Elements/woodElement.png" id="6_gee14"]
 [ext_resource type="Texture2D" uid="uid://5o03e0oo3bwx" path="res://assets/2d/hud/inventoryTile.png" id="6_vtaks"]
 [ext_resource type="Texture2D" uid="uid://1sujlq2p4md6" path="res://assets/2d/textures/Elements/plagueElement.png" id="7_0tnpc"]
@@ -134,6 +135,7 @@ ballista_tower = ExtResource("10_vtaks")
 plague_tower = ExtResource("3_vtaks")
 fire_tower = ExtResource("4_ca42v")
 metal_tower = ExtResource("5_rysoc")
+candy_tower = ExtResource("6_264po")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.33953205, -0.7796052, 0.5262449, -0.8256161, 0.02103002, 0.5638404, -0.45063984, -0.6259184, -0.6365142, 3.6377206, 6.365942, -13.127592)
@@ -484,6 +486,14 @@ offset_bottom = 47.0
 theme_override_fonts/font = ExtResource("13_kvuet")
 text = "Nearest"
 
+[node name="Sell" type="Button" parent="UI/TowerOptions"]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 16.0
+offset_right = 397.0
+offset_bottom = 47.0
+text = "Sell"
+
 [connection signal="pressed" from="UI/BuyMenu/FirstSlotButtons/Wood" to="." method="_on_wood_pressed"]
 [connection signal="pressed" from="UI/BuyMenu/FirstSlotButtons/Plague" to="." method="_on_plague_pressed"]
 [connection signal="pressed" from="UI/BuyMenu/FirstSlotButtons/Fire" to="." method="_on_fire_pressed"]
@@ -496,3 +506,4 @@ text = "Nearest"
 [connection signal="pressed" from="UI/BuyMenu/SecondSlotButtons/Candy" to="." method="_on_candy_pressed3"]
 [connection signal="pressed" from="UI/BuyMenu/BuyButton" to="." method="_on_buy_button_pressed"]
 [connection signal="pressed" from="UI/TowerOptions/NextTargetMode" to="UI/TowerOptions" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/TowerOptions/Sell" to="UI/TowerOptions" method="_on_sell_pressed"]

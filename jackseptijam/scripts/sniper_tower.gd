@@ -1,5 +1,5 @@
 extends Tower
-
+class_name Sniper
 func _ready() -> void:
 	$Selector/CollisionShape3D.disabled = true
 	super._ready()
@@ -35,3 +35,23 @@ func _on_selector_mouse_entered() -> void:
 
 func _on_selector_mouse_exited() -> void:
 	hovered = false
+
+func sell(percent):
+	game.amount_METAL += game.METAL_COST_PRIMARY * percent
+	
+	match secondary:
+		Globals.ETypes.WOOD:
+			game.amount_wood += game.WOOD_COST_SECONDARY * percent
+		Globals.ETypes.FIRE:
+			game.amount_fire += game.FIRE_COST_SECONDARY * percent
+		Globals.ETypes.METAL:
+			game.amount_metal += game.METAL_COST_SECONDARY * percent
+		Globals.ETypes.PLAGUE:
+			game.amount_PLAGUE += game.PLAGUE_COST_SECONDARY * percent
+		Globals.ETypes.CANDY:
+			game.amount_candy += game.CANDY_COST_SECONDARY * percent
+	
+	if(game.selected_tower == self):
+		game.selected_tower = null
+	
+	queue_free()

@@ -29,22 +29,22 @@ var amount_fire = 30
 var amount_metal = 30
 var amount_candy = 30
 
-const WOOD_COST_PRIMARY = 5
-const PLAGUE_COST_PRIMARY = 2
-const FIRE_COST_PRIMARY = 5
+const WOOD_COST_PRIMARY = 4
+const PLAGUE_COST_PRIMARY = 5
+const FIRE_COST_PRIMARY = 6
 const METAL_COST_PRIMARY = 5
 const CANDY_COST_PRIMARY = 5
 
-const WOOD_COST_SECONDARY = 5
-const PLAGUE_COST_SECONDARY = 5
-const FIRE_COST_SECONDARY = 5
-const METAL_COST_SECONDARY = 5
-const CANDY_COST_SECONDARY = 9
+const WOOD_COST_SECONDARY = 4
+const PLAGUE_COST_SECONDARY = 7
+const FIRE_COST_SECONDARY = 8
+const METAL_COST_SECONDARY = 6
+const CANDY_COST_SECONDARY = 6
 
 const WOOD_COLOR = "[color=fcb103]"
-const PLAGUE_COLOR = "[color=222e38]"
+const PLAGUE_COLOR = "[color=12bc00]"
 const FIRE_COLOR = "[color=ff1231]"
-const METAL_COLOR = "[color=2e2e2e]"
+const METAL_COLOR = "[color=bf6c00]"
 const CANDY_COLOR = "[color=ff21ed]"
 
 var enemies = {
@@ -202,6 +202,7 @@ func manage_player_input():
 				StoatStash.repeat_call(increase_points, 10.0)
 				spawn_first_wave()
 				placed_first_turret = true
+		
 
 func selected(tower: Node3D):
 	for i in $Towers.get_children():
@@ -246,6 +247,7 @@ func _on_buy_button_pressed() -> void:
 			amount_candy -= CANDY_COST_SECONDARY
 	
 	bought_tower.secondary = secondary
+	bought_tower.game = self
 	add_child(bought_tower)
 	buying_tower = true
 
