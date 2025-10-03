@@ -37,7 +37,7 @@ func _on_selector_mouse_exited() -> void:
 	hovered = false
 
 func sell(percent):
-	game.amount_METAL += game.METAL_COST_PRIMARY * percent
+	game.amount_metal += game.METAL_COST_PRIMARY * percent
 	
 	match secondary:
 		Globals.ETypes.WOOD:
@@ -47,7 +47,7 @@ func sell(percent):
 		Globals.ETypes.METAL:
 			game.amount_metal += game.METAL_COST_SECONDARY * percent
 		Globals.ETypes.PLAGUE:
-			game.amount_PLAGUE += game.PLAGUE_COST_SECONDARY * percent
+			game.amount_plague += game.PLAGUE_COST_SECONDARY * percent
 		Globals.ETypes.CANDY:
 			game.amount_candy += game.CANDY_COST_SECONDARY * percent
 	

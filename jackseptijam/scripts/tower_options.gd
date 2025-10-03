@@ -46,4 +46,4 @@ func _on_button_pressed() -> void:
 
 func _on_sell_pressed() -> void:
 	if game.selected_tower == null: return
-	game.selected_tower.sell()
+	game.selected_tower.sell(0.5)

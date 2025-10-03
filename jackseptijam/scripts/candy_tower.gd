@@ -53,7 +53,7 @@ func sell(percent):
 		Globals.ETypes.METAL:
 			game.amount_metal += game.METAL_COST_SECONDARY * percent
 		Globals.ETypes.PLAGUE:
-			game.amount_PLAGUE += game.PLAGUE_COST_SECONDARY * percent
+			game.amount_plague += game.PLAGUE_COST_SECONDARY * percent
 		Globals.ETypes.CANDY:
 			game.amount_candy += game.CANDY_COST_SECONDARY * percent
 	

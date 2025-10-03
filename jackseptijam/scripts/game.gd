@@ -23,11 +23,11 @@ var selected_tower: Node3D
 
 var placed_first_turret: bool = false
 
-var amount_wood = 30
-var amount_plague = 30
-var amount_fire = 30
-var amount_metal = 30
-var amount_candy = 30
+var amount_wood: int = 30
+var amount_plague: int = 30
+var amount_fire: int = 30
+var amount_metal: int = 30
+var amount_candy: int = 30
 
 const WOOD_COST_PRIMARY = 4
 const PLAGUE_COST_PRIMARY = 5
@@ -202,6 +202,10 @@ func manage_player_input():
 				StoatStash.repeat_call(increase_points, 10.0)
 				spawn_first_wave()
 				placed_first_turret = true
+		if Input.is_action_just_pressed("cancel"):
+			bought_tower.sell(1.0)
+			bought_tower = null
+			buying_tower = false
 		
 
 func selected(tower: Node3D):
