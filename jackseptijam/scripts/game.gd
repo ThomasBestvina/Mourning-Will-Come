@@ -31,17 +31,17 @@ var amount_metal: int = 1000
 var amount_candy: int = 1000
 var amount_musket_balls: int = 5
 
-const WOOD_COST_PRIMARY = 4
-const PLAGUE_COST_PRIMARY = 5
-const FIRE_COST_PRIMARY = 6
-const METAL_COST_PRIMARY = 5
-const CANDY_COST_PRIMARY = 5
+const WOOD_COST_PRIMARY: int = 4
+const PLAGUE_COST_PRIMARY: int = 5
+const FIRE_COST_PRIMARY: int = 6
+const METAL_COST_PRIMARY: int = 5
+const CANDY_COST_PRIMARY: int = 5
 
-const WOOD_COST_SECONDARY = 4
-const PLAGUE_COST_SECONDARY = 7
-const FIRE_COST_SECONDARY = 8
-const METAL_COST_SECONDARY = 6
-const CANDY_COST_SECONDARY = 6
+const WOOD_COST_SECONDARY: int = 4
+const PLAGUE_COST_SECONDARY: int = 7
+const FIRE_COST_SECONDARY: int = 8
+const METAL_COST_SECONDARY: int = 6
+const CANDY_COST_SECONDARY: int = 6
 
 const WOOD_COLOR = "[color=fcb103]"
 const PLAGUE_COLOR = "[color=12bc00]"
@@ -84,8 +84,8 @@ func spawn_wave():
 
 func process_ui():
 	$UI/BuyMenu/TurretDescription.text = ""
-	$UI/Health.text = "Health: " + str(player_health)
-	$UI/MusketCounter.text = "Musket Balls: " + str(amount_musket_balls)
+	$UI/Health.text = "[color=fc3f3f]" + str(player_health)
+	$UI/MusketCounter.text =  str(amount_musket_balls)
 	$UI/BuyMenu/WoodAmount.text = WOOD_COLOR+str(amount_wood)
 	$UI/BuyMenu/PlagueAmount.text = PLAGUE_COLOR+ str(amount_plague)
 	$UI/BuyMenu/MetalAmount.text = METAL_COLOR+ str(amount_metal)

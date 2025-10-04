@@ -78,7 +78,7 @@ func _process(delta: float) -> void:
 func die():
 	var dd = death_explosion.instantiate()
 	get_parent().add_child(dd)
-	dd.global_position = global_position
+	dd.global_position = fire_placement.global_position
 	queue_free()
 
 func _physics_process(delta: float) -> void:
