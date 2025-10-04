@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ncspl43wyhhr" path="res://assets/3d/player/playerDoctor_playerEye.png" id="11_37s47"]
 [ext_resource type="Texture2D" uid="uid://ctw85qo28ojiy" path="res://assets/2d/textures/Elements/fireElement.png" id="11_kvuet"]
 [ext_resource type="Texture2D" uid="uid://ywm6euch5nk1" path="res://assets/2d/hud/buyBackground.png" id="12_37s47"]
-[ext_resource type="Script" uid="uid://drxtet88mc6ni" path="res://scripts/ui.gd" id="12_bt5mj"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="12_bt5mj"]
 [ext_resource type="Texture2D" uid="uid://cwhtohvweyj5" path="res://assets/2d/textures/Elements/metalElement.png" id="12_trtic"]
 [ext_resource type="Texture2D" uid="uid://cem0o12dbfpk2" path="res://assets/2d/textures/Elements/candyElement.png" id="13_ir15t"]
 [ext_resource type="FontFile" uid="uid://bfjyly3mynpq8" path="res://assets/fonts/alagard.ttf" id="13_kvuet"]
