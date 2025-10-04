@@ -82,6 +82,7 @@ func spawn_wave():
 		spawn_enemies()
 
 func process_ui():
+	$UI/BuyMenu/TurretDescription.text = ""
 	$UI/Health.text = "Health: " + str(player_health)
 	$UI/MusketCounter.text = "Musket Balls: " + str(amount_musket_balls)
 	$UI/BuyMenu/WoodAmount.text = WOOD_COLOR+str(amount_wood)
@@ -93,29 +94,40 @@ func process_ui():
 	match primary:
 		Globals.ETypes.WOOD:
 			$UI/BuyMenu/CostPrimary.text = WOOD_COLOR+str(WOOD_COST_PRIMARY)
+			$UI/BuyMenu/TurretDescription.text += WOOD_COLOR+str("A ballista")
 		Globals.ETypes.PLAGUE:
 			$UI/BuyMenu/CostPrimary.text = PLAGUE_COLOR+str(PLAGUE_COST_PRIMARY)
+			$UI/BuyMenu/TurretDescription.text += PLAGUE_COLOR+str("A pulsing gas plague tower")
 		Globals.ETypes.FIRE:
 			$UI/BuyMenu/CostPrimary.text = FIRE_COLOR+str(FIRE_COST_PRIMARY)
+			$UI/BuyMenu/TurretDescription.text += FIRE_COLOR+str("An area of effect cannon")
 		Globals.ETypes.METAL:
 			$UI/BuyMenu/CostPrimary.text = METAL_COLOR+str(METAL_COST_PRIMARY)
+			$UI/BuyMenu/TurretDescription.text += METAL_COLOR+str("A sniper")
 		Globals.ETypes.CANDY:
 			$UI/BuyMenu/CostPrimary.text = CANDY_COLOR+str(CANDY_COST_PRIMARY)
+			$UI/BuyMenu/TurretDescription.text += CANDY_COLOR+str("A candy corn minigun")
 	match secondary:
 		Globals.ETypes.WOOD:
 			$UI/BuyMenu/CostSecondary.text = WOOD_COLOR+ str(WOOD_COST_SECONDARY)
+			$UI/BuyMenu/TurretDescription.text += WOOD_COLOR+str(" with extra range.")
 		Globals.ETypes.PLAGUE:
 			$UI/BuyMenu/CostSecondary.text = PLAGUE_COLOR+str(PLAGUE_COST_SECONDARY)
+			$UI/BuyMenu/TurretDescription.text += PLAGUE_COLOR+str(" that gives plague effect.")
 		Globals.ETypes.FIRE:
 			$UI/BuyMenu/CostSecondary.text = FIRE_COLOR+str(FIRE_COST_SECONDARY)
+			$UI/BuyMenu/TurretDescription.text += FIRE_COLOR+str(" that sets enemies on fire.")
 		Globals.ETypes.METAL:
 			$UI/BuyMenu/CostSecondary.text = METAL_COLOR+str(METAL_COST_SECONDARY)
+			$UI/BuyMenu/TurretDescription.text += METAL_COLOR+str(" that deals extra damage.")
 		Globals.ETypes.CANDY:
 			$UI/BuyMenu/CostSecondary.text = CANDY_COLOR+str(CANDY_COST_SECONDARY)
-			
-
+			$UI/BuyMenu/TurretDescription.text += CANDY_COLOR+str(" with extra attack speed.")
+	
 	$UI/BuyMenu/Slot1Background.frame = 0 if primary else 1
 	$UI/BuyMenu/Slot2Background.frame = 0 if secondary else 1
+	
+	
 
 func spawn_first_wave():
 	spawn_enemies()

@@ -36,6 +36,7 @@ func _process(delta: float) -> void:
 		position = out_pos
 		StoatStash.animate_ui_slide_in(self, Vector2.DOWN, in_pos)
 		just_selected = false
+	
 
 func _on_button_pressed() -> void:
 	if game.selected_tower != null and game.selected_tower is Tower:
