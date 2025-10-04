@@ -1,8 +1,7 @@
 extends Node3D
 class_name Game
 
-@export var player_health = 100
-
+@export var player_health = 25
 var current_difficulty: int = 1
 var points: int = 1
 
@@ -12,6 +11,7 @@ var primary
 var secondary
 var which_button_primary_update = false
 var which_button_secondary_update = false
+var spawning = false
 
 var selected_tower: Node3D
 
@@ -23,11 +23,12 @@ var selected_tower: Node3D
 
 var placed_first_turret: bool = false
 
-var amount_wood: int = 30
-var amount_plague: int = 30
-var amount_fire: int = 30
-var amount_metal: int = 30
-var amount_candy: int = 30
+var amount_wood: int = 8
+var amount_plague: int = 9
+var amount_fire: int = 14
+var amount_metal: int = 0
+var amount_candy: int = 0
+var amount_musket_balls: int = 5
 
 const WOOD_COST_PRIMARY = 4
 const PLAGUE_COST_PRIMARY = 5
@@ -47,30 +48,42 @@ const FIRE_COLOR = "[color=ff1231]"
 const METAL_COLOR = "[color=bf6c00]"
 const CANDY_COLOR = "[color=ff21ed]"
 
+var first_wave_spawned = false
+
+const TIME_BETWEEN_WAVES = 8
+const TIME_BETWEEN_DIFFICULTY_INCREASE = 30
+const TIME_BETWEEN_POINT_INCREASE = 6
+
 var enemies = {
-	1: [preload("res://objects/enemies/rat_enemy.tscn")],
-	3: [preload("res://objects/enemies/tree_enemy.tscn")]
+	3: [preload("res://objects/enemies/rat_enemy.tscn"), preload("res://objects/enemies/shrubkin.tscn"), preload("res://objects/enemies/candyguy.tscn")],
+	8: [preload("res://objects/enemies/torcher.tscn"), preload("res://objects/enemies/plaguedude.tscn"), preload("res://objects/enemies/robotenemy1.tscn")],
+	13: [preload("res://objects/enemies/horse_man.tscn"), preload("res://objects/enemies/robotenemy2.tscn")],
+	25: [preload("res://objects/enemies/candyman.tscn"), preload("res://objects/enemies/tree_enemy.tscn")]
 }
 
 func _process(delta: float) -> void:
 	manage_player_input()
 	process_ui()
+	if placed_first_turret and ($Prim.get_children() + $Second.get_children()).is_empty():
+		spawn_enemies()
 	if selected_tower != null and not selected_tower.is_selected:
 		selected_tower = null
 
 func increase_difficulty():
+	if(Globals.wave_paused): return
 	current_difficulty += 1
 
 func increase_points():
-	points += current_difficulty * 2.5
+	if(Globals.wave_paused): return
+	points += current_difficulty * 1.5
 
 func spawn_wave():
-	print("trying spawn wave")
-	if StoatStash.chance(0.8):
+	if StoatStash.chance(0.8) and not Globals.wave_paused:
 		spawn_enemies()
 
 func process_ui():
 	$UI/Health.text = "Health: " + str(player_health)
+	$UI/MusketCounter.text = "Musket Balls: " + str(amount_musket_balls)
 	$UI/BuyMenu/WoodAmount.text = WOOD_COLOR+str(amount_wood)
 	$UI/BuyMenu/PlagueAmount.text = PLAGUE_COLOR+ str(amount_plague)
 	$UI/BuyMenu/MetalAmount.text = METAL_COLOR+ str(amount_metal)
@@ -106,14 +119,15 @@ func process_ui():
 
 func spawn_first_wave():
 	spawn_enemies()
-	await get_tree().create_timer(12).timeout
-	StoatStash.repeat_call(spawn_wave, 8.0)
+	await get_tree().create_timer(TIME_BETWEEN_WAVES).timeout
+	StoatStash.repeat_call(spawn_wave, TIME_BETWEEN_WAVES)
 	
 
 func enemy_win(point):
 	player_health -= point
 
 func enemy_die(type, amount):
+	return
 	match type:
 		Globals.ETypes.WOOD:
 			amount_wood += amount
@@ -127,9 +141,16 @@ func enemy_die(type, amount):
 			amount_metal += amount
 
 func spawn_enemies():
+	if(Globals.wave_paused): return
+	if(spawning):
+		return
+	spawning = true
 	var alternator = false
 	var lst = get_spawns()
 	for i: PackedScene in lst:
+		if Globals.wave_paused:
+			await get_tree().create_timer(1.0).timeout
+			continue
 		var thing: Enemy = i.instantiate()
 		if(alternator):
 			$Prim.add_child(thing)
@@ -139,8 +160,11 @@ func spawn_enemies():
 			alternator = !alternator
 		StoatStash.safe_signal_connect(thing.enemy_win, enemy_win)
 		StoatStash.safe_signal_connect(thing.died, enemy_die)
-		await get_tree().create_timer(0.9).timeout
-		
+		if current_difficulty < 30:
+			await get_tree().create_timer(0.9).timeout
+		else:
+			await get_tree().create_timer(0.2).timeout
+	spawning = false
 
 # use points to spawn enemies of various values
 func get_spawns():
@@ -202,10 +226,16 @@ func manage_player_input():
 			bought_tower.place()
 			bought_tower = null
 			buying_tower = false
-			if(not placed_first_turret):
+			if(not placed_first_turret and not Globals.wave_paused):
+				$IncreaseDifficulty.start(TIME_BETWEEN_DIFFICULTY_INCREASE)
+				$IncreasePoints.start(TIME_BETWEEN_POINT_INCREASE)
 				StoatStash.repeat_call(increase_difficulty, 30.0)
 				StoatStash.repeat_call(increase_points, 10.0)
 				spawn_first_wave()
+				placed_first_turret = true
+			elif(not placed_first_turret):
+				$IncreaseDifficulty.start(TIME_BETWEEN_DIFFICULTY_INCREASE)
+				$IncreasePoints.start(TIME_BETWEEN_POINT_INCREASE)
 				placed_first_turret = true
 		if Input.is_action_just_pressed("cancel"):
 			bought_tower.sell(1.0)
@@ -297,3 +327,20 @@ func _on_metal_pressed2() -> void:
 
 func _on_candy_pressed3() -> void:
 	button_toggle_secondary_handler(Globals.ETypes.CANDY, %SecondSlotButtons/Candy/Sprite.texture)
+
+func _on_pause_button_toggled(toggled_on: bool) -> void:
+	Globals.wave_paused = toggled_on
+	if(toggled_on and not first_wave_spawned and placed_first_turret):
+		spawn_first_wave()
+	$IncreaseDifficulty.paused = toggled_on
+	$IncreasePoints.paused = toggled_on
+
+
+func _on_increase_difficulty_timeout() -> void:
+	$IncreaseDifficulty.start(TIME_BETWEEN_DIFFICULTY_INCREASE)
+	increase_difficulty()
+
+
+func _on_increase_points_timeout() -> void:
+	$IncreasePoints.start(TIME_BETWEEN_POINT_INCREASE)
+	increase_points()

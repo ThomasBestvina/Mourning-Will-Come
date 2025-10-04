@@ -1,5 +1,37 @@
-[gd_scene format=3 uid="uid://bqxxxv1wlrvav"]
+[gd_scene load_steps=4 format=3 uid="uid://bqxxxv1wlrvav"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4desq"]
+shading_mode = 0
+albedo_color = Color(0.12303976, 0.39202464, 9.62615e-08, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4desq"]
+material = SubResource("StandardMaterial3D_4desq")
+size = Vector3(0.03, 0.03, 0.03)
+
+[sub_resource type="Gradient" id="Gradient_4desq"]
+colors = PackedColorArray(0.07350858, 0.4144472, 0, 1, 0.15356758, 0.14946672, 0.049321175, 1)
 
 [node name="PlagueParticle" type="CPUParticles3D"]
+emitting = false
+amount = 345
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.8
+randomness = 0.5
+mesh = SubResource("BoxMesh_4desq")
 emission_shape = 1
 emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+spread = 34.41
+initial_velocity_min = 5.15
+initial_velocity_max = 7.15
+angular_velocity_min = 4.5
+angular_velocity_max = 95.29
+radial_accel_min = 0.9
+radial_accel_max = 1.55
+scale_amount_min = 0.8
+scale_amount_max = 1.2
+color = Color(6.617978e-08, 0.27725023, 0.13066098, 1)
+color_ramp = SubResource("Gradient_4desq")
+hue_variation_min = -0.35
+hue_variation_max = 0.75

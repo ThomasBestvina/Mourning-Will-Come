@@ -1,18 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://l246u8chero8"]
+[gd_scene load_steps=16 format=4 uid="uid://l246u8chero8"]
 
 [ext_resource type="Script" uid="uid://owmes70d5ck" path="res://scripts/plague_tower.gd" id="1_q8iwh"]
 [ext_resource type="Texture2D" uid="uid://dyxammc0axn2h" path="res://assets/3d/towers/placeHolderPlague_Plague.png" id="2_q8iwh"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhgxi"]
-shading_mode = 0
-albedo_color = Color(0.33598676, 0, 0.065344736, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_q8iwh"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_dhgxi")
-top_radius = 1.0
-bottom_radius = 1.0
-height = 0.1
+[ext_resource type="PackedScene" uid="uid://bqxxxv1wlrvav" path="res://objects/plague_particle.tscn" id="3_ox6ym"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r2hsl"]
 resource_name = "Material"
@@ -121,12 +111,30 @@ shadow_mesh = SubResource("ArrayMesh_5akel")
 height = 0.5930176
 radius = 0.9194336
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdh6c"]
+shading_mode = 0
+albedo_color = Color(0.31156835, 0.6934903, 1.92523e-07, 0.30588236)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ox6ym"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_jdh6c")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oo2u8"]
+shading_mode = 0
+albedo_color = Color(0.6179467, 0, 0.04415907, 0.30588236)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ic7v0"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_oo2u8")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.1
+
 [node name="plague_tower" type="Node3D"]
 script = ExtResource("1_q8iwh")
-
-[node name="RangeDisplayMesh" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("CylinderMesh_q8iwh")
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32922196, 0)
@@ -150,8 +158,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30480957, 0)
 shape = SubResource("CylinderShape3D_q8iwh")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09360695, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5304062, 0.09360695, 0.62347066)
 target_position = Vector3(0, -0.165, 0)
+
+[node name="RayCast3D2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5743052, 0.09360695, -0.62051415)
+target_position = Vector3(0, -0.165, 0)
+
+[node name="RayCast3D3" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6160096, 0.09360695, -0.6631621)
+target_position = Vector3(0, -0.165, 0)
+
+[node name="RayCast3D4" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56238526, 0.09360671, 0.65741575)
+target_position = Vector3(0, -0.165, 0)
+
+[node name="RangeDisplayMesh" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CylinderMesh_ox6ym")
+
+[node name="RangeDisplayMeshRed" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_ic7v0")
+
+[node name="PlagueParticle" parent="." instance=ExtResource("3_ox6ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34383798, 0)
 
 [connection signal="mouse_entered" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_entered"]
 [connection signal="mouse_exited" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_exited"]

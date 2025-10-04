@@ -4,7 +4,8 @@ class_name Cannon
 func _ready() -> void:
 	$Selector/CollisionShape3D.disabled = true
 	super._ready()
-	var lst = [$Rotator/BallDetail2, $Rotator/BallDetails, $Rotator/Body, $Rotator/Eyes, $Rotator/Fuse, $Rotator/Eyes, $Rotator/Fuse, $Platform, $Legs]
+	var lst = [$cannon/Rotator/BallDetail2, $cannon/Rotator/BallDetails, $cannon/Rotator/Body, 
+	$cannon/Rotator/Eyes, $cannon/Rotator/Fuse, $cannon/Rotator/Eyes, $cannon/Rotator/Fuse, $cannon/Platform, $cannon/Legs]
 	for i in lst:
 		i.set_surface_override_material(0,i.get_active_material(0).duplicate())
 		match secondary:
@@ -26,9 +27,9 @@ func place():
 func _process(delta: float) -> void:
 	super._process(delta)
 	if target:
-		$Rotator.look_at(target.global_position)
-		$Rotator.rotation.x = 0
-		$Rotator.rotation.z = 0
+		$cannon/Rotator.look_at(target.global_position)
+		$cannon/Rotator.rotation.x = 0
+		$cannon/Rotator.rotation.z = 0
 
 
 func _on_selector_mouse_entered() -> void:

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy0kgrh1yxuhj"]
+
+[ext_resource type="Script" uid="uid://bgd5r8t75elvq" path="res://scripts/enemy.gd" id="1_esm4c"]
+[ext_resource type="PackedScene" uid="uid://cw1kdlmow3b3t" path="res://assets/3d/enemies/plaguedDude.glb" id="2_esm4c"]
+
+[node name="Candyman" type="PathFollow3D" node_paths=PackedStringArray("fire_placement") groups=["enemy"]]
+script = ExtResource("1_esm4c")
+fire_placement = NodePath("Node3D")
+max_speed = 2.5
+max_health = 14.0
+strength_score = 2.5
+points = 3
+type = 1
+max_drops = 5
+drop_chance = 0.5
+
+[node name="plaguedDude" parent="." instance=ExtResource("2_esm4c")]
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018657565, 0.8364068, -0.10376871)

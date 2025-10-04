@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dysjgj5cb6icj"]
+
+[ext_resource type="Script" uid="uid://bgd5r8t75elvq" path="res://scripts/enemy.gd" id="1_pibjs"]
+[ext_resource type="PackedScene" uid="uid://cxf2rb4qovkue" path="res://assets/3d/enemies/robotEnemy2.glb" id="2_pibjs"]
+
+[node name="robotenemy2" type="PathFollow3D" node_paths=PackedStringArray("fire_placement") groups=["enemy"]]
+script = ExtResource("1_pibjs")
+fire_placement = NodePath("Node3D")
+max_health = 23.0
+strength_score = 2.5
+points = 6
+type = 3
+max_drops = 3
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025498152, 2.1380863, 0.09261978)
+
+[node name="robotEnemy2" parent="." instance=ExtResource("2_pibjs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.820912, 0)

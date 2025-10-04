@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://064sb0hxc7hp"]
+[gd_scene load_steps=34 format=4 uid="uid://064sb0hxc7hp"]
 
 [ext_resource type="Script" uid="uid://cryv6folxuoem" path="res://scripts/sniper_tower.gd" id="1_5bjvm"]
 [ext_resource type="Texture2D" uid="uid://dibtk7wt672ku" path="res://assets/3d/towers/sniper_metalPallette.png" id="1_yl0fn"]
@@ -422,16 +422,32 @@ shadow_mesh = SubResource("ArrayMesh_qthrg")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2rlas"]
 shading_mode = 0
-albedo_color = Color(0.8253421, 0, 0.13403705, 1)
+albedo_color = Color(0.31156835, 0.6934903, 1.92523e-07, 0.30588236)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_0bp2x"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_2rlas")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68hqf"]
+shading_mode = 0
+albedo_color = Color(0.6179467, 0, 0.04415907, 0.30588236)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jq7y1"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_68hqf")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.1
 
 [node name="SniperTower" type="Node3D" node_paths=PackedStringArray("spawn_point", "range_display_mesh")]
 script = ExtResource("1_5bjvm")
 spawn_point = NodePath("Rotator/Node3D")
 fire_range = 10000.0
 projectile_scene = ExtResource("2_2rlas")
+damage = 5.0
 range_display_mesh = NodePath("RangeDisplayMesh")
 
 [node name="Rotator" type="Node3D" parent="."]
@@ -477,7 +493,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00024414063, 1.3511047, -0
 shape = SubResource("BoxShape3D_5bjvm")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09360695, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.576182, 0.09360695, 0.56716996)
+target_position = Vector3(0, -0.165, 0)
+
+[node name="RayCast3D2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.624511, 0.09360719, -0.72256804)
+target_position = Vector3(0, -0.165, 0)
+
+[node name="RayCast3D3" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6281121, 0.09360695, 0.56716996)
+target_position = Vector3(0, -0.165, 0)
+
+[node name="RayCast3D4" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5347821, 0.09360695, -0.7942528)
 target_position = Vector3(0, -0.165, 0)
 
 [node name="PillarTop" type="MeshInstance3D" parent="."]
@@ -511,8 +539,13 @@ mesh = SubResource("ArrayMesh_5dssk")
 skeleton = NodePath("")
 
 [node name="RangeDisplayMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.2866495, 0, 0, 0, 0.070599936, 0, 0, 0, 2.2866495, 0, 0.007237315, 0)
+visible = false
 mesh = SubResource("CylinderMesh_0bp2x")
+
+[node name="RangeDisplayMeshRed" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_jq7y1")
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="mouse_entered" from="Selector" to="." method="_on_selector_mouse_entered"]
 [connection signal="mouse_exited" from="Selector" to="." method="_on_selector_mouse_exited"]

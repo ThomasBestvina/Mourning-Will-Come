@@ -21,5 +21,5 @@ damage = 10.0
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PathFollow3D"]
-transform = Transform3D(0.033136703, 0, 0, 0, 0.024562355, 0, 0, 0, 3.4553337, 0, 0, 0)
+transform = Transform3D(0.033136703, 0, 0, 0, 0.024562355, 0, 0, 0, 2.525631, 0, 0, -0.16423082)
 mesh = SubResource("BoxMesh_xjfm1")

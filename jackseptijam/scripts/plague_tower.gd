@@ -6,7 +6,7 @@ signal deselected(obj: Node3D)
 
 @export var fire_range = 4.0
 @export var cooldown = 3.0
-@export var plague_duration = 3.0
+@export var plague_duration = 8.0
 
 var game: Game
 var secondary = Globals.ETypes.WOOD
@@ -17,11 +17,24 @@ var is_placed: bool = false
 var is_on_ground = false
 
 func _ready() -> void:
+	add_to_group("tower")
+	if secondary == Globals.ETypes.WOOD:
+		fire_range *= 1.25
+	if secondary == Globals.ETypes.CANDY:
+		cooldown = cooldown * 0.75
+	if secondary == Globals.ETypes.PLAGUE:
+		cooldown = cooldown * 0.85
+		fire_range *= 1.10
+	
 	$StaticBody3D/CollisionShape3D.disabled = true
 	$RangeDisplayMesh.mesh = $RangeDisplayMesh.mesh.duplicate()
 	$RangeDisplayMesh.mesh.top_radius = fire_range
 	$RangeDisplayMesh.mesh.bottom_radius = fire_range
 	$RangeDisplayMesh.show()
+	$RangeDisplayMeshRed.mesh = $RangeDisplayMeshRed.mesh.duplicate()
+	$RangeDisplayMeshRed.mesh.top_radius = fire_range
+	$RangeDisplayMeshRed.mesh.bottom_radius = fire_range
+	$RangeDisplayMeshRed.show()
 	var lst = [$Cube, $Cube_001, $Cube_002]
 	for i in lst:
 		i.set_surface_override_material(0,i.get_active_material(0).duplicate())
@@ -44,9 +57,25 @@ func _process(delta: float) -> void:
 	if not hovered and Input.is_action_just_pressed("place_tower") and get_viewport().gui_get_hovered_control() == null:
 		emit_signal("deselected",self)
 		is_selected = false
-	$RangeDisplayMesh.visible = hovered or is_selected or not is_placed
-	is_on_ground = $RayCast3D.is_colliding() and $RayCast3D.get_collider().is_in_group("ground")
+	is_on_ground = $RayCast3D.is_colliding() and $RayCast3D2.is_colliding() and $RayCast3D3.is_colliding() and $RayCast3D4.is_colliding() and $RayCast3D.get_collider().is_in_group("ground") and $RayCast3D2.get_collider().is_in_group("ground") and $RayCast3D3.get_collider().is_in_group("ground") and $RayCast3D4.get_collider().is_in_group("ground") and not is_near_other_tower()
 	
+	if hovered or is_selected or not is_placed:
+		if is_on_ground:
+			$RangeDisplayMesh.show()
+			$RangeDisplayMeshRed.hide()
+		else:
+			$RangeDisplayMesh.hide()
+			$RangeDisplayMeshRed.show()
+	else:
+		$RangeDisplayMesh.hide()
+		$RangeDisplayMeshRed.hide()
+
+
+func is_near_other_tower() -> bool:
+	for i: Node3D in get_tree().get_nodes_in_group("tower"):
+		if i != self and i.global_position.distance_squared_to(global_position) <= 2.5:
+			return true
+	return false
 
 func place():
 	$StaticBody3D/CollisionShape3D.disabled = false
@@ -58,7 +87,13 @@ func place():
 func fire():
 	for enemy: Enemy in get_tree().get_nodes_in_group("enemy"):
 		if enemy.global_position.distance_squared_to(global_position) <= fire_range**2:
-			enemy.modifier_stack.append(["plague", plague_duration])
+			enemy.give_plague(plague_duration)
+			if secondary == Globals.ETypes.FIRE:
+				enemy.give_fire(1.5)
+			if secondary == Globals.ETypes.METAL:
+				enemy.take_damage(2)
+	$PlagueParticle.emitting = true
+	StoatStash.play_sfx_3d(preload("res://assets/sound/plaguetower_fire.wav"), global_position, 0.6)
 
 
 func _on_static_body_3d_mouse_entered() -> void:

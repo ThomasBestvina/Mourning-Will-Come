@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://rmu4enb5svyx"]
+[gd_scene load_steps=30 format=4 uid="uid://rmu4enb5svyx"]
 
 [ext_resource type="Script" uid="uid://bc3l1i1h8ex6k" path="res://scripts/candy_tower.gd" id="1_a4r8e"]
 [ext_resource type="Texture2D" uid="uid://c2kda7jel8ix1" path="res://assets/3d/towers/candyCornMG_candyPallette.png" id="2_e5xpn"]
@@ -352,14 +352,24 @@ shadow_mesh = SubResource("ArrayMesh_q745j")
 [sub_resource type="BoxShape3D" id="BoxShape3D_fee88"]
 size = Vector3(1.0448608, 1.1323013, 1.0369263)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e5xpn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8dqi"]
 shading_mode = 0
-albedo_color = Color(0.26666668, 0, 0.015686275, 1)
-heightmap_scale = 4.56
+albedo_color = Color(0.31156835, 0.6934903, 1.92523e-07, 0.30588236)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_fee88"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_05eul"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_e5xpn")
+material = SubResource("StandardMaterial3D_l8dqi")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsr7p"]
+shading_mode = 0
+albedo_color = Color(0.6179467, 0, 0.04415907, 0.30588236)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2v12p"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_hsr7p")
 top_radius = 1.0
 bottom_radius = 1.0
 height = 0.1
@@ -369,7 +379,7 @@ script = ExtResource("1_a4r8e")
 spawn_point = NodePath("Rotator/Node3D")
 fire_range = 3.5
 projectile_scene = ExtResource("2_l8dqi")
-cooldown = 0.4
+cooldown = 0.2
 damage = 2.5
 range_display_mesh = NodePath("RangeDisplayMesh")
 
@@ -402,33 +412,33 @@ mesh = SubResource("ArrayMesh_uvq78")
 skeleton = NodePath("")
 
 [node name="Rotator" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.034250855, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00553526, 0.8144383, 0.299997)
 
 [node name="Node3D" type="Node3D" parent="Rotator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.054913253, 1.0927825, -0.953344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049377993, 0.31259507, -1.253341)
 
 [node name="gunBase" type="MeshInstance3D" parent="Rotator"]
-transform = Transform3D(0.062187262, 0, 0, 0, 0.1057114, 0, 0, 0, 0.51849514, 0, 1.0226704, -0.07573271)
+transform = Transform3D(0.062187262, 0, 0, 0, 0.1057114, 0, 0, 0, 0.51849514, -0.00553526, 0.24248296, -0.3757297)
 mesh = SubResource("ArrayMesh_jdlkc")
 skeleton = NodePath("")
 
 [node name="gunDrum" type="MeshInstance3D" parent="Rotator"]
-transform = Transform3D(0.18543193, 0, 0, 0, 0, -0.18543193, 0, 0.25705996, 0, -0.21463038, 1.2024872, 0.061948314)
+transform = Transform3D(0.18543193, 0, 0, 0, 0, -0.18543193, 0, 0.25705996, 0, -0.22016564, 0.4222998, -0.23804869)
 mesh = SubResource("ArrayMesh_2uuo2")
 skeleton = NodePath("")
 
 [node name="gunGrip" type="MeshInstance3D" parent="Rotator"]
-transform = Transform3D(0.09554137, 0, 0, 0, 0.09554137, 0, 0, 0, 0.32586938, 0, 0.9388592, -0.39201766)
+transform = Transform3D(0.09554137, 0, 0, 0, 0.09554137, 0, 0, 0, 0.32586938, -0.00553526, 0.1586718, -0.6920147)
 mesh = SubResource("ArrayMesh_tmap4")
 skeleton = NodePath("")
 
 [node name="gunConnector" type="MeshInstance3D" parent="Rotator"]
-transform = Transform3D(0.089176215, 0, 0, 0, 0.12455984, 0, 0, 0, 0.06872853, 0.0056602135, 0.8150015, 0.29200053)
+transform = Transform3D(0.089176215, 0, 0, 0, 0.12455984, 0, 0, 0, 0.06872853, 0.00012495369, 0.03481406, -0.00799647)
 mesh = SubResource("ArrayMesh_la1bj")
 skeleton = NodePath("")
 
 [node name="candyCornAmmo" type="MeshInstance3D" parent="Rotator"]
-transform = Transform3D(0.00686553, -0.028258402, 0.0002674739, 0.028258396, 0.006865335, -0.00035006236, 6.688919e-05, 8.271364e-05, 0.12043576, -0.4808382, 0.30719465, 0.08131657)
+transform = Transform3D(0.00686553, -0.028258402, 0.0002674739, 0.028258396, 0.006865335, -0.00035006236, 6.688919e-05, 8.271364e-05, 0.12043576, -0.48637348, -0.47299278, -0.21868044)
 mesh = SubResource("ArrayMesh_6pv62")
 skeleton = NodePath("")
 
@@ -439,12 +449,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.023040771, 0.5433998, 0.280
 shape = SubResource("BoxShape3D_fee88")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09360695, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44296157, 0.09360695, -0.18255104)
+target_position = Vector3(0, -0.165, 0)
+
+[node name="RayCast3D2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50319356, 0.09360695, -0.18255104)
+target_position = Vector3(0, -0.165, 0)
+
+[node name="RayCast3D3" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44296157, 0.09360695, 0.6834228)
+target_position = Vector3(0, -0.165, 0)
+
+[node name="RayCast3D4" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50319356, 0.09360695, 0.6834228)
 target_position = Vector3(0, -0.165, 0)
 
 [node name="RangeDisplayMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09607899, 0, 0.25576067)
 visible = false
-mesh = SubResource("CylinderMesh_fee88")
+mesh = SubResource("CylinderMesh_05eul")
+
+[node name="RangeDisplayMeshRed" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09607899, 0, 0.25576067)
+mesh = SubResource("CylinderMesh_2v12p")
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="mouse_entered" from="Selector" to="." method="_on_selector_mouse_entered"]
 [connection signal="mouse_exited" from="Selector" to="." method="_on_selector_mouse_exited"]

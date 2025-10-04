@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dtsy105q3ettd"]
+[gd_scene load_steps=20 format=4 uid="uid://dtsy105q3ettd"]
 
 [ext_resource type="Script" uid="uid://hnb0jev4jijq" path="res://scripts/ballista.gd" id="1_cjyl8"]
 [ext_resource type="Texture2D" uid="uid://db1vdmlx05lka" path="res://assets/3d/towers/placeHolderBallista_woodPallete.png" id="1_headl"]
@@ -74,17 +74,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v2w61")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wugx5"]
-shading_mode = 0
-albedo_color = Color(0.654902, 0, 0.078431375, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_cjyl8"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_wugx5")
-top_radius = 1.0
-bottom_radius = 1.0
-height = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wugx5"]
 size = Vector3(1.1711426, 2.0321655, 1.1724854)
@@ -185,11 +174,33 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jwcon")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uvfc"]
+shading_mode = 0
+albedo_color = Color(0.31156835, 0.6934903, 1.92523e-07, 0.30588236)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ps3fj"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_1uvfc")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbl84"]
+shading_mode = 0
+albedo_color = Color(0.6179467, 0, 0.04415907, 0.30588236)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7fe4t"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_rbl84")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.1
+
 [node name="ballista" type="Node3D" node_paths=PackedStringArray("spawn_point", "range_display_mesh")]
 script = ExtResource("1_cjyl8")
 spawn_point = NodePath("rotator/Spawnpoint")
 projectile_scene = ExtResource("2_wugx5")
-cooldown = 0.9
+cooldown = 0.8
 range_display_mesh = NodePath("RangeDisplayMesh")
 
 [node name="Cube" type="MeshInstance3D" parent="."]
@@ -202,10 +213,6 @@ transform = Transform3D(0.5644805, 0, 0, 0, 0.1667028, 0, 0, 0, 0.5644805, 0, 1.
 mesh = SubResource("ArrayMesh_ijvc3")
 skeleton = NodePath("")
 
-[node name="RangeDisplayMesh" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("CylinderMesh_cjyl8")
-
 [node name="Selector" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Selector"]
@@ -213,7 +220,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02331543, 1.0169735, 0.0066
 shape = SubResource("BoxShape3D_wugx5")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1877234, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41340876, 0.1877234, -0.45737612)
+target_position = Vector3(0, -0.27, 0)
+
+[node name="RayCast3D2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4311236, 0.1877234, -0.45737612)
+target_position = Vector3(0, -0.27, 0)
+
+[node name="RayCast3D3" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41340876, 0.1877234, 0.46211052)
+target_position = Vector3(0, -0.27, 0)
+
+[node name="RayCast3D4" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4311236, 0.1877234, 0.46211052)
 target_position = Vector3(0, -0.27, 0)
 
 [node name="rotator" type="Node3D" parent="."]
@@ -236,6 +255,15 @@ skeleton = NodePath("")
 
 [node name="Spawnpoint" type="Node3D" parent="rotator"]
 transform = Transform3D(-0.14784437, 0, 2.7780816e-08, 0, 0.12375579, 0, -1.2924966e-08, 0, -0.3177755, 4.9778297e-08, 1.8260179, -0.56939733)
+
+[node name="RangeDisplayMesh" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CylinderMesh_ps3fj")
+
+[node name="RangeDisplayMeshRed" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_7fe4t")
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="mouse_entered" from="Selector" to="." method="_on_selector_mouse_entered"]
 [connection signal="mouse_exited" from="Selector" to="." method="_on_selector_mouse_exited"]

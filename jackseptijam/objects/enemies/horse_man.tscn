@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3uru336a44ud"]
+
+[ext_resource type="Script" uid="uid://bgd5r8t75elvq" path="res://scripts/enemy.gd" id="1_wi7um"]
+[ext_resource type="PackedScene" uid="uid://dpf5gs52tq4ps" path="res://assets/3d/enemies/horseman.glb" id="2_wi7um"]
+
+[node name="HorsemanEnemy" type="PathFollow3D" node_paths=PackedStringArray("fire_placement") groups=["enemy"]]
+script = ExtResource("1_wi7um")
+fire_placement = NodePath("Node3D")
+max_speed = 9.0
+max_health = 13.0
+strength_score = 4.0
+points = 6
+type = 2
+max_drops = 3
+drop_chance = 0.65
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6380496, -0.053226054)
+
+[node name="horseman" parent="." instance=ExtResource("2_wi7um")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3554337, 0)

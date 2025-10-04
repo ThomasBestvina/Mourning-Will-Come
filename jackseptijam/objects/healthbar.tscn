@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://vex602sx24u1"]
+
+[ext_resource type="Texture2D" uid="uid://wbyhx762jjpd" path="res://icon.svg" id="1_we81o"]
+
+[node name="Sprite3D" type="Sprite3D"]
+texture = ExtResource("1_we81o")
+
+[node name="Foreground" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.016800106)
+modulate = Color(0.03137255, 0, 0, 0.7764706)
+texture = ExtResource("1_we81o")
+
+[node name="bar" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.009188414)

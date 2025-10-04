@@ -11,14 +11,13 @@ var has_hit: bool = false
 
 var max_value = 0.0
 
-var effect
+var effect: Globals.ETypes
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	path_follow = $PathFollow3D
 
 func setup_projectile(start_pos: Vector3, enemy: Node3D):
-	"I'm alive!"
 	target_enemy = enemy
 	has_hit = false
 	
@@ -57,6 +56,8 @@ func on_hit_target():
 		target_enemy.take_damage(damage)
 	
 	if effect == Globals.ETypes.PLAGUE:
-		target_enemy.modifier_stack.append([Globals.ETypes.PLAGUE, 3.0])
+		target_enemy.give_plague(4.5)
+	if effect == Globals.ETypes.FIRE:
+		target_enemy.give_fire(1.5)
 	
 	queue_free()

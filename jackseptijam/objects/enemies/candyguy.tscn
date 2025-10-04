@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://doqdi2yl6y64t"]
+
+[ext_resource type="Script" uid="uid://bgd5r8t75elvq" path="res://scripts/enemy.gd" id="1_y37ov"]
+[ext_resource type="PackedScene" uid="uid://xqb2k6lfi7se" path="res://assets/3d/enemies/candyGuy.glb" id="2_y37ov"]
+
+[node name="Candyman" type="PathFollow3D" node_paths=PackedStringArray("fire_placement") groups=["enemy"]]
+script = ExtResource("1_y37ov")
+fire_placement = NodePath("Node3D")
+max_speed = 3.5
+max_health = 8.0
+strength_score = 2.5
+type = 4
+drop_chance = 0.9
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19516718, 0.69176996, 0.051823854)
+
+[node name="candyGuy" parent="." instance=ExtResource("2_y37ov")]

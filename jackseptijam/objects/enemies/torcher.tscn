@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://fith7fr02lvn"]
+
+[ext_resource type="Script" uid="uid://bgd5r8t75elvq" path="res://scripts/enemy.gd" id="1_736yf"]
+[ext_resource type="PackedScene" uid="uid://s0sl3tfgknsh" path="res://assets/3d/enemies/torcher.glb" id="2_736yf"]
+
+[node name="robotenemy1" type="PathFollow3D" node_paths=PackedStringArray("fire_placement") groups=["enemy"]]
+script = ExtResource("1_736yf")
+fire_placement = NodePath("Node3D")
+max_speed = 2.5
+max_health = 14.0
+strength_score = 2.5
+points = 3
+type = 2
+drop_chance = 0.9
+
+[node name="torcher" parent="." instance=ExtResource("2_736yf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93476266, 0)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029039145, 1.0220448, -0.0203197)

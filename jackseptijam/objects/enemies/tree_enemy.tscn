@@ -3,10 +3,17 @@
 [ext_resource type="Script" uid="uid://bgd5r8t75elvq" path="res://scripts/enemy.gd" id="1_xwjgf"]
 [ext_resource type="PackedScene" uid="uid://dhodwyg6s4nsh" path="res://assets/3d/enemies/placeHolderTree.glb" id="2_mysul"]
 
-[node name="TreeEnemy" type="PathFollow3D" groups=["enemy"]]
+[node name="TreeEnemy" type="PathFollow3D" node_paths=PackedStringArray("fire_placement") groups=["enemy"]]
 script = ExtResource("1_xwjgf")
-max_speed = 1.0
-max_drops = 2
-drop_chance = 0.5
+fire_placement = NodePath("Node3D")
+max_speed = 0.8
+max_health = 80.0
+points = 10
+max_drops = 5
+drop_chance = 0.8
 
 [node name="placeHolderTree" parent="." instance=ExtResource("2_mysul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5113864, 0)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04768026, 0.7939895, 0)

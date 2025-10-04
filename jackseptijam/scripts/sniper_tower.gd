@@ -3,8 +3,10 @@ class_name Sniper
 func _ready() -> void:
 	$Selector/CollisionShape3D.disabled = true
 	super._ready()
-	$RangeDisplayMesh.mesh.top_radius = 0.5
-	$RangeDisplayMesh.mesh.bottom_radius = 0.5
+	$RangeDisplayMesh.mesh.top_radius = 1.0
+	$RangeDisplayMesh.mesh.bottom_radius = 1.0
+	$RangeDisplayMeshRed.mesh.top_radius = 1.0
+	$RangeDisplayMeshRed.mesh.bottom_radius = 1.0
 	var lst = [$Rotator/gunBase, $Rotator/scope, $Rotator/scopeConnector, $Rotator/pillarSmall, $Rotator/smallGear2, $Rotator/smallGear1, $PillarTop, $pillarBottom, $base, $mediumGear, $bigGear, $bigGear2]
 	for i in lst:
 		i.set_surface_override_material(0,i.get_active_material(0).duplicate())

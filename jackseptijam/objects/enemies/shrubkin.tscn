@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://7sudd28fo33b"]
+
+[ext_resource type="Script" uid="uid://bgd5r8t75elvq" path="res://scripts/enemy.gd" id="1_q65l5"]
+[ext_resource type="PackedScene" uid="uid://b2cs84xrylbwt" path="res://assets/3d/enemies/shrubKin.glb" id="2_q65l5"]
+
+[node name="TreeEnemy" type="PathFollow3D" node_paths=PackedStringArray("fire_placement") groups=["enemy"]]
+script = ExtResource("1_q65l5")
+fire_placement = NodePath("Node3D")
+max_speed = 1.2
+max_health = 16.0
+max_drops = 2
+drop_chance = 0.5
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.053836703, 1.3073344, 0)
+
+[node name="shrubKin" parent="." instance=ExtResource("2_q65l5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4843194, 0)

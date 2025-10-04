@@ -31,12 +31,22 @@ var is_placed: bool = false
 
 var is_on_ground: bool = false
 
+var can_fire = true
+
 func _ready() -> void:
+	add_to_group("tower")
+	StoatStash.safe_signal_connect($Timer.timeout, _on_timer_timeout)
+	if secondary == Globals.ETypes.WOOD:
+		fire_range *= 1.25
 	if($RangeDisplayMesh.mesh):
 		$RangeDisplayMesh.mesh = $RangeDisplayMesh.mesh.duplicate()
 		$RangeDisplayMesh.mesh.top_radius = fire_range
 		$RangeDisplayMesh.mesh.bottom_radius = fire_range
 		$RangeDisplayMesh.show()
+		$RangeDisplayMeshRed.mesh = $RangeDisplayMeshRed.mesh.duplicate()
+		$RangeDisplayMeshRed.mesh.top_radius = fire_range
+		$RangeDisplayMeshRed.mesh.bottom_radius = fire_range
+		$RangeDisplayMeshRed.show()
 
 func place():
 	is_placed = true
@@ -45,11 +55,15 @@ func place():
 		await StoatStash.repeat_call(shoot, cooldown-cooldown/20)
 	else:
 		await StoatStash.repeat_call(shoot, cooldown)
-	await StoatStash.repeat_call(choose_target, 0.2)
+	await StoatStash.repeat_call(choose_target, 0.1)
 
 func _process(delta: float) -> void:
 	if target == null or target.global_position.distance_squared_to(global_position) >= fire_range**2: 
-		target = choose_target()
+		choose_target()
+	
+	if target != null:
+		shoot()
+	
 	
 	if hovered and Input.is_action_just_pressed("place_tower") and get_viewport().gui_get_hovered_control() == null:
 		emit_signal("selected", self)
@@ -57,46 +71,65 @@ func _process(delta: float) -> void:
 	if not hovered and Input.is_action_just_pressed("place_tower") and get_viewport().gui_get_hovered_control() == null:
 		emit_signal("deselected",self)
 		is_selected = false
-
-	is_on_ground = $RayCast3D.is_colliding() and $RayCast3D.get_collider().is_in_group("ground")
 	
-	$RangeDisplayMesh.visible = hovered or is_selected or not is_placed
+	is_on_ground = $RayCast3D.is_colliding() and $RayCast3D2.is_colliding() and $RayCast3D3.is_colliding() and $RayCast3D4.is_colliding() and $RayCast3D.get_collider().is_in_group("ground") and $RayCast3D2.get_collider().is_in_group("ground") and $RayCast3D3.get_collider().is_in_group("ground") and $RayCast3D4.get_collider().is_in_group("ground") and not is_near_other_tower()
+	
+	if hovered or is_selected or not is_placed:
+		if is_on_ground:
+			$RangeDisplayMesh.show()
+			$RangeDisplayMeshRed.hide()
+		else:
+			$RangeDisplayMesh.hide()
+			$RangeDisplayMeshRed.show()
+	else:
+		$RangeDisplayMesh.hide()
+		$RangeDisplayMeshRed.hide()
+
+
+func is_near_other_tower() -> bool:
+	for i: Node3D in get_tree().get_nodes_in_group("tower"):
+		if i != self and i.global_position.distance_squared_to(global_position) <= 2.5:
+			return true
+	return false
 
 func shoot():
-	if(target == null): return
+	if(target == null or not can_fire or not is_placed):
+		return
+	StoatStash.play_sfx_3d(preload("res://assets/sound/TurretFire.wav"), global_position, 0.9, 0.5)
 	var projectile: Projectile = projectile_scene.instantiate()
 	get_parent().add_child(projectile)
 	projectile.effect = secondary
 	projectile.setup_projectile(spawn_point.global_position,target)
-	projectile.damage = damage
 	if(secondary == Globals.ETypes.METAL):
-		projectile.damage += damage / 4
+		projectile.damage = projectile.damage * 1.25
+	can_fire = false
+	$Timer.start(cooldown)
 
 func choose_target():
 	var possibilities = get_tree().get_nodes_in_group("enemy")
 	enemylist.clear()
 	for enemy: Enemy in possibilities:
-		if enemy.global_position.distance_squared_to(global_position) < fire_range**2:
+		if enemy.global_position.distance_to(global_position) < fire_range:
 			enemylist.append(enemy)
-	
+		
 	if(enemylist.is_empty()): 
 		target = null
 		return
 	
 	match target_mode:
 		targetting_mode.STRONGEST:
-			return get_strongest()
+			target = get_strongest()
 		targetting_mode.NEAREST:
-			return get_nearest()
+			target = get_nearest()
 		targetting_mode.LAST:
-			return get_last()
+			target = get_last()
 		targetting_mode.FIRST:
-			return get_first()
+			target = get_first()
 
 func get_strongest() -> Enemy:
 	var strongest: Enemy = enemylist[0]
 	for enemy: Enemy in enemylist:
-		if(enemy.strength_score > strongest.strength_score):
+		if(enemy.max_health > strongest.max_health):
 			strongest = enemy
 	return strongest
 
@@ -120,3 +153,7 @@ func get_first() -> Enemy:
 		if(enemy.progress_ratio > first.progress_ratio):
 			first = enemy
 	return first
+
+
+func _on_timer_timeout() -> void:
+	can_fire = true

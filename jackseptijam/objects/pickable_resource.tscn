@@ -1,0 +1,119 @@
+[gd_scene load_steps=16 format=3 uid="uid://c1rc0b8rg3xtw"]
+
+[ext_resource type="Script" uid="uid://cd0ujxnxhfuad" path="res://scripts/pickable_resource.gd" id="1_o6v8f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p4m8j"]
+shading_mode = 0
+albedo_color = Color(0.066369876, 0.06005297, 0.04618685, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ams0u"]
+material = SubResource("StandardMaterial3D_p4m8j")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6v8f"]
+shading_mode = 0
+albedo_color = Color(0.73100805, 0.00015334458, 0.645613, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_o6v8f"]
+material = SubResource("StandardMaterial3D_o6v8f")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ams0u"]
+shading_mode = 0
+albedo_color = Color(0.7416526, 0, 0.15008083, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_l4oiw"]
+material = SubResource("StandardMaterial3D_ams0u")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4oiw"]
+shading_mode = 0
+albedo_color = Color(0.3131498, 0.15446019, 7.219613e-08, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xh54f"]
+material = SubResource("StandardMaterial3D_l4oiw")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xh54f"]
+shading_mode = 0
+albedo_color = Color(0.1247428, 0.24712682, 0.2824756, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4nltg"]
+material = SubResource("StandardMaterial3D_xh54f")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nltg"]
+shading_mode = 0
+albedo_color = Color(0.09856998, 0.1687521, 7.219613e-08, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_kek7i"]
+material = SubResource("StandardMaterial3D_4nltg")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o6v8f"]
+radius = 0.63182425
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o6v8f"]
+size = Vector3(0.6, 0.6, 0.6)
+
+[node name="PickableResource" type="RigidBody3D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_o6v8f")
+
+[node name="Musket" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Musket"]
+mesh = SubResource("SphereMesh_ams0u")
+
+[node name="Candy" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Candy"]
+mesh = SubResource("SphereMesh_o6v8f")
+skeleton = NodePath("../../Musket")
+
+[node name="Fire" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Fire"]
+mesh = SubResource("SphereMesh_l4oiw")
+skeleton = NodePath("../../Musket")
+
+[node name="Wood" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Wood"]
+mesh = SubResource("SphereMesh_xh54f")
+skeleton = NodePath("../../Musket")
+
+[node name="Metal" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Metal"]
+mesh = SubResource("SphereMesh_4nltg")
+skeleton = NodePath("../../Musket")
+
+[node name="Plague" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Plague"]
+mesh = SubResource("SphereMesh_kek7i")
+skeleton = NodePath("../../Musket")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_o6v8f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_o6v8f")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

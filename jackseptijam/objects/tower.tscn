@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck4v5k0b02c0l"]
+[gd_scene load_steps=8 format=3 uid="uid://ck4v5k0b02c0l"]
 
 [ext_resource type="Script" uid="uid://dh6mmpbe3b5gk" path="res://scripts/tower.gd" id="1_dhgxi"]
 [ext_resource type="PackedScene" uid="uid://ctymkhicnamcp" path="res://objects/projectile.tscn" id="2_3kbum"]
@@ -6,13 +6,23 @@
 [sub_resource type="CylinderMesh" id="CylinderMesh_sf0al"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3kbum"]
-transparency = 1
 shading_mode = 0
-albedo_color = Color(1, 0.4467258, 0.49452716, 0.30588236)
+albedo_color = Color(0.31156835, 0.6934903, 1.92523e-07, 0.30588236)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_dhgxi"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_3kbum")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_415ej"]
+shading_mode = 0
+albedo_color = Color(0.6179467, 0, 0.04415907, 0.30588236)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pf0io"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_415ej")
 top_radius = 1.0
 bottom_radius = 1.0
 height = 0.1
@@ -30,8 +40,19 @@ mesh = SubResource("CylinderMesh_sf0al")
 visible = false
 mesh = SubResource("CylinderMesh_dhgxi")
 
+[node name="RangeDisplayMeshRed" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_pf0io")
+
 [node name="Spawnpoint" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7296379, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
+
+[node name="RayCast3D2" type="RayCast3D" parent="."]
+
+[node name="RayCast3D3" type="RayCast3D" parent="."]
+
+[node name="RayCast3D4" type="RayCast3D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
