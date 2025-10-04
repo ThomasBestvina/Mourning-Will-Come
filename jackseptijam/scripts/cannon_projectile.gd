@@ -1,6 +1,6 @@
 extends Projectile
 
-@export var radius: float = 3.0
+@export var radius: float = 5.0
 
 func on_hit_target():
 	if has_hit:

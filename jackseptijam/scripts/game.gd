@@ -45,7 +45,7 @@ const CANDY_COST_SECONDARY = 6
 const WOOD_COLOR = "[color=fcb103]"
 const PLAGUE_COLOR = "[color=12bc00]"
 const FIRE_COLOR = "[color=ff1231]"
-const METAL_COLOR = "[color=bf6c00]"
+const METAL_COLOR = "[color=00606b]"
 const CANDY_COLOR = "[color=ff21ed]"
 
 var first_wave_spawned = false

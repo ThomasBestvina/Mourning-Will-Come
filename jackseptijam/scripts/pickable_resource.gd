@@ -46,5 +46,5 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	kill()
 
 func kill():
-	StoatStash.play_sfx(preload("res://assets/sound/pickupCoin.wav"), 0.8, 0.8)
+	StoatStash.play_sfx(preload("res://assets/sound/pickupCoin.wav"), 0.6, 0.8)
 	queue_free()

@@ -57,7 +57,7 @@ radius = 0.3
 height = 0.6
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o6v8f"]
-radius = 0.63182425
+radius = 1.0198852
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o6v8f"]
 size = Vector3(0.6, 0.6, 0.6)

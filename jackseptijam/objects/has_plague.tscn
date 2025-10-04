@@ -12,15 +12,16 @@ grow_amount = 0.085
 material = SubResource("StandardMaterial3D_5j8r6")
 
 [node name="HasPlague" type="CPUParticles3D"]
-amount = 60
-lifetime = 1.8299999999999998
+amount = 120
+lifetime = 1.83
 explosiveness = 0.35
 randomness = 0.75
+local_coords = true
 draw_order = 2
 mesh = SubResource("SphereMesh_5j8r6")
 emission_shape = 1
 emission_sphere_radius = 2.0
 gravity = Vector3(0, 0.3, 0)
-scale_amount_min = 0.01
-scale_amount_max = 0.08
+scale_amount_min = 0.02
+scale_amount_max = 0.16
 color = Color(0, 0.46191514, 0.2734534, 1)

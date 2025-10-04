@@ -447,6 +447,7 @@ script = ExtResource("1_5bjvm")
 spawn_point = NodePath("Rotator/Node3D")
 fire_range = 10000.0
 projectile_scene = ExtResource("2_2rlas")
+cooldown = 8.0
 damage = 5.0
 range_display_mesh = NodePath("RangeDisplayMesh")
 

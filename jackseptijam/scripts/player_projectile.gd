@@ -5,6 +5,7 @@ extends Node3D
 
 
 func setup():
+	StoatStash.play_sfx_3d(preload("res://assets/sound/musket_fire.wav"), global_position, 0.35)
 	var dir = (global_position-StoatStash.get_mouse_world_position_3d_collision(get_node("../CharacterBody3D/Camera3D"))).normalized()
 	rotation.y = atan2(dir.z, dir.x)
 

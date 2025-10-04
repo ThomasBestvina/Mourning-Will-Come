@@ -16,7 +16,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.7243834)
 curve = SubResource("Curve3D_ligi4")
 script = ExtResource("1_h4ulh")
 speed = 120.0
-damage = 10.0
+damage = 7.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
 

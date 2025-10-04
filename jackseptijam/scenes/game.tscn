@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://dmafrs8n2rh5q"]
+[gd_scene load_steps=71 format=4 uid="uid://dmafrs8n2rh5q"]
 
 [ext_resource type="Script" uid="uid://chusptfwrxiit" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://wno7gug5ytr3" path="res://assets/2d/textures/texture_13.png" id="1_uwrxv"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://dtsy105q3ettd" path="res://objects/towers/ballista.tscn" id="10_vtaks"]
 [ext_resource type="Texture2D" uid="uid://ncspl43wyhhr" path="res://assets/3d/player/playerDoctor_playerEye.png" id="11_37s47"]
 [ext_resource type="Texture2D" uid="uid://ctw85qo28ojiy" path="res://assets/2d/textures/Elements/fireElement.png" id="11_kvuet"]
+[ext_resource type="Texture2D" uid="uid://ywm6euch5nk1" path="res://assets/2d/hud/buyBackground.png" id="12_37s47"]
+[ext_resource type="Script" uid="uid://drxtet88mc6ni" path="res://scripts/ui.gd" id="12_bt5mj"]
 [ext_resource type="Texture2D" uid="uid://cwhtohvweyj5" path="res://assets/2d/textures/Elements/metalElement.png" id="12_trtic"]
 [ext_resource type="Texture2D" uid="uid://cem0o12dbfpk2" path="res://assets/2d/textures/Elements/candyElement.png" id="13_ir15t"]
 [ext_resource type="FontFile" uid="uid://bfjyly3mynpq8" path="res://assets/fonts/alagard.ttf" id="13_kvuet"]
@@ -2082,6 +2084,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("12_bt5mj")
 
 [node name="BuyMenu" type="Control" parent="UI"]
 layout_mode = 1
@@ -2097,34 +2100,29 @@ offset_bottom = 647.0
 grow_horizontal = 0
 grow_vertical = 0
 
+[node name="BuyBackground" type="Sprite2D" parent="UI/BuyMenu"]
+modulate = Color(0.6255971, 0.6255971, 0.62559694, 1)
+position = Vector2(-44, -323)
+texture = ExtResource("12_37s47")
+
 [node name="TurretDescription" type="RichTextLabel" parent="UI/BuyMenu"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 0
-offset_left = -127.0
+offset_left = -111.0
 offset_top = -165.0
-offset_right = 33.0
+offset_right = 49.0
 offset_bottom = -85.58
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 bbcode_enabled = true
 text = "dsfsdfsdfsdwe"
 scroll_active = false
 
-[node name="Panel" type="Panel" parent="UI/BuyMenu"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -229.0
-offset_top = -648.0
-offset_right = -3.1149902
-grow_horizontal = 0
-
 [node name="FirstSlotButtons" type="VBoxContainer" parent="UI/BuyMenu"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = -115.0
+offset_left = -92.0
 offset_top = -492.0
-offset_right = 91.0
+offset_right = 114.0
 offset_bottom = -286.0
 
 [node name="Wood" type="TextureButton" parent="UI/BuyMenu/FirstSlotButtons"]
@@ -2185,9 +2183,9 @@ texture = ExtResource("13_ir15t")
 [node name="SecondSlotButtons" type="VBoxContainer" parent="UI/BuyMenu"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = -39.0
+offset_left = -16.0
 offset_top = -492.0
-offset_right = 167.0
+offset_right = 190.0
 offset_bottom = -286.0
 
 [node name="Wood" type="TextureButton" parent="UI/BuyMenu/SecondSlotButtons"]
@@ -2246,31 +2244,31 @@ position = Vector2(20, 19)
 texture = ExtResource("13_ir15t")
 
 [node name="Slot1Background" type="AnimatedSprite2D" parent="UI/BuyMenu"]
-position = Vector2(-96, -233)
+position = Vector2(-73, -233)
 sprite_frames = SubResource("SpriteFrames_ca42v")
 
 [node name="Slot2Background" type="AnimatedSprite2D" parent="UI/BuyMenu"]
-position = Vector2(-20, -233)
+position = Vector2(3, -233)
 sprite_frames = SubResource("SpriteFrames_264po")
 frame_progress = 0.61571544
 
 [node name="Slot1" type="Sprite2D" parent="UI/BuyMenu"]
-position = Vector2(-95, -233)
+position = Vector2(-72, -233)
 
 [node name="Slot2" type="Sprite2D" parent="UI/BuyMenu"]
-position = Vector2(-19, -233)
+position = Vector2(4, -233)
 
 [node name="EqualSlotforeground" type="Sprite2D" parent="UI/BuyMenu"]
-position = Vector2(-62, -190)
+position = Vector2(-39, -190)
 
 [node name="EqualBackground" type="Sprite2D" parent="UI/BuyMenu"]
-position = Vector2(-62, -190)
+position = Vector2(-39, -190)
 
 [node name="BuyButton" type="Button" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = -89.0
+offset_left = -66.0
 offset_top = -53.0
-offset_right = -47.0
+offset_right = -24.0
 offset_bottom = -22.0
 shortcut_feedback = false
 shortcut_in_tooltip = false
@@ -2279,9 +2277,9 @@ script = ExtResource("13_trtic")
 
 [node name="WoodAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = -78.0
+offset_left = -55.0
 offset_top = -484.0
-offset_right = -38.0
+offset_right = -15.0
 offset_bottom = -461.0
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 bbcode_enabled = true
@@ -2290,9 +2288,9 @@ horizontal_alignment = 1
 
 [node name="PlagueAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = -78.0
+offset_left = -55.0
 offset_top = -443.0
-offset_right = -38.0
+offset_right = -15.0
 offset_bottom = -420.0
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 bbcode_enabled = true
@@ -2301,9 +2299,9 @@ horizontal_alignment = 1
 
 [node name="FireAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = -78.0
+offset_left = -55.0
 offset_top = -400.0
-offset_right = -38.0
+offset_right = -15.0
 offset_bottom = -377.0
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 bbcode_enabled = true
@@ -2312,9 +2310,9 @@ horizontal_alignment = 1
 
 [node name="MetalAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = -78.0
+offset_left = -55.0
 offset_top = -359.0
-offset_right = -38.0
+offset_right = -15.0
 offset_bottom = -336.0
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 bbcode_enabled = true
@@ -2323,9 +2321,9 @@ horizontal_alignment = 1
 
 [node name="CandyAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = -78.0
+offset_left = -55.0
 offset_top = -315.0
-offset_right = -38.0
+offset_right = -15.0
 offset_bottom = -292.0
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 bbcode_enabled = true
@@ -2334,9 +2332,9 @@ horizontal_alignment = 1
 
 [node name="CostPrimary" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = -116.0
+offset_left = -93.0
 offset_top = -267.0
-offset_right = -76.0
+offset_right = -53.0
 offset_bottom = -244.0
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 bbcode_enabled = true
@@ -2345,8 +2343,9 @@ horizontal_alignment = 1
 
 [node name="CostSecondary" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = -40.0
+offset_left = -17.0
 offset_top = -267.0
+offset_right = 23.0
 offset_bottom = -244.0
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 bbcode_enabled = true
@@ -2360,10 +2359,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 957.0
-offset_top = -24.0
-offset_right = 1045.0
-offset_bottom = -1.0
+offset_left = 971.0
+offset_top = -18.0
+offset_right = 1059.0
+offset_bottom = 5.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Health: 100"
@@ -2416,11 +2415,16 @@ text = "Pause"
 
 [node name="MusketCounter" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 995.0
+offset_left = 1014.0
 offset_top = 61.0
-offset_right = 1111.0
+offset_right = 1130.0
 offset_bottom = 84.0
 text = "Musket Balls: 0"
+
+[node name="VolumeSlider" type="HSlider" parent="UI"]
+layout_mode = 0
+offset_right = 109.92
+offset_bottom = 16.0
 
 [node name="Map" type="Node3D" parent="."]
 
@@ -2487,5 +2491,6 @@ shape = SubResource("ConcavePolygonShape3D_iywne")
 [connection signal="pressed" from="UI/TowerOptions/NextTargetMode" to="UI/TowerOptions" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/TowerOptions/Sell" to="UI/TowerOptions" method="_on_sell_pressed"]
 [connection signal="toggled" from="UI/Button" to="." method="_on_pause_button_toggled"]
+[connection signal="drag_ended" from="UI/VolumeSlider" to="UI" method="_on_volume_slider_drag_ended"]
 [connection signal="timeout" from="IncreaseDifficulty" to="." method="_on_increase_difficulty_timeout"]
 [connection signal="timeout" from="IncreasePoints" to="." method="_on_increase_points_timeout"]
