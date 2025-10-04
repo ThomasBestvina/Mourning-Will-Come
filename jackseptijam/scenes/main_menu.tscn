@@ -1,24 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5xo7ans2xxai"]
+[gd_scene load_steps=7 format=3 uid="uid://d5ieg34hnt1x"]
 
 [ext_resource type="Script" uid="uid://d6qply6q10mg" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://dni0wwrxxl3q8" path="res://assets/2d/hud/playbuttonSheet.png" id="1_l6cm7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ekxnf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6cm7"]
 atlas = ExtResource("1_l6cm7")
 region = Rect2(0, 0, 39, 20)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l6cm7"]
 load_path = "res://.godot/imported/playbuttonSheet.png-7b636e3b54020461706633c7aa499e2a.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bqqt6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekxnf"]
 atlas = SubResource("CompressedTexture2D_l6cm7")
 region = Rect2(78, 0, 39, 0)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l6cm7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqqt6"]
 atlas = ExtResource("1_l6cm7")
 region = Rect2(39, 0, 39, 0)
 
-[node name="MainMenu" type="Control"]
+[node name="main_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,9 +34,9 @@ offset_top = 184.0
 offset_right = 599.0
 offset_bottom = 204.0
 scale = Vector2(2, 2)
-texture_normal = SubResource("AtlasTexture_ekxnf")
-texture_pressed = SubResource("AtlasTexture_bqqt6")
-texture_hover = SubResource("AtlasTexture_l6cm7")
+texture_normal = SubResource("AtlasTexture_l6cm7")
+texture_pressed = SubResource("AtlasTexture_ekxnf")
+texture_hover = SubResource("AtlasTexture_bqqt6")
 
 [node name="Credits" type="TextureButton" parent="."]
 layout_mode = 0
