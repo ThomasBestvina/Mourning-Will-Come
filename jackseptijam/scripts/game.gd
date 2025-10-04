@@ -237,6 +237,7 @@ func manage_player_input():
 	if buying_tower:
 		bought_tower.position = StoatStash.get_mouse_world_position_3d_collision($CharacterBody3D/Camera3D)
 		if Input.is_action_just_pressed("place_tower") and bought_tower.is_on_ground:
+			StoatStash.play_sfx(preload("res://assets/sound/success_tower_place.wav"))
 			StoatStash.safe_signal_connect(bought_tower.selected, selected)
 			StoatStash.safe_signal_connect(bought_tower.deselected, deselected)
 			bought_tower.place()
@@ -253,6 +254,8 @@ func manage_player_input():
 				$IncreaseDifficulty.start(TIME_BETWEEN_DIFFICULTY_INCREASE)
 				$IncreasePoints.start(TIME_BETWEEN_POINT_INCREASE)
 				placed_first_turret = true
+		elif(Input.is_action_just_pressed("place_tower")):
+			StoatStash.play_sfx(preload("res://assets/sound/failed_tower_place.wav"))
 		if Input.is_action_just_pressed("cancel"):
 			bought_tower.sell(1.0)
 			bought_tower = null
@@ -264,13 +267,18 @@ func selected(tower: Node3D):
 		if(tower != i):
 			i.is_selected = false
 	selected_tower = tower
+	StoatStash.play_sfx(preload("res://assets/sound/ui_pressed.wav"),0.8)
 
 func deselected(tower: Node3D):
 	if(selected_tower == tower):
 		selected_tower == null
 
 func _on_buy_button_pressed() -> void:
-	if primary == null or secondary == null: return
+	if primary == null or secondary == null: 
+		StoatStash.play_sfx(preload("res://assets/sound/failed_tower_place.wav"))
+		return
+	
+	StoatStash.play_sfx(preload("res://assets/sound/ui_pressed.wav"),0.8)
 	
 	var selected_magnet = false
 	if primary == Globals.ETypes.METAL and secondary == Globals.ETypes.WOOD:
@@ -316,10 +324,12 @@ func _on_buy_button_pressed() -> void:
 func button_toggle_primary_handler(type, texture):
 	primary = type
 	$UI/BuyMenu/Slot1.texture = texture
+	StoatStash.play_sfx(preload("res://assets/sound/ui_pressed.wav"),0.8)
 
 func button_toggle_secondary_handler(type, texture):
 	secondary = type
 	$UI/BuyMenu/Slot2.texture = texture
+	StoatStash.play_sfx(preload("res://assets/sound/ui_pressed.wav"),0.8)
 
 func _on_wood_pressed() -> void:
 	button_toggle_primary_handler(Globals.ETypes.WOOD, %FirstSlotButtons/Wood/Sprite.texture)

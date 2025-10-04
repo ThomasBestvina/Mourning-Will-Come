@@ -2,6 +2,8 @@ extends Projectile
 
 @export var radius: float = 5.0
 
+@onready var explosion = preload("res://objects/cannon_splode.tscn")
+
 func on_hit_target():
 	if has_hit:
 		return
@@ -18,4 +20,10 @@ func on_hit_target():
 	
 	StoatStash.play_sfx_3d(preload("res://assets/sound/cannonsplosion.wav"), target_enemy.global_position, 0.5)
 	
+	var ee = explosion.instantiate()
+	get_parent().add_child(ee)
+	ee.restart()
+	ee.emitting = true
+	ee.scale = Vector3(0.2,0.2,0.2)
+	ee.global_position = target_enemy.global_position
 	queue_free()

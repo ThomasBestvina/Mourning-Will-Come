@@ -32,9 +32,8 @@ var fire_particles: GPUParticles3D
 @export var drop_upward_force = 5.0
 @export var drop_random_force = 2.0
 
-@onready var death_explosion = preload("res://objects/explosion_particles.tscn")
+@onready var death_explosion = preload("res://objects/explode.tscn")
 
-# modifiers are just arrays [mod_type, duration]
 var modifier_stack = {
 	"plague": 0,
 	"fire": 0
@@ -79,6 +78,10 @@ func die():
 	var dd = death_explosion.instantiate()
 	get_parent().add_child(dd)
 	dd.global_position = fire_placement.global_position
+	dd.restart()
+	dd.scale = Vector3(0.2,0.2,0.2)
+	dd.emitting = true
+	StoatStash.delayed_call(dd.queue_free, 3)
 	queue_free()
 
 func _physics_process(delta: float) -> void:

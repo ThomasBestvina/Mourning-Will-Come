@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://civ5uqxqca0w0"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_06ix8"]
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 19.3
+initial_velocity_max = 35.05
+radial_accel_min = -11.550002
+radial_accel_max = 29.399998
+turbulence_enabled = true
+turbulence_noise_strength = 8.7
+turbulence_noise_scale = 6.67
+turbulence_noise_speed_random = 1.8
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.11100001
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vdkye"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+texture_filter = 2
+disable_receive_shadows = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_xkewy"]
+material = SubResource("StandardMaterial3D_vdkye")
+radius = 1.0
+height = 2.0
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+emitting = false
+amount = 120
+lifetime = 0.09999999999999999
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_06ix8")
+draw_pass_1 = SubResource("SphereMesh_xkewy")

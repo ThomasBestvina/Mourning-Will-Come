@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2qg2rbl6do0q"]
+
+[sub_resource type="Gradient" id="Gradient_f78ly"]
+offsets = PackedFloat32Array(0.35675675, 1)
+colors = PackedColorArray(0.461455, 0.052484564, 2.4065375e-08, 1, 0.94990724, 0.35009137, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rqxxs"]
+gradient = SubResource("Gradient_f78ly")
+
+[sub_resource type="Curve" id="Curve_iwgvo"]
+_data = [Vector2(0.009478673, 0.46067423), 0.0, 0.0, 0, 0, Vector2(0.66350716, 0.8539326), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_haw76"]
+curve = SubResource("Curve_iwgvo")
+
+[sub_resource type="CurveTexture" id="CurveTexture_rqxxs"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iwgvo"]
+emission_shape = 2
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 4.95
+initial_velocity_max = 6.8999996
+scale_min = 0.01
+scale_max = 0.04
+scale_curve = SubResource("CurveTexture_rqxxs")
+color_initial_ramp = SubResource("GradientTexture1D_rqxxs")
+emission_curve = SubResource("CurveTexture_haw76")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_haw76"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.89972043, 0.4084743, 0, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_nh35p"]
+material = SubResource("StandardMaterial3D_haw76")
+size = Vector2(0.5, 0.5)
+
+[node name="ExplosionParticle" type="GPUParticles3D"]
+amount = 200
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_iwgvo")
+draw_pass_1 = SubResource("QuadMesh_nh35p")
