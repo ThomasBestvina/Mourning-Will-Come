@@ -7,7 +7,7 @@
 script = ExtResource("1_xwjgf")
 fire_placement = NodePath("Node3D")
 max_speed = 0.8
-max_health = 80.0
+max_health = 120.0
 points = 10
 max_drops = 5
 drop_chance = 0.8

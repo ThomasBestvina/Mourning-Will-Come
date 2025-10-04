@@ -57,7 +57,7 @@ func _process(delta: float) -> void:
 	if health <= 0:
 		var drops = 0
 		for i in max_drops:
-			if(StoatStash.chance(drop_chance)):
+			if(StoatStash.chance(drop_chance/ min(get_parent().get_parent().current_difficulty/10,1)) ):
 				drops += 1
 		emit_signal("died", type, drops)
 		spawn_drops(drops, false)
