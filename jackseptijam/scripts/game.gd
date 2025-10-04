@@ -125,6 +125,9 @@ func process_ui():
 			$UI/BuyMenu/CostSecondary.text = CANDY_COLOR+str(CANDY_COST_SECONDARY)
 			$UI/BuyMenu/TurretDescription.text += CANDY_COLOR+str(" with extra attack speed.")
 	
+	if primary == Globals.ETypes.METAL and secondary == Globals.ETypes.WOOD:
+		$UI/BuyMenu/TurretDescription.text = "[color=fc3f3f]A magnet that [color=0003bf] collects drops automatically"
+	
 	$UI/BuyMenu/Slot1Background.frame = 0 if primary else 1
 	$UI/BuyMenu/Slot2Background.frame = 0 if secondary else 1
 	

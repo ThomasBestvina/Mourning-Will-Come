@@ -34,6 +34,7 @@ func _process(delta: float) -> void:
 	
 	
 	if Input.is_action_just_pressed("shoot") and canshoot and get_parent().amount_musket_balls > 0:
+		StoatStash.shake_3d($Camera3D,0.03, 0.15)
 		var pp: Node3D = projectile.instantiate()
 		get_parent().add_child(pp)
 		pp.global_position = $UpperBody/Aimer.global_position

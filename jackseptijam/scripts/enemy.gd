@@ -22,15 +22,17 @@ var health = 10.0
 
 
 @onready var plague_preload = preload("res://objects/has_plague.tscn")
-var plague_particles: CPUParticles3D
+var plague_particles: GPUParticles3D
 
 @onready var fire_preload = preload("res://objects/has_fire.tscn")
-var fire_particles: CPUParticles3D
+var fire_particles: GPUParticles3D
 
 
 @onready var pickable_drop = preload("res://objects/pickable_resource.tscn")
 @export var drop_upward_force = 5.0
 @export var drop_random_force = 2.0
+
+@onready var death_explosion = preload("res://objects/explosion_particles.tscn")
 
 # modifiers are just arrays [mod_type, duration]
 var modifier_stack = {
@@ -42,11 +44,13 @@ func _ready() -> void:
 	health += get_parent().get_parent().current_difficulty*2
 	plague_particles = plague_preload.instantiate()
 	add_child(plague_particles)
-	plague_particles.emitting = false
+	plague_particles.restart()
+	plague_particles.emitting = true
 	
 	fire_particles = fire_preload.instantiate()
 	add_child(fire_particles)
-	fire_particles.emitting = false
+	fire_particles.restart()
+	fire_particles.emitting = true
 	
 	health = max_health
 	speed = max_speed
@@ -64,12 +68,18 @@ func _process(delta: float) -> void:
 		if(StoatStash.chance(0.05)):
 			spawn_drops(1, true)
 		StoatStash.play_sfx_3d(preload("res://assets/sound/enemydie.wav"), global_position)
-		queue_free()
+		die()
 	
 	if(get_progress_ratio() >= 0.99):
 		emit_signal("enemy_win", points)
-		queue_free()
+		die()
 
+
+func die():
+	var dd = death_explosion.instantiate()
+	get_parent().add_child(dd)
+	dd.global_position = global_position
+	queue_free()
 
 func _physics_process(delta: float) -> void:
 	if modifier_stack["plague"] > 0:
@@ -84,8 +94,8 @@ func _physics_process(delta: float) -> void:
 			take_damage(1)
 		modifier_stack["fire"] -= delta
 	
-	plague_particles.emitting = modifier_stack["plague"] > 0
-	fire_particles.emitting = modifier_stack["fire"] > 0
+	plague_particles.visible = modifier_stack["plague"] > 0
+	fire_particles.visible = modifier_stack["fire"] > 0
 
 func spawn_drops(amount: int, musket: bool):
 	for i in amount:

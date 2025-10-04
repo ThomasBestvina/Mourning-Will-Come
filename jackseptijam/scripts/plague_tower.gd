@@ -86,6 +86,7 @@ func place():
 
 
 func fire():
+	$PlagueParticle.restart()
 	for enemy: Enemy in get_tree().get_nodes_in_group("enemy"):
 		if enemy.global_position.distance_squared_to(global_position) <= fire_range**2:
 			enemy.give_plague(plague_duration)

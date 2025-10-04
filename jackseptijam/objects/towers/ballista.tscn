@@ -176,7 +176,9 @@ shadow_mesh = SubResource("ArrayMesh_jwcon")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uvfc"]
 shading_mode = 0
+diffuse_mode = 3
 albedo_color = Color(0.31156835, 0.6934903, 1.92523e-07, 0.30588236)
+disable_receive_shadows = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ps3fj"]
 resource_local_to_scene = true
@@ -256,10 +258,10 @@ skeleton = NodePath("")
 transform = Transform3D(-0.14784437, 0, 2.7780816e-08, 0, 0.12375579, 0, -1.2924966e-08, 0, -0.3177755, 4.9778297e-08, 1.8260179, -0.56939733)
 
 [node name="RangeDisplayMesh" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("CylinderMesh_ps3fj")
 
 [node name="RangeDisplayMeshRed" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CylinderMesh_7fe4t")
 
 [node name="Timer" type="Timer" parent="."]

@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://lagenurkvqms"]
+
+[ext_resource type="Texture2D" uid="uid://c5br34y33pdrd" path="res://assets/2d/temp_explosion_sprite_sheet.png" id="1_0bde4"]
+[ext_resource type="Script" uid="uid://um7dtk8xh54q" path="res://scripts/explosion_particles.gd" id="1_2duiy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2hhy"]
+atlas = ExtResource("1_0bde4")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7qjw"]
+atlas = ExtResource("1_0bde4")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nyk1"]
+atlas = ExtResource("1_0bde4")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2eqya"]
+atlas = ExtResource("1_0bde4")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjowl"]
+atlas = ExtResource("1_0bde4")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1k6lc"]
+atlas = ExtResource("1_0bde4")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0crw"]
+atlas = ExtResource("1_0bde4")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksr3d"]
+atlas = ExtResource("1_0bde4")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mg1f6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2hhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7qjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nyk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2eqya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjowl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1k6lc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0crw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksr3d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_2duiy")
+
+[node name="Explosion" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.00032395124, 1.3161471, 0)
+billboard = 1
+double_sided = false
+alpha_cut = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_mg1f6")
+frame_progress = 0.75954264
+
+[connection signal="animation_looped" from="Explosion" to="." method="_on_explosion_animation_looped"]
