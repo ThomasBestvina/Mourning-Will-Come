@@ -20,14 +20,15 @@ var selected_tower: Node3D
 @export var fire_tower: PackedScene
 @export var metal_tower: PackedScene
 @export var candy_tower: PackedScene
+@export var magnet_tower: PackedScene
 
 var placed_first_turret: bool = false
 
-var amount_wood: int = 8
-var amount_plague: int = 0
-var amount_fire: int = 0
-var amount_metal: int = 0
-var amount_candy: int = 0
+var amount_wood: int = 1000
+var amount_plague: int = 1000
+var amount_fire: int = 1000
+var amount_metal: int = 1000
+var amount_candy: int = 1000
 var amount_musket_balls: int = 5
 
 const WOOD_COST_PRIMARY = 4
@@ -268,22 +269,29 @@ func deselected(tower: Node3D):
 func _on_buy_button_pressed() -> void:
 	if primary == null or secondary == null: return
 	
-	match primary:
-		Globals.ETypes.WOOD:
-			bought_tower = ballista_tower.instantiate()
-			amount_wood -= WOOD_COST_PRIMARY
-		Globals.ETypes.PLAGUE:
-			bought_tower = plague_tower.instantiate()
-			amount_plague -= PLAGUE_COST_PRIMARY
-		Globals.ETypes.FIRE:
-			bought_tower = fire_tower.instantiate()
-			amount_fire -= FIRE_COST_PRIMARY
-		Globals.ETypes.METAL:
-			bought_tower = metal_tower.instantiate()
-			amount_metal -= METAL_COST_PRIMARY
-		Globals.ETypes.CANDY:
-			bought_tower = candy_tower.instantiate()
-			amount_candy -= CANDY_COST_PRIMARY
+	var selected_magnet = false
+	if primary == Globals.ETypes.METAL and secondary == Globals.ETypes.WOOD:
+		bought_tower = magnet_tower.instantiate()
+		amount_metal -= METAL_COST_PRIMARY
+		selected_magnet = true
+	
+	if not selected_magnet:
+		match primary:
+			Globals.ETypes.WOOD:
+				bought_tower = ballista_tower.instantiate()
+				amount_wood -= WOOD_COST_PRIMARY
+			Globals.ETypes.PLAGUE:
+				bought_tower = plague_tower.instantiate()
+				amount_plague -= PLAGUE_COST_PRIMARY
+			Globals.ETypes.FIRE:
+				bought_tower = fire_tower.instantiate()
+				amount_fire -= FIRE_COST_PRIMARY
+			Globals.ETypes.METAL:
+				bought_tower = metal_tower.instantiate()
+				amount_metal -= METAL_COST_PRIMARY
+			Globals.ETypes.CANDY:
+				bought_tower = candy_tower.instantiate()
+				amount_candy -= CANDY_COST_PRIMARY
 	
 	match secondary:
 		Globals.ETypes.WOOD:

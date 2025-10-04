@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=4 uid="uid://dtsy105q3ettd"]
 
-[ext_resource type="Script" uid="uid://hnb0jev4jijq" path="res://scripts/ballista.gd" id="1_cjyl8"]
+[ext_resource type="Script" uid="uid://bqrwvrt5qux8o" path="res://scripts/ballista.gd" id="1_cjyl8"]
 [ext_resource type="Texture2D" uid="uid://db1vdmlx05lka" path="res://assets/3d/towers/placeHolderBallista_woodPallete.png" id="1_headl"]
 [ext_resource type="PackedScene" uid="uid://bb5oc1bby1ma0" path="res://objects/projectiles/ballista_projectile.tscn" id="2_wugx5"]
 
@@ -200,7 +200,6 @@ height = 0.1
 script = ExtResource("1_cjyl8")
 spawn_point = NodePath("rotator/Spawnpoint")
 projectile_scene = ExtResource("2_wugx5")
-cooldown = 0.8
 range_display_mesh = NodePath("RangeDisplayMesh")
 
 [node name="Cube" type="MeshInstance3D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://dmafrs8n2rh5q"]
+[gd_scene load_steps=72 format=4 uid="uid://dmafrs8n2rh5q"]
 
 [ext_resource type="Script" uid="uid://chusptfwrxiit" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://wno7gug5ytr3" path="res://assets/2d/textures/texture_13.png" id="1_uwrxv"]
@@ -11,13 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://bynwiofaudko" path="res://assets/2d/textures/Elements/woodElement.png" id="6_gee14"]
 [ext_resource type="Texture2D" uid="uid://5o03e0oo3bwx" path="res://assets/2d/hud/inventoryTile.png" id="6_vtaks"]
 [ext_resource type="Texture2D" uid="uid://1sujlq2p4md6" path="res://assets/2d/textures/Elements/plagueElement.png" id="7_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://bp2ksdyg6iv52" path="res://objects/towers/magnet.tscn" id="7_e1j6l"]
 [ext_resource type="Shader" uid="uid://bhna3cfpoa6pk" path="res://shaders/cel.gdshader" id="8_264po"]
 [ext_resource type="Texture2D" uid="uid://bq5g5bkyqnys1" path="res://assets/3d/player/playerDoctor_harvest-1x.png" id="10_5newe"]
 [ext_resource type="PackedScene" uid="uid://dtsy105q3ettd" path="res://objects/towers/ballista.tscn" id="10_vtaks"]
 [ext_resource type="Texture2D" uid="uid://ncspl43wyhhr" path="res://assets/3d/player/playerDoctor_playerEye.png" id="11_37s47"]
 [ext_resource type="Texture2D" uid="uid://ctw85qo28ojiy" path="res://assets/2d/textures/Elements/fireElement.png" id="11_kvuet"]
 [ext_resource type="Texture2D" uid="uid://ywm6euch5nk1" path="res://assets/2d/hud/buyBackground.png" id="12_37s47"]
-[ext_resource type="Script" path="res://scripts/ui.gd" id="12_bt5mj"]
+[ext_resource type="Script" uid="uid://drxtet88mc6ni" path="res://scripts/ui.gd" id="12_bt5mj"]
 [ext_resource type="Texture2D" uid="uid://cwhtohvweyj5" path="res://assets/2d/textures/Elements/metalElement.png" id="12_trtic"]
 [ext_resource type="Texture2D" uid="uid://cem0o12dbfpk2" path="res://assets/2d/textures/Elements/candyElement.png" id="13_ir15t"]
 [ext_resource type="FontFile" uid="uid://bfjyly3mynpq8" path="res://assets/fonts/alagard.ttf" id="13_kvuet"]
@@ -1507,6 +1508,7 @@ plague_tower = ExtResource("3_vtaks")
 fire_tower = ExtResource("4_ca42v")
 metal_tower = ExtResource("5_rysoc")
 candy_tower = ExtResource("6_264po")
+magnet_tower = ExtResource("7_e1j6l")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.33953205, -0.7796052, 0.5262449, -0.8256161, 0.02103002, 0.5638404, -0.45063984, -0.6259184, -0.6365142, 3.6377206, 6.365942, -13.127592)

@@ -62,7 +62,7 @@ radius = 1.0198852
 [sub_resource type="BoxShape3D" id="BoxShape3D_o6v8f"]
 size = Vector3(0.6, 0.6, 0.6)
 
-[node name="PickableResource" type="RigidBody3D"]
+[node name="PickableResource" type="RigidBody3D" groups=["pickable"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_o6v8f")

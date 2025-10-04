@@ -27,6 +27,9 @@ func setup(typ, musket):
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if not body is Player: return
+	collect()
+
+func collect():
 	if is_musket:
 		game.amount_musket_balls += 1
 		kill()
