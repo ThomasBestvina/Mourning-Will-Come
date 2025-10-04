@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 				disabled = true
 				return
 		Globals.ETypes.CANDY:
-			if(game.amount_candy < game.CANDY_COST_SECONDARY or (game.primary == Globals.ETypes.CANDY and game.amount_wood < game.CANDY_COST_PRIMARY + game.CANDY_COST_SECONDARY)):
+			if(game.amount_candy < game.CANDY_COST_SECONDARY or (game.primary == Globals.ETypes.CANDY and game.amount_candy < game.CANDY_COST_PRIMARY + game.CANDY_COST_SECONDARY)):
 				disabled = true
 				return
 	
