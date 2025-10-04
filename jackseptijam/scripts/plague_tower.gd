@@ -57,7 +57,8 @@ func _process(delta: float) -> void:
 	if not hovered and Input.is_action_just_pressed("place_tower") and get_viewport().gui_get_hovered_control() == null:
 		emit_signal("deselected",self)
 		is_selected = false
-	is_on_ground = $RayCast3D.is_colliding() and $RayCast3D2.is_colliding() and $RayCast3D3.is_colliding() and $RayCast3D4.is_colliding() and $RayCast3D.get_collider().is_in_group("ground") and $RayCast3D2.get_collider().is_in_group("ground") and $RayCast3D3.get_collider().is_in_group("ground") and $RayCast3D4.get_collider().is_in_group("ground") and not is_near_other_tower()
+	
+	is_on_ground = not is_placed and $RayCast3D.is_colliding() and $RayCast3D2.is_colliding() and $RayCast3D3.is_colliding() and $RayCast3D4.is_colliding() and $RayCast3D.get_collider().is_in_group("ground") and $RayCast3D2.get_collider().is_in_group("ground") and $RayCast3D3.get_collider().is_in_group("ground") and $RayCast3D4.get_collider().is_in_group("ground") and not is_near_other_tower()
 	
 	if hovered or is_selected or not is_placed:
 		if is_on_ground:

@@ -7,7 +7,7 @@
 script = ExtResource("1_wi7um")
 fire_placement = NodePath("Node3D")
 max_speed = 9.0
-max_health = 13.0
+max_health = 20.0
 strength_score = 4.0
 points = 6
 type = 2

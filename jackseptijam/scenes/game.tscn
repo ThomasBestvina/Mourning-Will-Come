@@ -1520,7 +1520,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.468464, 0.82665443, -4.36
 curve = SubResource("Curve3D_264po")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.633297, 2.4417143, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.633297, 1.9726777, 0)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("4_lbhrr")

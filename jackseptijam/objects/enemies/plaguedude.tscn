@@ -7,7 +7,7 @@
 script = ExtResource("1_esm4c")
 fire_placement = NodePath("Node3D")
 max_speed = 2.5
-max_health = 14.0
+max_health = 15.0
 strength_score = 2.5
 points = 3
 type = 1

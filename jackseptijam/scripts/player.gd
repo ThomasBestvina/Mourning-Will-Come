@@ -3,6 +3,7 @@ class_name Player
 
 @export var shoot_cooldown = 1.5
 
+const SPRINT_SPEED = 13.0
 const SPEED = 9.0
 const JUMP_VELOCITY = 4.5
 
@@ -29,6 +30,8 @@ func _process(delta: float) -> void:
 		$playerDoctor/AnimationPlayer.current_animation = "1HoldGun"
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	
+	
 	
 	if Input.is_action_just_pressed("shoot") and canshoot and get_parent().amount_musket_balls > 0:
 		var pp: Node3D = projectile.instantiate()

@@ -7,7 +7,7 @@
 script = ExtResource("1_kx3ue")
 fire_placement = NodePath("Node3D")
 max_speed = 9.0
-max_health = 30.0
+max_health = 50.0
 strength_score = 5.0
 points = 10
 type = 4
