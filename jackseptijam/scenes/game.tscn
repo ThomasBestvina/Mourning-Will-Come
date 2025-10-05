@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=4 uid="uid://dmafrs8n2rh5q"]
+[gd_scene load_steps=114 format=4 uid="uid://dmafrs8n2rh5q"]
 
 [ext_resource type="Script" uid="uid://chusptfwrxiit" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://l246u8chero8" path="res://objects/towers/plague_tower.tscn" id="3_vtaks"]
@@ -16,14 +16,16 @@
 [ext_resource type="PackedScene" uid="uid://dtsy105q3ettd" path="res://objects/towers/ballista.tscn" id="10_vtaks"]
 [ext_resource type="Texture2D" uid="uid://ncspl43wyhhr" path="res://assets/3d/player/playerDoctor_playerEye.png" id="11_37s47"]
 [ext_resource type="Texture2D" uid="uid://ctw85qo28ojiy" path="res://assets/2d/textures/Elements/fireElement.png" id="11_kvuet"]
-[ext_resource type="Texture2D" uid="uid://ywm6euch5nk1" path="res://assets/2d/hud/buyBackground.png" id="12_37s47"]
 [ext_resource type="Script" uid="uid://drxtet88mc6ni" path="res://scripts/ui.gd" id="12_bt5mj"]
 [ext_resource type="Texture2D" uid="uid://cwhtohvweyj5" path="res://assets/2d/textures/Elements/metalElement.png" id="12_trtic"]
 [ext_resource type="Texture2D" uid="uid://cem0o12dbfpk2" path="res://assets/2d/textures/Elements/candyElement.png" id="13_ir15t"]
 [ext_resource type="FontFile" uid="uid://bfjyly3mynpq8" path="res://assets/fonts/alagard.ttf" id="13_kvuet"]
 [ext_resource type="Script" uid="uid://i4wofkou4gll" path="res://scripts/buy_button.gd" id="13_trtic"]
 [ext_resource type="Script" uid="uid://btgoy25a3q14w" path="res://scripts/tower_options.gd" id="15_ir15t"]
+[ext_resource type="Texture2D" uid="uid://bcbkp5haxtni0" path="res://assets/2d/hud/buyBackground2.png" id="15_wljb1"]
+[ext_resource type="Texture2D" uid="uid://dml1rs74008p8" path="res://assets/2d/hud/textBox.png" id="16_v2yb1"]
 [ext_resource type="Texture2D" uid="uid://c3gml4ecyo3mb" path="res://assets/2d/hud/heartAndMusketBall.png" id="23_pl11u"]
+[ext_resource type="Texture2D" uid="uid://c0drbr7ksdobd" path="res://assets/2d/hud/buyButtonSheet.png" id="24_02fa5"]
 [ext_resource type="Texture2D" uid="uid://8qn8aovfvvpk" path="res://assets/3d/props/mediumrock_ROCK.png" id="25_pl11u"]
 [ext_resource type="Texture2D" uid="uid://cj2umognv6ttb" path="res://assets/2d/hud/progbar.png" id="25_sww3w"]
 [ext_resource type="Texture2D" uid="uid://beopud633whsa" path="res://assets/3d/props/rock_ROCK.png" id="26_bhx41"]
@@ -32,6 +34,9 @@
 [ext_resource type="Texture2D" uid="uid://stnohvfrgt8p" path="res://assets/2d/hud/nextButtonSheet.png" id="26_suyxu"]
 [ext_resource type="Texture2D" uid="uid://b6tlp2b8oq1gg" path="res://assets/2d/hud/towerOptionsBackground.png" id="26_wljb1"]
 [ext_resource type="Texture2D" uid="uid://deapiym8dy65f" path="res://assets/2d/hud/upgradeButtonSheet.png" id="27_sgl2t"]
+[ext_resource type="Script" uid="uid://bpoqure2okwvo" path="res://scripts/pause_menu.gd" id="31_gxtfn"]
+[ext_resource type="Texture2D" uid="uid://5rruvf02ol70" path="res://assets/2d/hud/menuBackground..png" id="31_js0lu"]
+[ext_resource type="PackedScene" uid="uid://dfh32oqrosx0k" path="res://objects/audio_interface.tscn" id="33_twgab"]
 
 [sub_resource type="Curve3D" id="Curve3D_qnb83"]
 _data = {
@@ -1390,9 +1395,25 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4url"]
+atlas = ExtResource("24_02fa5")
+region = Rect2(0, 0, 33, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ool0"]
+atlas = ExtResource("24_02fa5")
+region = Rect2(66, 0, 33, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr1ej"]
+atlas = ExtResource("24_02fa5")
+region = Rect2(33, 0, 33, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05nbr"]
+atlas = ExtResource("24_02fa5")
+region = Rect2(99, 0, 33, 20)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_sww3w"]
 atlas = ExtResource("23_pl11u")
-region = Rect2(0, 0, 23, 22)
+region = Rect2(0, 0, 21, 22)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sww3w"]
 load_path = "res://.godot/imported/heartAndMusketBall.png-72219015079da873cbff7b6b10b0d581.ctex"
@@ -1436,6 +1457,10 @@ region = Rect2(136, 0, 68, 20)
 [sub_resource type="AtlasTexture" id="AtlasTexture_js0lu"]
 atlas = ExtResource("27_sgl2t")
 region = Rect2(68, 0, 68, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7025r"]
+atlas = ExtResource("27_sgl2t")
+region = Rect2(204, 0, 68, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ql0t"]
 
@@ -2279,18 +2304,25 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="BuyBackground" type="Sprite2D" parent="UI/BuyMenu"]
-modulate = Color(0.6255971, 0.6255971, 0.62559694, 1)
 position = Vector2(-44, -323)
-texture = ExtResource("12_37s47")
+texture = ExtResource("15_wljb1")
+
+[node name="TextBox" type="Sprite2D" parent="UI/BuyMenu"]
+position = Vector2(-43, -130)
+scale = Vector2(1, 1.1166667)
+texture = ExtResource("16_v2yb1")
 
 [node name="TurretDescription" type="RichTextLabel" parent="UI/BuyMenu"]
-custom_minimum_size = Vector2(150, 40)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 0
-offset_left = -111.0
-offset_top = -165.0
-offset_right = 49.0
-offset_bottom = -85.58
+offset_left = -106.0
+offset_top = -187.0
+offset_right = 21.044998
+offset_bottom = -70.535
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "dsfsdfsdfsdwe"
 scroll_active = false
@@ -2298,9 +2330,9 @@ scroll_active = false
 [node name="FirstSlotButtons" type="VBoxContainer" parent="UI/BuyMenu"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = -92.0
+offset_left = -110.0
 offset_top = -492.0
-offset_right = 114.0
+offset_right = 96.0
 offset_bottom = -286.0
 
 [node name="Wood" type="TextureButton" parent="UI/BuyMenu/FirstSlotButtons"]
@@ -2422,16 +2454,16 @@ position = Vector2(20, 19)
 texture = ExtResource("13_ir15t")
 
 [node name="Slot1Background" type="AnimatedSprite2D" parent="UI/BuyMenu"]
-position = Vector2(-73, -233)
+position = Vector2(-91, -233)
 sprite_frames = SubResource("SpriteFrames_ca42v")
+
+[node name="Slot1" type="Sprite2D" parent="UI/BuyMenu"]
+position = Vector2(-90, -233)
 
 [node name="Slot2Background" type="AnimatedSprite2D" parent="UI/BuyMenu"]
 position = Vector2(3, -233)
 sprite_frames = SubResource("SpriteFrames_264po")
 frame_progress = 0.61571544
-
-[node name="Slot1" type="Sprite2D" parent="UI/BuyMenu"]
-position = Vector2(-72, -233)
 
 [node name="Slot2" type="Sprite2D" parent="UI/BuyMenu"]
 position = Vector2(4, -233)
@@ -2442,92 +2474,131 @@ position = Vector2(-39, -190)
 [node name="EqualBackground" type="Sprite2D" parent="UI/BuyMenu"]
 position = Vector2(-39, -190)
 
-[node name="BuyButton" type="Button" parent="UI/BuyMenu"]
+[node name="BuyButton" type="TextureButton" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = -66.0
-offset_top = -53.0
-offset_right = -24.0
-offset_bottom = -22.0
+offset_left = -77.0
+offset_top = -54.0
+offset_right = -44.0
+offset_bottom = -34.0
+scale = Vector2(2, 2)
 shortcut_feedback = false
 shortcut_in_tooltip = false
-text = "Buy!"
+texture_normal = SubResource("AtlasTexture_m4url")
+texture_pressed = SubResource("AtlasTexture_8ool0")
+texture_hover = SubResource("AtlasTexture_pr1ej")
+texture_disabled = SubResource("AtlasTexture_05nbr")
 script = ExtResource("13_trtic")
 
 [node name="WoodAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = -55.0
-offset_top = -484.0
-offset_right = -15.0
-offset_bottom = -461.0
+offset_left = -72.0
+offset_top = -486.0
+offset_right = -16.0
+offset_bottom = -459.985
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "5"
+scroll_active = false
+autowrap_mode = 2
 horizontal_alignment = 1
 
 [node name="PlagueAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = -55.0
-offset_top = -443.0
-offset_right = -15.0
-offset_bottom = -420.0
+offset_left = -72.0
+offset_top = -444.0
+offset_right = -16.0
+offset_bottom = -417.985
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "5"
+scroll_active = false
+autowrap_mode = 2
 horizontal_alignment = 1
 
 [node name="FireAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = -55.0
-offset_top = -400.0
-offset_right = -15.0
-offset_bottom = -377.0
+offset_left = -72.0
+offset_top = -401.0
+offset_right = -16.0
+offset_bottom = -374.985
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "5"
+scroll_active = false
+autowrap_mode = 2
 horizontal_alignment = 1
 
 [node name="MetalAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = -55.0
-offset_top = -359.0
-offset_right = -15.0
-offset_bottom = -336.0
+offset_left = -72.0
+offset_top = -360.0
+offset_right = -16.0
+offset_bottom = -333.985
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "5"
+scroll_active = false
+autowrap_mode = 2
 horizontal_alignment = 1
 
 [node name="CandyAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = -55.0
-offset_top = -315.0
-offset_right = -15.0
-offset_bottom = -292.0
+offset_left = -72.0
+offset_top = -318.0
+offset_right = -16.0
+offset_bottom = -291.985
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "5"
+scroll_active = false
+autowrap_mode = 2
 horizontal_alignment = 1
 
 [node name="CostPrimary" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = -93.0
-offset_top = -267.0
-offset_right = -53.0
-offset_bottom = -244.0
+offset_left = -117.0
+offset_top = -278.0
+offset_right = -62.0
+offset_bottom = -247.995
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "5"
+scroll_active = false
+autowrap_mode = 2
 horizontal_alignment = 1
 
 [node name="CostSecondary" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
-offset_left = -17.0
-offset_top = -267.0
-offset_right = 23.0
-offset_bottom = -244.0
+offset_left = -23.0
+offset_top = -278.0
+offset_right = 32.0
+offset_bottom = -247.995
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "5"
+scroll_active = false
+autowrap_mode = 2
 horizontal_alignment = 1
 
 [node name="HeartIcon" type="Sprite2D" parent="UI"]
@@ -2539,24 +2610,28 @@ position = Vector2(1027, 64)
 texture = SubResource("AtlasTexture_suyxu")
 
 [node name="Health" type="RichTextLabel" parent="UI"]
-custom_minimum_size = Vector2(0, 24.3)
+custom_minimum_size = Vector2(0, 26.435)
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1001.0
-offset_top = -18.0
-offset_right = 1089.0
-offset_bottom = 6.299999
+offset_left = 971.0
+offset_top = -17.000002
+offset_right = 1059.0
+offset_bottom = 9.434998
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "100"
+text = "25"
 scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
 
 [node name="MusketCounter" type="RichTextLabel" parent="UI"]
 custom_minimum_size = Vector2(0, 24.3)
@@ -2566,16 +2641,19 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1001.0
+offset_left = 971.0
 offset_top = 11.0
-offset_right = 1089.0
-offset_bottom = 35.300003
+offset_right = 1059.0
+offset_bottom = 36.770004
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 theme_override_font_sizes/normal_font_size = 32
 text = "100"
 scroll_active = false
+horizontal_alignment = 1
 
 [node name="TowerOptions" type="Control" parent="UI"]
 anchors_preset = 0
@@ -2611,10 +2689,10 @@ texture_hover = SubResource("AtlasTexture_02fa5")
 [node name="Label" type="Label" parent="UI/TowerOptions"]
 custom_minimum_size = Vector2(86.68, 0)
 layout_mode = 0
-offset_left = 113.0
-offset_top = 36.5
-offset_right = 199.68
-offset_bottom = 51.5
+offset_left = 111.5
+offset_top = 33.5
+offset_right = 198.18
+offset_bottom = 48.5
 theme_override_fonts/font = ExtResource("13_kvuet")
 text = "Nearest"
 horizontal_alignment = 2
@@ -2638,13 +2716,14 @@ offset_bottom = 30.0
 texture_normal = SubResource("AtlasTexture_v2yb1")
 texture_pressed = SubResource("AtlasTexture_gxtfn")
 texture_hover = SubResource("AtlasTexture_js0lu")
+texture_disabled = SubResource("AtlasTexture_7025r")
 
 [node name="UpgradeAmount" type="RichTextLabel" parent="UI/TowerOptions"]
 layout_mode = 0
 offset_left = 72.0
-offset_top = 37.0
+offset_top = 33.5
 offset_right = 112.0
-offset_bottom = 60.0
+offset_bottom = 56.5
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 bbcode_enabled = true
 text = "5+5"
@@ -2662,6 +2741,24 @@ text = "Pause"
 layout_mode = 0
 offset_right = 109.92
 offset_bottom = 16.0
+
+[node name="PauseMenu" type="Control" parent="UI"]
+process_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("31_gxtfn")
+
+[node name="MenuBackground_" type="Sprite2D" parent="UI/PauseMenu"]
+position = Vector2(554, 312)
+texture = ExtResource("31_js0lu")
+
+[node name="AudioInterface" parent="UI/PauseMenu" instance=ExtResource("33_twgab")]
+layout_mode = 1
+offset_left = 247.0
+offset_top = 151.0
+offset_right = 247.0
+offset_bottom = 151.0
 
 [node name="Map" type="Node3D" parent="."]
 

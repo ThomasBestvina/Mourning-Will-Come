@@ -45,9 +45,9 @@ const CANDY_COST_SECONDARY: int = 6
 
 const WOOD_COLOR = "[color=fcb103]"
 const PLAGUE_COLOR = "[color=12bc00]"
-const FIRE_COLOR = "[color=ff1231]"
+const FIRE_COLOR = "[color=e07b00]"
 const METAL_COLOR = "[color=00606b]"
-const CANDY_COLOR = "[color=ff21ed]"
+const CANDY_COLOR = "[color=8520f9]"
 
 var first_wave_spawned = false
 
@@ -62,8 +62,9 @@ var enemies = {
 	32: [preload("res://objects/enemies/candyman.tscn"), preload("res://objects/enemies/tree_enemy.tscn")]
 }
 
+
 func _ready() -> void:
-	var gb = enemies[32][0].instantiate()
+	var gb = enemies[11][0].instantiate()
 	$Prim.add_child(gb)
 	#var gb = enemies[3][2].instantiate()
 	#$Prim.add_child(gb)
@@ -132,7 +133,7 @@ func process_ui():
 			$UI/BuyMenu/TurretDescription.text += CANDY_COLOR+str(" with extra attack speed.")
 	
 	if primary == Globals.ETypes.METAL and secondary == Globals.ETypes.WOOD:
-		$UI/BuyMenu/TurretDescription.text = "[color=fc3f3f]A magnet that [color=0003bf] collects drops automatically"
+		$UI/BuyMenu/TurretDescription.text = "[color=fc3f3f]A magnet that [color=8520f9] collects drops automatically"
 	
 	$UI/BuyMenu/Slot1Background.frame = 0 if primary else 1
 	$UI/BuyMenu/Slot2Background.frame = 0 if secondary else 1

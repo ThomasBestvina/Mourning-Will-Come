@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4ok3v3dl3j1s"
-path.s3tc="res://.godot/imported/torcher_zombieBritish.png-6c840a2b8d41f711f38e4d79651edfd2.s3tc.ctex"
+path="res://.godot/imported/torcher_zombieBritish.png-6c840a2b8d41f711f38e4d79651edfd2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "499100f9e8ac86082cde7f4e36aa3fdb"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/3d/enemies/torcher_zombieBritish.png"
-dest_files=["res://.godot/imported/torcher_zombieBritish.png-6c840a2b8d41f711f38e4d79651edfd2.s3tc.ctex"]
+dest_files=["res://.godot/imported/torcher_zombieBritish.png-6c840a2b8d41f711f38e4d79651edfd2.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
