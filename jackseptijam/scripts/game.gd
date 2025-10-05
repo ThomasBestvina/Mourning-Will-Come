@@ -3,7 +3,7 @@ class_name Game
 
 @export var player_health = 25
 var current_difficulty: int = 1
-var points: int = 1
+var points: int = 2
 
 var buying_tower = false
 var bought_tower: Node3D = null
@@ -57,13 +57,13 @@ const TIME_BETWEEN_POINT_INCREASE = 6
 
 var enemies = {
 	3: [preload("res://objects/enemies/rat_enemy.tscn"), preload("res://objects/enemies/shrubkin.tscn"), preload("res://objects/enemies/candyguy.tscn")],
-	8: [preload("res://objects/enemies/torcher.tscn"), preload("res://objects/enemies/plaguedude.tscn"), preload("res://objects/enemies/robotenemy1.tscn")],
-	13: [preload("res://objects/enemies/horse_man.tscn"), preload("res://objects/enemies/robotenemy2.tscn")],
-	25: [preload("res://objects/enemies/candyman.tscn"), preload("res://objects/enemies/tree_enemy.tscn")]
+	11: [preload("res://objects/enemies/torcher.tscn"), preload("res://objects/enemies/plaguedude.tscn"), preload("res://objects/enemies/robotenemy1.tscn")],
+	17: [preload("res://objects/enemies/horse_man.tscn"), preload("res://objects/enemies/robotenemy2.tscn")],
+	32: [preload("res://objects/enemies/candyman.tscn"), preload("res://objects/enemies/tree_enemy.tscn")]
 }
 
 func _ready() -> void:
-	var gb = enemies[8][2].instantiate()
+	var gb = enemies[32][0].instantiate()
 	$Prim.add_child(gb)
 	#var gb = enemies[3][2].instantiate()
 	#$Prim.add_child(gb)

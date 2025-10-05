@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c2kda7jel8ix1"
-path.s3tc="res://.godot/imported/candyCornMG_candyPallette.png-6fd036a30ad28aaf0571b4d64c2a41dd.s3tc.ctex"
+path="res://.godot/imported/candyCornMG_candyPallette.png-6fd036a30ad28aaf0571b4d64c2a41dd.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "a59cf71bf23aeb319aae5aacf3f56e12"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/3d/towers/candyCornMG_candyPallette.png"
-dest_files=["res://.godot/imported/candyCornMG_candyPallette.png-6fd036a30ad28aaf0571b4d64c2a41dd.s3tc.ctex"]
+dest_files=["res://.godot/imported/candyCornMG_candyPallette.png-6fd036a30ad28aaf0571b4d64c2a41dd.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

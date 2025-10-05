@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dibtk7wt672ku"
-path.s3tc="res://.godot/imported/sniper_metalPallette.png-52cfa2a8ba344f9e33d3faa6f88cb9ae.s3tc.ctex"
+path="res://.godot/imported/sniper_metalPallette.png-52cfa2a8ba344f9e33d3faa6f88cb9ae.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "b73e959873dfed37466b246bfdc86a68"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/3d/towers/sniper_metalPallette.png"
-dest_files=["res://.godot/imported/sniper_metalPallette.png-52cfa2a8ba344f9e33d3faa6f88cb9ae.s3tc.ctex"]
+dest_files=["res://.godot/imported/sniper_metalPallette.png-52cfa2a8ba344f9e33d3faa6f88cb9ae.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

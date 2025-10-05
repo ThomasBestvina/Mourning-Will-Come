@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8qn8aovfvvpk"
-path.s3tc="res://.godot/imported/mediumrock_ROCK.png-c3a26a3ddc40154cc2fc848175280c2d.s3tc.ctex"
+path="res://.godot/imported/mediumrock_ROCK.png-c3a26a3ddc40154cc2fc848175280c2d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "a0a5a9a316419da185649d98c48df436"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/3d/props/mediumrock_ROCK.png"
-dest_files=["res://.godot/imported/mediumrock_ROCK.png-c3a26a3ddc40154cc2fc848175280c2d.s3tc.ctex"]
+dest_files=["res://.godot/imported/mediumrock_ROCK.png-c3a26a3ddc40154cc2fc848175280c2d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

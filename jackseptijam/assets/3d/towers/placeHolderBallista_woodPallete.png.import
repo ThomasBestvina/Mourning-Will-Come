@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://db1vdmlx05lka"
-path.s3tc="res://.godot/imported/placeHolderBallista_woodPallete.png-45cbf69ca2de35e9f5e5d39e63933e7d.s3tc.ctex"
+path="res://.godot/imported/placeHolderBallista_woodPallete.png-45cbf69ca2de35e9f5e5d39e63933e7d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "ce52aeecb644c7ef3291c48bacd6e05e"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/3d/towers/placeHolderBallista_woodPallete.png"
-dest_files=["res://.godot/imported/placeHolderBallista_woodPallete.png-45cbf69ca2de35e9f5e5d39e63933e7d.s3tc.ctex"]
+dest_files=["res://.godot/imported/placeHolderBallista_woodPallete.png-45cbf69ca2de35e9f5e5d39e63933e7d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

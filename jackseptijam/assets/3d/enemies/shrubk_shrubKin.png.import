@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dlq18reno4ngk"
-path.s3tc="res://.godot/imported/shrubk_shrubKin.png-6a9731152e8b110ad72d714e47a3eb33.s3tc.ctex"
+path="res://.godot/imported/shrubk_shrubKin.png-6a9731152e8b110ad72d714e47a3eb33.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "d8b783cae7a3b2f04bbf66500714f91b"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/3d/enemies/shrubk_shrubKin.png"
-dest_files=["res://.godot/imported/shrubk_shrubKin.png-6a9731152e8b110ad72d714e47a3eb33.s3tc.ctex"]
+dest_files=["res://.godot/imported/shrubk_shrubKin.png-6a9731152e8b110ad72d714e47a3eb33.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

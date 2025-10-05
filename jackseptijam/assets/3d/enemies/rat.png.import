@@ -2,33 +2,30 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c56x48h6afagc"
-path="res://.godot/imported/horseman_horseGuy.png-37f927af14bbf7dfa8c7922e404c0e00.ctex"
+uid="uid://d1hgtgxjx0u3n"
+path="res://.godot/imported/rat.png-8dee7893a13c880ccbbb9febab74fca9.ctex"
 metadata={
 "vram_texture": false
-}
-generator_parameters={
-"md5": "5829a1fecb2e15298b9cca7f201c58ca"
 }
 
 [deps]
 
-source_file="res://assets/3d/enemies/horseman_horseGuy.png"
-dest_files=["res://.godot/imported/horseman_horseGuy.png-37f927af14bbf7dfa8c7922e404c0e00.ctex"]
+source_file="res://assets/3d/enemies/rat.png"
+dest_files=["res://.godot/imported/rat.png-8dee7893a13c880ccbbb9febab74fca9.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
-compress/hdr_compression=1
-compress/normal_map=0
+compress/hdr_compression=0
+compress/normal_map=2
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
-roughness/mode=0
+roughness/mode=1
 roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1

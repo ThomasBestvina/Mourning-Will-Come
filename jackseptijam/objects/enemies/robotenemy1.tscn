@@ -238,31 +238,6 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = PackedFloat32Array(0, 1, -7.614109e-08, -2.2756012e-08, 0.7071068, 0.7071068, 0.033333335, 1, -7.614109e-08, -2.2756012e-08, 0.7071068, 0.7071068, 0.06666667, 1, -0.015058808, 0.015058707, 0.70694643, 0.70694643, 0.1, 1, -0.055572186, 0.05557208, 0.7049197, 0.7049197, 0.13333334, 1, -0.12804206, 0.12804194, 0.69541734, 0.6954173, 0.16666667, 1, -0.23359315, 0.23359305, 0.6674087, 0.66740865, 0.2, 1, -0.37803978, 0.37803966, 0.59756666, 0.59756666, 0.23333333, 1, -0.5161747, 0.5161747, 0.4832843, 0.48328424, 0.26666668, 1, -0.6180809, 0.61808085, 0.3434765, 0.34347638, 0.3, 1, -0.675936, 0.6759359, 0.207631, 0.20763089, 0.33333334, 1, -0.6998454, 0.6998453, 0.10107661, 0.101076506, 0.36666667, 1, -0.705955, 0.705955, 0.040342774, 0.040342674, 0.4, 1, -0.70703554, 0.70703554, 0.010039649, 0.01003955, 0.41666666, 1, 0.7071068, -0.7071068, -7.614109e-08, 2.2756007e-08)
 
-[sub_resource type="Animation" id="Animation_dt8qb"]
-resource_name = "bigGearAction"
-length = 0.041666668
-tracks/0/type = "rotation_3d"
-tracks/0/imported = true
-tracks/0/enabled = true
-tracks/0/path = NodePath("Armature/Skeleton3D:Bone.002")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -0.10880404, 0, 0, 0.9940632)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = true
-tracks/1/enabled = true
-tracks/1/path = NodePath("Armature/Skeleton3D:gear.L")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -7.6141085e-08, 2.2756009e-08, -0.70710677, 0.70710677)
-tracks/2/type = "rotation_3d"
-tracks/2/imported = true
-tracks/2/enabled = true
-tracks/2/path = NodePath("Armature/Skeleton3D:gear.R")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, -7.6141085e-08, -2.2756005e-08, 0.70710677, 0.70710677)
-
 [sub_resource type="Animation" id="Animation_yu5rm"]
 resource_name = "CubeAction"
 length = 0.041666668
@@ -438,6 +413,31 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = PackedFloat32Array(0, 1, -7.6141085e-08, -2.2756005e-08, 0.70710677, 0.70710677)
 
+[sub_resource type="Animation" id="Animation_dt8qb"]
+resource_name = "bigGearAction"
+length = 0.041666668
+tracks/0/type = "rotation_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:Bone.002")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.10880404, 0, 0, 0.9940632)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D:gear.L")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -7.6141085e-08, 2.2756009e-08, -0.70710677, 0.70710677)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D:gear.R")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -7.6141085e-08, -2.2756005e-08, 0.70710677, 0.70710677)
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5orbh"]
 _data = {
 &"0tpose": SubResource("Animation_8wccl"),
@@ -469,7 +469,7 @@ drop_chance = 0.9
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010906279, 0.5926703, 0.054531336)
 
 [node name="enemyRobot1" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31222367, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.31222367, 0)
 
 [node name="Armature" type="Node3D" parent="enemyRobot1"]
 

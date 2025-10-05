@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bq5g5bkyqnys1"
-path.s3tc="res://.godot/imported/playerDoctor_harvest-1x.png-836f728d9ccd917db37a1d8aec60e72f.s3tc.ctex"
+path="res://.godot/imported/playerDoctor_harvest-1x.png-836f728d9ccd917db37a1d8aec60e72f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/3d/player/playerDoctor_harvest-1x.png"
-dest_files=["res://.godot/imported/playerDoctor_harvest-1x.png-836f728d9ccd917db37a1d8aec60e72f.s3tc.ctex"]
+dest_files=["res://.godot/imported/playerDoctor_harvest-1x.png-836f728d9ccd917db37a1d8aec60e72f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
