@@ -120,6 +120,7 @@ func _on_button_pressed() -> void:
 
 func _on_sell_pressed() -> void:
 	if game.selected_tower == null: return
+	StoatStash.play_sfx(preload("res://assets/sound/sell_tower.wav"), 0.8)
 	game.selected_tower.sell(0.5)
 
 
@@ -148,3 +149,4 @@ func _on_upgrade_pressed() -> void:
 			game.amount_candy -= upgrade_amount_primary
 	
 	game.selected_tower.upgrade()
+	StoatStash.play_sfx(preload("res://assets/sound/upgrade_tower.wav"), 0.8)

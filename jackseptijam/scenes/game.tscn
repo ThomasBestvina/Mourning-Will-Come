@@ -1,4 +1,4 @@
-[gd_scene load_steps=168 format=4 uid="uid://dmafrs8n2rh5q"]
+[gd_scene load_steps=170 format=4 uid="uid://dmafrs8n2rh5q"]
 
 [ext_resource type="Script" uid="uid://chusptfwrxiit" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://l246u8chero8" path="res://objects/towers/plague_tower.tscn" id="3_vtaks"]
@@ -40,6 +40,8 @@
 [ext_resource type="Texture2D" uid="uid://df4adwl5st0av" path="res://assets/2d/hud/paused.png" id="35_7025r"]
 [ext_resource type="Texture2D" uid="uid://dni0wwrxxl3q8" path="res://assets/2d/hud/playbuttonSheet.png" id="36_m4url"]
 [ext_resource type="Texture2D" uid="uid://bcctklpkx6eie" path="res://assets/2d/hud/mainMenuSheet.png" id="37_m4url"]
+[ext_resource type="Script" uid="uid://b8stfwj2neer5" path="res://scripts/end_menu.gd" id="38_0sl42"]
+[ext_resource type="Texture2D" uid="uid://b6lqbqwmt0nh0" path="res://assets/2d/hud/settingsButton.png" id="38_05nbr"]
 [ext_resource type="Texture2D" uid="uid://ccay1pqrqe5ux" path="res://assets/3d/props/tree2_treePallete.png" id="41_pr1ej"]
 [ext_resource type="Texture2D" uid="uid://bhhqooqrmpv5n" path="res://assets/3d/props/tree1_treePallete.png" id="42_05nbr"]
 
@@ -1373,44 +1375,22 @@ region = Rect2(36, 0, 36, 36)
 atlas = ExtResource("6_vtaks")
 region = Rect2(108, 0, 36, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_trtic"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm0al"]
 atlas = ExtResource("6_vtaks")
-region = Rect2(0, 0, 38, 38)
+region = Rect2(0, 0, 36, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ir15t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4re6"]
 atlas = ExtResource("6_vtaks")
-region = Rect2(114, 0, 38, 38)
+region = Rect2(108, 0, 36, 36)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ca42v"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_trtic")
+"texture": SubResource("AtlasTexture_rm0al")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ir15t")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rysoc"]
-atlas = ExtResource("6_vtaks")
-region = Rect2(0, 0, 38, 38)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ssvqc"]
-atlas = ExtResource("6_vtaks")
-region = Rect2(114, 0, 38, 38)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_264po"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rysoc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ssvqc")
+"texture": SubResource("AtlasTexture_i4re6")
 }],
 "loop": true,
 "name": &"default",
@@ -1507,6 +1487,18 @@ region = Rect2(168, 0, 84, 20)
 [sub_resource type="AtlasTexture" id="AtlasTexture_8qswn"]
 atlas = ExtResource("37_m4url")
 region = Rect2(84, 0, 84, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf7vy"]
+atlas = ExtResource("38_05nbr")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8ni1"]
+atlas = ExtResource("38_05nbr")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hbvx"]
+atlas = ExtResource("38_05nbr")
+region = Rect2(40, 0, 40, 40)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ql0t"]
 
@@ -2840,6 +2832,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("12_bt5mj")
 
+[node name="StartLabel" type="RichTextLabel" parent="UI"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 157.0
+offset_right = 987.0
+offset_bottom = 357.0
+theme_override_fonts/normal_font = ExtResource("13_kvuet")
+theme_override_font_sizes/normal_font_size = 64
+text = "PLACE TOWER TO START"
+
 [node name="ProgBar" type="Sprite2D" parent="UI"]
 z_index = -1
 position = Vector2(546, 14)
@@ -3014,16 +3016,15 @@ texture = ExtResource("13_ir15t")
 position = Vector2(-91, -233)
 sprite_frames = SubResource("SpriteFrames_ca42v")
 
-[node name="Slot1" type="Sprite2D" parent="UI/BuyMenu"]
-position = Vector2(-90, -233)
-
 [node name="Slot2Background" type="AnimatedSprite2D" parent="UI/BuyMenu"]
 position = Vector2(3, -233)
-sprite_frames = SubResource("SpriteFrames_264po")
-frame_progress = 0.61571544
+sprite_frames = SubResource("SpriteFrames_ca42v")
+
+[node name="Slot1" type="Sprite2D" parent="UI/BuyMenu"]
+position = Vector2(-91, -233)
 
 [node name="Slot2" type="Sprite2D" parent="UI/BuyMenu"]
-position = Vector2(4, -233)
+position = Vector2(3, -233)
 
 [node name="EqualSlotforeground" type="Sprite2D" parent="UI/BuyMenu"]
 position = Vector2(-39, -190)
@@ -3296,6 +3297,7 @@ text = "Pause"
 
 [node name="PauseMenu" type="Control" parent="UI"]
 process_mode = 3
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -3338,6 +3340,51 @@ scale = Vector2(2, 2)
 texture_normal = SubResource("AtlasTexture_h3rex")
 texture_pressed = SubResource("AtlasTexture_fedci")
 texture_hover = SubResource("AtlasTexture_8qswn")
+
+[node name="EndMenu" type="Control" parent="UI"]
+process_mode = 3
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("38_0sl42")
+
+[node name="MenuBackground_" type="Sprite2D" parent="UI/EndMenu"]
+position = Vector2(554, 312)
+texture = ExtResource("31_js0lu")
+
+[node name="MainMenuButton" type="TextureButton" parent="UI/EndMenu"]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 431.0
+offset_right = 555.0
+offset_bottom = 451.0
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_h3rex")
+texture_pressed = SubResource("AtlasTexture_fedci")
+texture_hover = SubResource("AtlasTexture_8qswn")
+
+[node name="ResumeButton" type="TextureButton" parent="UI/EndMenu"]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 384.0
+offset_right = 555.0
+offset_bottom = 404.0
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_0sl42")
+texture_pressed = SubResource("AtlasTexture_oaba0")
+texture_hover = SubResource("AtlasTexture_458eo")
+
+[node name="SettingsButton" type="TextureButton" parent="UI"]
+process_mode = 3
+layout_mode = 0
+offset_left = 1098.0
+offset_top = 13.0
+offset_right = 1138.0
+offset_bottom = 53.0
+texture_normal = SubResource("AtlasTexture_pf7vy")
+texture_pressed = SubResource("AtlasTexture_o8ni1")
+texture_hover = SubResource("AtlasTexture_3hbvx")
 
 [node name="Map" type="Node3D" parent="."]
 
@@ -7286,5 +7333,8 @@ shape = SubResource("ConvexPolygonShape3D_rm0al")
 [connection signal="toggled" from="UI/Button" to="." method="_on_pause_button_toggled"]
 [connection signal="pressed" from="UI/PauseMenu/ResumeButton" to="UI/PauseMenu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/MainMenuButton" to="UI/PauseMenu" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="UI/EndMenu/MainMenuButton" to="UI/EndMenu" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="UI/EndMenu/ResumeButton" to="UI/EndMenu" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="UI/SettingsButton" to="UI" method="_on_texture_button_pressed"]
 [connection signal="timeout" from="IncreaseDifficulty" to="." method="_on_increase_difficulty_timeout"]
 [connection signal="timeout" from="IncreasePoints" to="." method="_on_increase_points_timeout"]
