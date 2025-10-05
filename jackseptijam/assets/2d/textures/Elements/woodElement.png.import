@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bynwiofaudko"
-path.s3tc="res://.godot/imported/woodElement.png-75faa00169b4b7e22d7b4d50590b0a80.s3tc.ctex"
+path="res://.godot/imported/woodElement.png-75faa00169b4b7e22d7b4d50590b0a80.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/2d/textures/Elements/woodElement.png"
-dest_files=["res://.godot/imported/woodElement.png-75faa00169b4b7e22d7b4d50590b0a80.s3tc.ctex"]
+dest_files=["res://.godot/imported/woodElement.png-75faa00169b4b7e22d7b4d50590b0a80.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

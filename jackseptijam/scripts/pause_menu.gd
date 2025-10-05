@@ -8,6 +8,7 @@ func _input(event):
 
 func _process(delta: float) -> void:
 	visible = get_tree().paused
+	$AudioInterface.visible = visible
 
 
 func _on_resume_button_pressed() -> void:

@@ -1,22 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bppe7qhl2sabi"]
+[gd_scene load_steps=8 format=3 uid="uid://bppe7qhl2sabi"]
 
-[ext_resource type="Script" uid="uid://bpoqure2okwvo" path="res://scripts/pause_menu.gd" id="1_1sggn"]
+[ext_resource type="Script" uid="uid://da284e7xgosb5" path="res://scripts/options.gd" id="1_1sggn"]
 [ext_resource type="Texture2D" uid="uid://5rruvf02ol70" path="res://assets/2d/hud/menuBackground..png" id="2_e6vpq"]
 [ext_resource type="PackedScene" uid="uid://dfh32oqrosx0k" path="res://objects/audio_interface.tscn" id="3_o7i7e"]
-[ext_resource type="Texture2D" uid="uid://dni0wwrxxl3q8" path="res://assets/2d/hud/playbuttonSheet.png" id="4_uon5e"]
 [ext_resource type="Texture2D" uid="uid://bcctklpkx6eie" path="res://assets/2d/hud/mainMenuSheet.png" id="5_85aq5"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gycth"]
-atlas = ExtResource("4_uon5e")
-region = Rect2(0, 0, 39, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gyu1t"]
-atlas = ExtResource("4_uon5e")
-region = Rect2(78, 0, 39, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g5hix"]
-atlas = ExtResource("4_uon5e")
-region = Rect2(39, 0, 39, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rftt1"]
 atlas = ExtResource("5_85aq5")
@@ -37,46 +24,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="PauseMenu" type="Control" parent="."]
-process_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 script = ExtResource("1_1sggn")
 
-[node name="MenuBackground_" type="Sprite2D" parent="PauseMenu"]
+[node name="MenuBackground_" type="Sprite2D" parent="."]
 position = Vector2(554, 312)
 texture = ExtResource("2_e6vpq")
 
-[node name="AudioInterface" parent="PauseMenu" instance=ExtResource("3_o7i7e")]
+[node name="AudioInterface" parent="." instance=ExtResource("3_o7i7e")]
 layout_mode = 1
 offset_left = 449.0
 offset_top = 239.0
 offset_right = 449.0
 offset_bottom = 239.0
 
-[node name="ResumeButton" type="TextureButton" parent="PauseMenu"]
-layout_mode = 0
-offset_left = 516.0
-offset_top = 431.0
-offset_right = 555.0
-offset_bottom = 451.0
-scale = Vector2(2, 2)
-texture_normal = SubResource("AtlasTexture_gycth")
-texture_pressed = SubResource("AtlasTexture_gyu1t")
-texture_hover = SubResource("AtlasTexture_g5hix")
-
-[node name="MainMenuButton" type="TextureButton" parent="PauseMenu"]
+[node name="MainMenuButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 471.0
-offset_top = 377.0
+offset_top = 420.0
 offset_right = 555.0
-offset_bottom = 397.0
+offset_bottom = 440.0
 scale = Vector2(2, 2)
 texture_normal = SubResource("AtlasTexture_rftt1")
 texture_pressed = SubResource("AtlasTexture_0un6s")
 texture_hover = SubResource("AtlasTexture_kywri")
 
-[connection signal="pressed" from="PauseMenu/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]
-[connection signal="pressed" from="PauseMenu/MainMenuButton" to="PauseMenu" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
