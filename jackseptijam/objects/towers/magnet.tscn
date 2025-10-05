@@ -104,9 +104,8 @@ material = SubResource("StandardMaterial3D_71fe3")
 inner_radius = 3.9
 outer_radius = 4.0
 
-[node name="magnet" type="Node3D" node_paths=PackedStringArray("spawn_point", "range_display_mesh")]
+[node name="magnet" type="Node3D" node_paths=PackedStringArray("range_display_mesh")]
 script = ExtResource("1_vv3vn")
-spawn_point = NodePath("")
 projectile_scene = ExtResource("2_7xlim")
 cooldown = 0.5
 range_display_mesh = NodePath("RangeDisplayMesh")
@@ -153,6 +152,9 @@ mesh = SubResource("TorusMesh_7xlim")
 [node name="RangeDisplayMeshRed" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("TorusMesh_qafhy")
+
+[node name="Chevrons" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2447708, 0)
 
 [connection signal="mouse_entered" from="Selector" to="." method="_on_selector_mouse_entered"]
 [connection signal="mouse_exited" from="Selector" to="." method="_on_selector_mouse_exited"]

@@ -18,6 +18,8 @@ var is_on_ground = false
 
 var grade: int = 1
 
+@onready var chevrons = preload("res://objects/upgrade_chevron.tscn")
+
 func _ready() -> void:
 	add_to_group("tower")
 	if secondary == Globals.ETypes.WOOD:
@@ -53,6 +55,7 @@ func _ready() -> void:
 				i.get_surface_override_material(0).set_texture(0, preload("res://assets/2d/textures/Palletes/candyPallette.png"))
 
 func _process(delta: float) -> void:
+	$Chevrons.visible = $RangeDisplayMesh.visible or $RangeDisplayMeshRed.visible
 	if hovered and Input.is_action_just_pressed("place_tower") and get_viewport().gui_get_hovered_control() == null:
 		emit_signal("selected", self)
 		is_selected = true
@@ -106,6 +109,12 @@ func upgrade():
 	$RangeDisplayMesh.mesh.outer_radius = fire_range
 	$RangeDisplayMeshRed.mesh.inner_radius = fire_range-0.1
 	$RangeDisplayMeshRed.mesh.outer_radius = fire_range
+	add_chevron()
+
+func add_chevron():
+	var cc = chevrons.instantiate()
+	$Chevrons.add_child(cc)
+	cc.position += Vector3(0,0,0.8-grade/3.5)
 
 func _on_static_body_3d_mouse_entered() -> void:
 	hovered = true

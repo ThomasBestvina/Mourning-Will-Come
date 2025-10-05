@@ -395,5 +395,8 @@ mesh = SubResource("TorusMesh_84g5q")
 visible = false
 mesh = SubResource("TorusMesh_hca0o")
 
+[node name="Chevrons" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0699015, 0)
+
 [connection signal="mouse_entered" from="Selector" to="." method="_on_selector_mouse_entered"]
 [connection signal="mouse_exited" from="Selector" to="." method="_on_selector_mouse_exited"]

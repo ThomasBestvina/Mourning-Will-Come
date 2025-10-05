@@ -24,11 +24,11 @@ var selected_tower: Node3D
 
 var placed_first_turret: bool = false
 
-var amount_wood: int = 8
-var amount_plague: int = 0
-var amount_fire: int = 0
-var amount_metal: int = 0
-var amount_candy: int = 0
+var amount_wood: int = 500
+var amount_plague: int = 50
+var amount_fire: int = 50
+var amount_metal: int = 50
+var amount_candy: int = 50
 var amount_musket_balls: int = 5
 
 const WOOD_COST_PRIMARY: int = 4
@@ -64,10 +64,12 @@ var enemies = {
 
 
 func _ready() -> void:
-	#var gb = enemies[11][0].instantiate()
+	#var gb: Enemy = enemies[17][1].instantiate()
 	#$Prim.add_child(gb)
-	#var gb = enemies[3][2].instantiate()
+	#StoatStash.safe_signal_connect(gb.enemy_win, enemy_win)
+	#gb = enemies[3][0].instantiate()
 	#$Prim.add_child(gb)
+	#StoatStash.safe_signal_connect(gb.enemy_win, enemy_win)
 	pass
 
 func _process(delta: float) -> void:
@@ -149,6 +151,8 @@ func spawn_first_wave():
 
 func enemy_win(point):
 	player_health -= point
+	print(point)
+	StoatStash.play_sfx(preload("res://assets/sound/lose.wav"), 0.8)
 
 func enemy_die(type, amount):
 	return

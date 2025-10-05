@@ -365,7 +365,7 @@ walk_string = "1walk"
 max_speed = 9.0
 max_health = 14.0
 strength_score = 2.5
-points = 6
+points = 2
 type = 3
 max_drops = 3
 

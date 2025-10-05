@@ -35,6 +35,8 @@ var can_fire = true
 
 var grade: int = 1
 
+@onready var chevrons = preload("res://objects/upgrade_chevron.tscn")
+
 func _ready() -> void:
 	add_to_group("tower")
 	StoatStash.safe_signal_connect($Timer.timeout, _on_timer_timeout)
@@ -60,6 +62,7 @@ func place():
 	await StoatStash.repeat_call(choose_target, 0.1)
 
 func _process(delta: float) -> void:
+	$Chevrons.visible = $RangeDisplayMesh.visible or $RangeDisplayMeshRed.visible
 	if target == null or target.global_position.distance_squared_to(global_position) >= fire_range**2: 
 		choose_target()
 	
@@ -91,11 +94,16 @@ func upgrade():
 	grade += 1
 	fire_range += 0.2
 	if($RangeDisplayMesh.mesh):
-		$RangeDisplayMesh.mesh.inner_radius = fire_range-0.2
 		$RangeDisplayMesh.mesh.outer_radius = fire_range
-		$RangeDisplayMeshRed.mesh.inner_radius = fire_range-0.2
+		$RangeDisplayMesh.mesh.inner_radius = fire_range-0.2
 		$RangeDisplayMeshRed.mesh.outer_radius = fire_range
+		$RangeDisplayMeshRed.mesh.inner_radius = fire_range-0.2
+	add_chevron()
 
+func add_chevron():
+	var cc = chevrons.instantiate()
+	$Chevrons.add_child(cc)
+	cc.position += Vector3(0,0,0.8-grade/3.5)
 
 func is_near_other_tower() -> bool:
 	for i: Node3D in get_tree().get_nodes_in_group("tower"):
@@ -114,7 +122,7 @@ func shoot():
 	if(secondary == Globals.ETypes.METAL):
 		projectile.damage = projectile.damage * 1.25 + grade
 	can_fire = false
-	$Timer.start(cooldown - grade/4)
+	$Timer.start(cooldown - min(grade/5.0, cooldown-0.2) )
 
 func choose_target():
 	var possibilities = get_tree().get_nodes_in_group("enemy")

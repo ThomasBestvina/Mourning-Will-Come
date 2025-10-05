@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbju4orufv6ga"]
+
+[ext_resource type="Texture2D" uid="uid://dnpnhm62up5o8" path="res://assets/2d/hud/upgrade.png" id="1_ie7ir"]
+
+[node name="UpgradeChevron" type="Sprite3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 1
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_ie7ir")

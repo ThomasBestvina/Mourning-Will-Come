@@ -1,5 +1,7 @@
 extends Control
 
+func _ready() -> void:
+	StoatStash.play_music(preload("res://assets/music/main menu.wav"), 1.0)
 
 func _on_play_pressed() -> void:
 	StoatStash.change_scene_with_simple_transition("res://scenes/game.tscn", 1.0)

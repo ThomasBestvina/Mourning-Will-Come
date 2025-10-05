@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3gml4ecyo3mb"
-path="res://.godot/imported/heartAndMusketBall.png-72219015079da873cbff7b6b10b0d581.ctex"
+uid="uid://dnpnhm62up5o8"
+path="res://.godot/imported/upgrade.png-2dfcc8b62952d1947373734ed1868838.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/2d/hud/heartAndMusketBall.png"
-dest_files=["res://.godot/imported/heartAndMusketBall.png-72219015079da873cbff7b6b10b0d581.ctex"]
+source_file="res://assets/2d/hud/upgrade.png"
+dest_files=["res://.godot/imported/upgrade.png-2dfcc8b62952d1947373734ed1868838.ctex"]
 
 [params]
 

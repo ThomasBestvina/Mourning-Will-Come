@@ -39,6 +39,7 @@ func upgrade():
 	$RangeDisplayMesh.mesh.outer_radius = 1.0
 	$RangeDisplayMeshRed.mesh.inner_radius = 0.9
 	$RangeDisplayMeshRed.mesh.outer_radius = 1.0
+	add_chevron()
 
 func _on_selector_mouse_entered() -> void:
 	hovered = true
