@@ -2737,11 +2737,6 @@ offset_bottom = 31.0
 toggle_mode = true
 text = "Pause"
 
-[node name="VolumeSlider" type="HSlider" parent="UI"]
-layout_mode = 0
-offset_right = 109.92
-offset_bottom = 16.0
-
 [node name="PauseMenu" type="Control" parent="UI"]
 process_mode = 3
 anchors_preset = 0
@@ -2867,6 +2862,5 @@ shape = SubResource("ConcavePolygonShape3D_suyxu")
 [connection signal="pressed" from="UI/TowerOptions/NextTargetMode" to="UI/TowerOptions" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/TowerOptions/Upgrade" to="UI/TowerOptions" method="_on_upgrade_pressed"]
 [connection signal="toggled" from="UI/Button" to="." method="_on_pause_button_toggled"]
-[connection signal="drag_ended" from="UI/VolumeSlider" to="UI" method="_on_volume_slider_drag_ended"]
 [connection signal="timeout" from="IncreaseDifficulty" to="." method="_on_increase_difficulty_timeout"]
 [connection signal="timeout" from="IncreasePoints" to="." method="_on_increase_points_timeout"]

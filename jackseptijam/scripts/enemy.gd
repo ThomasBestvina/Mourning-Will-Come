@@ -49,12 +49,13 @@ func _ready() -> void:
 	if(anim_player):
 		anim_player.play(walk_string)
 		StoatStash.safe_signal_connect(anim_player.animation_finished, anim_finished)
+	
 	health_display = healthbar_display_preload.instantiate()
 	add_child(health_display)
 	health_display.top_level = true
 	
-	health += get_parent().get_parent().current_difficulty*3
-	max_health += get_parent().get_parent().current_difficulty*3
+	max_health += max(get_parent().get_parent().current_difficulty-3,0)*3
+	
 	plague_particles = plague_preload.instantiate()
 	add_child(plague_particles)
 	plague_particles.restart()
@@ -148,7 +149,9 @@ func give_fire(seconds):
 	modifier_stack["fire"] += seconds
 
 func take_damage(damage: float):
+	print(health)
 	health -= damage
+	print(health)
 
 func anim_finished(_unused):
 	anim_player.play(walk_string)
