@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dbr73tgtwc2nn"
-path="res://.godot/imported/shrubkin.glb-d23ba378ccbde74c437e554c2d5338af.scn"
+path="res://.godot/imported/shrubk.glb-31b8be996517b3311373e597fef399bf.scn"
 
 [deps]
 
-source_file="res://assets/3d/enemies/shrubkin.glb"
-dest_files=["res://.godot/imported/shrubkin.glb-d23ba378ccbde74c437e554c2d5338af.scn"]
+source_file="res://assets/3d/enemies/shrubk.glb"
+dest_files=["res://.godot/imported/shrubk.glb-31b8be996517b3311373e597fef399bf.scn"]
 
 [params]
 
