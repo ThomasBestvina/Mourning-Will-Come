@@ -8,7 +8,7 @@ var game: Game
 
 enum targetting_mode {STRONGEST, NEAREST, LAST, FIRST}
 
-@export var target_mode: targetting_mode = targetting_mode.NEAREST
+@export var target_mode: targetting_mode = targetting_mode.FIRST
 @export var spawn_point: Node3D
 @export var fire_range: float = 8
 @export var projectile_scene: PackedScene

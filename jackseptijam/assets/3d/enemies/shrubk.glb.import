@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b2cs84xrylbwt"
-path="res://.godot/imported/shrubKin.glb-55440986c5a7cfa20f3d29921bb5a72c.scn"
+uid="uid://dbr73tgtwc2nn"
+path="res://.godot/imported/shrubk.glb-31b8be996517b3311373e597fef399bf.scn"
 
 [deps]
 
-source_file="res://assets/3d/enemies/shrubKin.glb"
-dest_files=["res://.godot/imported/shrubKin.glb-55440986c5a7cfa20f3d29921bb5a72c.scn"]
+source_file="res://assets/3d/enemies/shrubk.glb"
+dest_files=["res://.godot/imported/shrubk.glb-31b8be996517b3311373e597fef399bf.scn"]
 
 [params]
 

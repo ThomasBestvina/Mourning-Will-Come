@@ -4,7 +4,7 @@ extends Control
 
 var just_selected = false
 
-var in_pos = Vector2(282, 585)
+var in_pos = Vector2(282, 534)
 var out_pos = Vector2(282, 652)
 
 var target_mode_order = [Tower.targetting_mode.STRONGEST, Tower.targetting_mode.NEAREST, Tower.targetting_mode.LAST, Tower.targetting_mode.FIRST]
@@ -97,8 +97,8 @@ func _process(delta: float) -> void:
 					should_disable = true
 		$Upgrade.disabled = should_disable
 		
-		
-	else:
+	
+	if(game.selected_tower is Magnet):
 		$Upgrade.hide()
 		$UpgradeAmount.hide()
 	

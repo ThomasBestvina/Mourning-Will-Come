@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=4 uid="uid://dmafrs8n2rh5q"]
+[gd_scene load_steps=104 format=4 uid="uid://dmafrs8n2rh5q"]
 
 [ext_resource type="Script" uid="uid://chusptfwrxiit" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://l246u8chero8" path="res://objects/towers/plague_tower.tscn" id="3_vtaks"]
@@ -28,7 +28,10 @@
 [ext_resource type="Texture2D" uid="uid://cj2umognv6ttb" path="res://assets/2d/hud/progbar.png" id="25_sww3w"]
 [ext_resource type="Texture2D" uid="uid://beopud633whsa" path="res://assets/3d/props/rock_ROCK.png" id="26_bhx41"]
 [ext_resource type="Texture2D" uid="uid://cql7x5k6sdei3" path="res://assets/3d/props/smallrock_ROCK.png" id="26_qnb83"]
+[ext_resource type="Texture2D" uid="uid://bh66ury18vts1" path="res://assets/2d/hud/sellButtonSheet.png" id="26_qouja"]
 [ext_resource type="Texture2D" uid="uid://stnohvfrgt8p" path="res://assets/2d/hud/nextButtonSheet.png" id="26_suyxu"]
+[ext_resource type="Texture2D" uid="uid://b6tlp2b8oq1gg" path="res://assets/2d/hud/towerOptionsBackground.png" id="26_wljb1"]
+[ext_resource type="Texture2D" uid="uid://deapiym8dy65f" path="res://assets/2d/hud/upgradeButtonSheet.png" id="27_sgl2t"]
 
 [sub_resource type="Curve3D" id="Curve3D_qnb83"]
 _data = {
@@ -1398,6 +1401,18 @@ load_path = "res://.godot/imported/heartAndMusketBall.png-72219015079da873cbff7b
 atlas = SubResource("CompressedTexture2D_sww3w")
 region = Rect2(23, 0, 22, 22)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_twgab"]
+atlas = ExtResource("26_qouja")
+region = Rect2(0, 0, 32, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nepv3"]
+atlas = ExtResource("26_qouja")
+region = Rect2(64, 0, 32, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02fa5"]
+atlas = ExtResource("26_qouja")
+region = Rect2(32, 0, 32, 20)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qouja"]
 atlas = ExtResource("26_suyxu")
 region = Rect2(0, 0, 20, 26)
@@ -1409,6 +1424,18 @@ region = Rect2(20, 0, 20, 26)
 [sub_resource type="AtlasTexture" id="AtlasTexture_wljb1"]
 atlas = ExtResource("26_suyxu")
 region = Rect2(40, 0, 20, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2yb1"]
+atlas = ExtResource("27_sgl2t")
+region = Rect2(0, 0, 68, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxtfn"]
+atlas = ExtResource("27_sgl2t")
+region = Rect2(136, 0, 68, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js0lu"]
+atlas = ExtResource("27_sgl2t")
+region = Rect2(68, 0, 68, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ql0t"]
 
@@ -2553,58 +2580,71 @@ scroll_active = false
 [node name="TowerOptions" type="Control" parent="UI"]
 anchors_preset = 0
 offset_left = 282.0
-offset_top = 652.0
+offset_top = 651.0
 offset_right = 322.0
-offset_bottom = 692.0
+offset_bottom = 691.0
+scale = Vector2(2, 2)
 script = ExtResource("15_ir15t")
 
 [node name="Panel" type="Panel" parent="UI/TowerOptions"]
 layout_mode = 0
-offset_right = 410.91
-offset_bottom = 61.95
+offset_left = 55.5
+offset_top = 4.5
+offset_right = 95.5
+offset_bottom = 44.5
+scale = Vector2(4.1444864, 1.1580625)
 
-[node name="Sell" type="Button" parent="UI/TowerOptions"]
+[node name="TowerOptionsBackground" type="Sprite2D" parent="UI/TowerOptions"]
+position = Vector2(139, 28)
+texture = ExtResource("26_wljb1")
+
+[node name="Sell" type="TextureButton" parent="UI/TowerOptions"]
 layout_mode = 0
-offset_left = 362.0
-offset_top = 16.0
-offset_right = 397.0
-offset_bottom = 47.0
-text = "Sell"
+offset_left = 135.0
+offset_top = 10.0
+offset_right = 167.0
+offset_bottom = 30.0
+texture_normal = SubResource("AtlasTexture_twgab")
+texture_pressed = SubResource("AtlasTexture_nepv3")
+texture_hover = SubResource("AtlasTexture_02fa5")
 
 [node name="Label" type="Label" parent="UI/TowerOptions"]
 custom_minimum_size = Vector2(86.68, 0)
 layout_mode = 0
-offset_left = 157.0
-offset_top = 25.0
-offset_right = 243.68
-offset_bottom = 40.0
+offset_left = 113.0
+offset_top = 36.5
+offset_right = 199.68
+offset_bottom = 51.5
 theme_override_fonts/font = ExtResource("13_kvuet")
 text = "Nearest"
 horizontal_alignment = 2
 
 [node name="NextTargetMode" type="TextureButton" parent="UI/TowerOptions"]
 layout_mode = 0
-offset_left = 247.0
-offset_top = 19.0
-offset_right = 267.0
-offset_bottom = 59.0
+offset_left = 200.0
+offset_top = 23.0
+offset_right = 220.0
+offset_bottom = 49.0
 texture_normal = SubResource("AtlasTexture_qouja")
 texture_pressed = SubResource("AtlasTexture_sgl2t")
 texture_hover = SubResource("AtlasTexture_wljb1")
 
-[node name="Upgrade" type="Button" parent="UI/TowerOptions"]
+[node name="Upgrade" type="TextureButton" parent="UI/TowerOptions"]
 layout_mode = 0
-offset_left = 16.0
-offset_right = 91.0
-offset_bottom = 31.0
-text = "Upgrade"
+offset_left = 60.0
+offset_top = 10.0
+offset_right = 128.0
+offset_bottom = 30.0
+texture_normal = SubResource("AtlasTexture_v2yb1")
+texture_pressed = SubResource("AtlasTexture_gxtfn")
+texture_hover = SubResource("AtlasTexture_js0lu")
 
 [node name="UpgradeAmount" type="RichTextLabel" parent="UI/TowerOptions"]
 layout_mode = 0
-offset_left = 29.0
-offset_top = 33.0
-offset_right = 69.0
-offset_bottom = 56.0
+offset_left = 72.0
+offset_top = 37.0
+offset_right = 112.0
+offset_bottom = 60.0
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 bbcode_enabled = true
 text = "5+5"

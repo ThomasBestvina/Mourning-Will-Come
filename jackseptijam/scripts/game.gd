@@ -24,11 +24,11 @@ var selected_tower: Node3D
 
 var placed_first_turret: bool = false
 
-var amount_wood: int = 30
-var amount_plague: int = 30
-var amount_fire: int = 30
-var amount_metal: int = 30
-var amount_candy: int = 30
+var amount_wood: int = 8
+var amount_plague: int = 0
+var amount_fire: int = 0
+var amount_metal: int = 0
+var amount_candy: int = 0
 var amount_musket_balls: int = 5
 
 const WOOD_COST_PRIMARY: int = 4
@@ -61,6 +61,12 @@ var enemies = {
 	13: [preload("res://objects/enemies/horse_man.tscn"), preload("res://objects/enemies/robotenemy2.tscn")],
 	25: [preload("res://objects/enemies/candyman.tscn"), preload("res://objects/enemies/tree_enemy.tscn")]
 }
+
+func _ready() -> void:
+	var gb = enemies[8][2].instantiate()
+	$Prim.add_child(gb)
+	#var gb = enemies[3][2].instantiate()
+	#$Prim.add_child(gb)
 
 func _process(delta: float) -> void:
 	manage_player_input()

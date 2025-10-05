@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://xqb2k6lfi7se"
-path="res://.godot/imported/candyGuy.glb-ebdb55a7617d5a46444996f49c0f1874.scn"
+uid="uid://06cjmw2mc2ch"
+path="res://.godot/imported/RAT.glb-0783b485c33dae9fca54e0ed68a2d932.scn"
 
 [deps]
 
-source_file="res://assets/3d/enemies/candyGuy.glb"
-dest_files=["res://.godot/imported/candyGuy.glb-ebdb55a7617d5a46444996f49c0f1874.scn"]
+source_file="res://assets/3d/enemies/RAT.glb"
+dest_files=["res://.godot/imported/RAT.glb-0783b485c33dae9fca54e0ed68a2d932.scn"]
 
 [params]
 
