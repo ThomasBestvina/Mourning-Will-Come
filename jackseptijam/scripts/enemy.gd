@@ -7,6 +7,7 @@ signal died(type, amount)
 
 @export var fire_placement: Node3D
 @export var anim_player: AnimationPlayer
+@export var walk_string: String = "1Walk"
 
 @export_category("Properties")
 @export var max_speed = 2.0
@@ -46,7 +47,8 @@ var modifier_stack = {
 
 func _ready() -> void:
 	if(anim_player):
-		anim_player.play("1Walk")
+		anim_player.play(walk_string)
+		StoatStash.safe_signal_connect(anim_player.animation_finished, anim_finished)
 	health_display = healthbar_display_preload.instantiate()
 	add_child(health_display)
 	health_display.top_level = true
@@ -147,3 +149,6 @@ func give_fire(seconds):
 
 func take_damage(damage: float):
 	health -= damage
+
+func anim_finished(_unused):
+	anim_player.play(walk_string)

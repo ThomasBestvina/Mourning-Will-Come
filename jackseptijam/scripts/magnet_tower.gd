@@ -17,7 +17,7 @@ func shoot():
 		return
 	for i: Pickable  in get_tree().get_nodes_in_group("pickable"):
 		if i.global_position.distance_to(global_position) <= fire_range:
-			i.collect()
+			i.collect(false)
 	can_fire = false
 	$Timer.start(cooldown)
 

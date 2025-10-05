@@ -29,7 +29,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if not body is Player: return
 	collect()
 
-func collect():
+func collect(playsound: bool = true):
 	if is_musket:
 		game.amount_musket_balls += 1
 		kill()
@@ -46,8 +46,8 @@ func collect():
 			game.amount_fire += 1
 		Globals.ETypes.CANDY:
 			game.amount_candy += 1
-	kill()
+	kill(playsound)
 
-func kill():
-	StoatStash.play_sfx(preload("res://assets/sound/pickupCoin.wav"), 0.6, 0.8)
+func kill(playsound: bool = true):
+	if playsound: StoatStash.play_sfx(preload("res://assets/sound/pickupCoin.wav"), 0.5, 0.8)
 	queue_free()
