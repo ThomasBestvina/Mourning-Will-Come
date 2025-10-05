@@ -352,27 +352,27 @@ shadow_mesh = SubResource("ArrayMesh_q745j")
 [sub_resource type="BoxShape3D" id="BoxShape3D_fee88"]
 size = Vector3(1.0448608, 1.1323013, 1.0369263)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8dqi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ps3fj"]
 shading_mode = 0
-albedo_color = Color(0.31156835, 0.6934903, 1.92523e-07, 0.30588236)
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.24800551, 0.4673366, 0, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_05eul"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_l8dqi")
-top_radius = 1.0
-bottom_radius = 1.0
-height = 0.1
+[sub_resource type="TorusMesh" id="TorusMesh_l8dqi"]
+material = SubResource("StandardMaterial3D_ps3fj")
+inner_radius = 3.9
+outer_radius = 4.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsr7p"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7fe4t"]
 shading_mode = 0
-albedo_color = Color(0.6179467, 0, 0.04415907, 0.30588236)
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.67912847, 0, 0.0023653377, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_2v12p"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_hsr7p")
-top_radius = 1.0
-bottom_radius = 1.0
-height = 0.1
+[sub_resource type="TorusMesh" id="TorusMesh_05eul"]
+material = SubResource("StandardMaterial3D_7fe4t")
+inner_radius = 3.9
+outer_radius = 4.0
 
 [node name="candy_tower" type="Node3D" node_paths=PackedStringArray("spawn_point", "range_display_mesh")]
 script = ExtResource("1_a4r8e")
@@ -464,16 +464,14 @@ target_position = Vector3(0, -0.165, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50319356, 0.09360695, 0.6834228)
 target_position = Vector3(0, -0.165, 0)
 
+[node name="Timer" type="Timer" parent="."]
+
 [node name="RangeDisplayMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09607899, 0, 0.25576067)
-visible = false
-mesh = SubResource("CylinderMesh_05eul")
+mesh = SubResource("TorusMesh_l8dqi")
 
 [node name="RangeDisplayMeshRed" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09607899, 0, 0.25576067)
-mesh = SubResource("CylinderMesh_2v12p")
-
-[node name="Timer" type="Timer" parent="."]
+visible = false
+mesh = SubResource("TorusMesh_05eul")
 
 [connection signal="mouse_entered" from="Selector" to="." method="_on_selector_mouse_entered"]
 [connection signal="mouse_exited" from="Selector" to="." method="_on_selector_mouse_exited"]

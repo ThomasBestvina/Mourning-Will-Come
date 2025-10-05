@@ -30,12 +30,12 @@ func _ready() -> void:
 	
 	$StaticBody3D/CollisionShape3D.disabled = true
 	$RangeDisplayMesh.mesh = $RangeDisplayMesh.mesh.duplicate()
-	$RangeDisplayMesh.mesh.top_radius = fire_range
-	$RangeDisplayMesh.mesh.bottom_radius = fire_range
+	$RangeDisplayMesh.mesh.inner_radius = fire_range-0.2
+	$RangeDisplayMesh.mesh.outer_radius = fire_range
 	$RangeDisplayMesh.show()
 	$RangeDisplayMeshRed.mesh = $RangeDisplayMeshRed.mesh.duplicate()
-	$RangeDisplayMeshRed.mesh.top_radius = fire_range
-	$RangeDisplayMeshRed.mesh.bottom_radius = fire_range
+	$RangeDisplayMeshRed.mesh.inner_radius = fire_range-0.2
+	$RangeDisplayMeshRed.mesh.outer_radius = fire_range
 	$RangeDisplayMeshRed.show()
 	var lst = [$Cube, $Cube_001, $Cube_002]
 	for i in lst:
@@ -102,10 +102,10 @@ func fire():
 func upgrade():
 	grade += 1
 	fire_range += 0.4
-	$RangeDisplayMesh.mesh.top_radius = fire_range
-	$RangeDisplayMesh.mesh.bottom_radius = fire_range
-	$RangeDisplayMeshRed.mesh.top_radius = fire_range
-	$RangeDisplayMeshRed.mesh.bottom_radius = fire_range
+	$RangeDisplayMesh.mesh.inner_radius = fire_range-0.1
+	$RangeDisplayMesh.mesh.outer_radius = fire_range
+	$RangeDisplayMeshRed.mesh.inner_radius = fire_range-0.1
+	$RangeDisplayMeshRed.mesh.outer_radius = fire_range
 
 func _on_static_body_3d_mouse_entered() -> void:
 	hovered = true

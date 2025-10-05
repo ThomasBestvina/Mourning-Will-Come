@@ -111,27 +111,27 @@ shadow_mesh = SubResource("ArrayMesh_5akel")
 height = 0.5930176
 radius = 0.71777344
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdh6c"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ox6ym"]
 shading_mode = 0
-albedo_color = Color(0.31156835, 0.6934903, 1.92523e-07, 0.30588236)
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.24800551, 0.4673366, 0, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_ox6ym"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_jdh6c")
-top_radius = 1.0
-bottom_radius = 1.0
-height = 0.1
+[sub_resource type="TorusMesh" id="TorusMesh_oo2u8"]
+material = SubResource("StandardMaterial3D_ox6ym")
+inner_radius = 3.9
+outer_radius = 4.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oo2u8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic7v0"]
 shading_mode = 0
-albedo_color = Color(0.6179467, 0, 0.04415907, 0.30588236)
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.67912847, 0, 0.0023653377, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_ic7v0"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_oo2u8")
-top_radius = 1.0
-bottom_radius = 1.0
-height = 0.1
+[sub_resource type="TorusMesh" id="TorusMesh_nkrkf"]
+material = SubResource("StandardMaterial3D_ic7v0")
+inner_radius = 3.9
+outer_radius = 4.0
 
 [node name="plague_tower" type="Node3D"]
 script = ExtResource("1_q8iwh")
@@ -173,15 +173,15 @@ target_position = Vector3(0, -0.165, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56238526, 0.09360671, 0.65741575)
 target_position = Vector3(0, -0.165, 0)
 
-[node name="RangeDisplayMesh" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("CylinderMesh_ox6ym")
-
-[node name="RangeDisplayMeshRed" type="MeshInstance3D" parent="."]
-mesh = SubResource("CylinderMesh_ic7v0")
-
 [node name="PlagueParticle" parent="." instance=ExtResource("3_ox6ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34383798, 0)
+
+[node name="RangeDisplayMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_oo2u8")
+
+[node name="RangeDisplayMeshRed" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("TorusMesh_nkrkf")
 
 [connection signal="mouse_entered" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_entered"]
 [connection signal="mouse_exited" from="StaticBody3D" to="." method="_on_static_body_3d_mouse_exited"]

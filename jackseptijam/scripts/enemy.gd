@@ -149,9 +149,7 @@ func give_fire(seconds):
 	modifier_stack["fire"] += seconds
 
 func take_damage(damage: float):
-	print(health)
 	health -= damage
-	print(health)
 
 func anim_finished(_unused):
 	anim_player.play(walk_string)

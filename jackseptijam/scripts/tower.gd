@@ -42,12 +42,12 @@ func _ready() -> void:
 		fire_range *= 1.25
 	if($RangeDisplayMesh.mesh):
 		$RangeDisplayMesh.mesh = $RangeDisplayMesh.mesh.duplicate()
-		$RangeDisplayMesh.mesh.top_radius = fire_range
-		$RangeDisplayMesh.mesh.bottom_radius = fire_range
+		$RangeDisplayMesh.mesh.inner_radius = fire_range-0.2
+		$RangeDisplayMesh.mesh.outer_radius = fire_range
 		$RangeDisplayMesh.show()
 		$RangeDisplayMeshRed.mesh = $RangeDisplayMeshRed.mesh.duplicate()
-		$RangeDisplayMeshRed.mesh.top_radius = fire_range
-		$RangeDisplayMeshRed.mesh.bottom_radius = fire_range
+		$RangeDisplayMeshRed.mesh.inner_radius = fire_range-0.2
+		$RangeDisplayMeshRed.mesh.outer_radius = fire_range
 		$RangeDisplayMeshRed.show()
 
 func place():
@@ -91,10 +91,10 @@ func upgrade():
 	grade += 1
 	fire_range += 0.2
 	if($RangeDisplayMesh.mesh):
-		$RangeDisplayMesh.mesh.top_radius = fire_range
-		$RangeDisplayMesh.mesh.bottom_radius = fire_range
-		$RangeDisplayMeshRed.mesh.top_radius = fire_range
-		$RangeDisplayMeshRed.mesh.bottom_radius = fire_range
+		$RangeDisplayMesh.mesh.inner_radius = fire_range-0.2
+		$RangeDisplayMesh.mesh.outer_radius = fire_range
+		$RangeDisplayMeshRed.mesh.inner_radius = fire_range-0.2
+		$RangeDisplayMeshRed.mesh.outer_radius = fire_range
 
 
 func is_near_other_tower() -> bool:
