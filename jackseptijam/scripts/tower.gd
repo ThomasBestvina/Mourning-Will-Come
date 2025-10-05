@@ -33,6 +33,8 @@ var is_on_ground: bool = false
 
 var can_fire = true
 
+var grade: int = 1
+
 func _ready() -> void:
 	add_to_group("tower")
 	StoatStash.safe_signal_connect($Timer.timeout, _on_timer_timeout)
@@ -85,6 +87,15 @@ func _process(delta: float) -> void:
 		$RangeDisplayMesh.hide()
 		$RangeDisplayMeshRed.hide()
 
+func upgrade():
+	grade += 1
+	fire_range += 0.2
+	if($RangeDisplayMesh.mesh):
+		$RangeDisplayMesh.mesh.top_radius = fire_range
+		$RangeDisplayMesh.mesh.bottom_radius = fire_range
+		$RangeDisplayMeshRed.mesh.top_radius = fire_range
+		$RangeDisplayMeshRed.mesh.bottom_radius = fire_range
+
 
 func is_near_other_tower() -> bool:
 	for i: Node3D in get_tree().get_nodes_in_group("tower"):
@@ -101,9 +112,9 @@ func shoot():
 	projectile.effect = secondary
 	projectile.setup_projectile(spawn_point.global_position,target)
 	if(secondary == Globals.ETypes.METAL):
-		projectile.damage = projectile.damage * 1.25
+		projectile.damage = projectile.damage * 1.25 + grade
 	can_fire = false
-	$Timer.start(cooldown)
+	$Timer.start(cooldown - grade/4)
 
 func choose_target():
 	var possibilities = get_tree().get_nodes_in_group("enemy")

@@ -15,7 +15,7 @@ material = SubResource("StandardMaterial3D_5hmw3")
 curve = SubResource("Curve3D_ligi4")
 script = ExtResource("1_xjfm1")
 speed = 18.0
-damage = 5.0
+damage = 6.0
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
 

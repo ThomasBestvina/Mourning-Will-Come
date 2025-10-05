@@ -24,11 +24,11 @@ var selected_tower: Node3D
 
 var placed_first_turret: bool = false
 
-var amount_wood: int = 1000
-var amount_plague: int = 1000
-var amount_fire: int = 1000
-var amount_metal: int = 1000
-var amount_candy: int = 1000
+var amount_wood: int = 30
+var amount_plague: int = 30
+var amount_fire: int = 30
+var amount_metal: int = 30
+var amount_candy: int = 30
 var amount_musket_balls: int = 5
 
 const WOOD_COST_PRIMARY: int = 4

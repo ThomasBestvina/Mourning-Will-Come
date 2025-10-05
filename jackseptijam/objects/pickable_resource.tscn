@@ -1,60 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1rc0b8rg3xtw"]
+[gd_scene load_steps=11 format=3 uid="uid://c1rc0b8rg3xtw"]
 
 [ext_resource type="Script" uid="uid://cd0ujxnxhfuad" path="res://scripts/pickable_resource.gd" id="1_o6v8f"]
+[ext_resource type="Texture2D" uid="uid://c3gml4ecyo3mb" path="res://assets/2d/hud/heartAndMusketBall.png" id="2_p4m8j"]
+[ext_resource type="Texture2D" uid="uid://cem0o12dbfpk2" path="res://assets/2d/textures/Elements/candyElement.png" id="3_ams0u"]
+[ext_resource type="Texture2D" uid="uid://ctw85qo28ojiy" path="res://assets/2d/textures/Elements/fireElement.png" id="4_kek7i"]
+[ext_resource type="Texture2D" uid="uid://bynwiofaudko" path="res://assets/2d/textures/Elements/woodElement.png" id="5_gla5h"]
+[ext_resource type="Texture2D" uid="uid://cwhtohvweyj5" path="res://assets/2d/textures/Elements/metalElement.png" id="6_bdxq8"]
+[ext_resource type="Texture2D" uid="uid://1sujlq2p4md6" path="res://assets/2d/textures/Elements/plagueElement.png" id="7_fkqu1"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p4m8j"]
-shading_mode = 0
-albedo_color = Color(0.066369876, 0.06005297, 0.04618685, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_ams0u"]
-material = SubResource("StandardMaterial3D_p4m8j")
-radius = 0.3
-height = 0.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6v8f"]
-shading_mode = 0
-albedo_color = Color(0.73100805, 0.00015334458, 0.645613, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_o6v8f"]
-material = SubResource("StandardMaterial3D_o6v8f")
-radius = 0.3
-height = 0.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ams0u"]
-shading_mode = 0
-albedo_color = Color(0.7416526, 0, 0.15008083, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_l4oiw"]
-material = SubResource("StandardMaterial3D_ams0u")
-radius = 0.3
-height = 0.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4oiw"]
-shading_mode = 0
-albedo_color = Color(0.3131498, 0.15446019, 7.219613e-08, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_xh54f"]
-material = SubResource("StandardMaterial3D_l4oiw")
-radius = 0.3
-height = 0.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xh54f"]
-shading_mode = 0
-albedo_color = Color(0.1247428, 0.24712682, 0.2824756, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_4nltg"]
-material = SubResource("StandardMaterial3D_xh54f")
-radius = 0.3
-height = 0.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nltg"]
-shading_mode = 0
-albedo_color = Color(0.09856998, 0.1687521, 7.219613e-08, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_kek7i"]
-material = SubResource("StandardMaterial3D_4nltg")
-radius = 0.3
-height = 0.6
+[sub_resource type="AtlasTexture" id="AtlasTexture_ams0u"]
+atlas = ExtResource("2_p4m8j")
+region = Rect2(22, 0, 20, 20)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o6v8f"]
 radius = 1.0198852
@@ -70,43 +26,62 @@ script = ExtResource("1_o6v8f")
 [node name="Musket" type="Node3D" parent="."]
 visible = false
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Musket"]
-mesh = SubResource("SphereMesh_ams0u")
+[node name="Sprite3D" type="Sprite3D" parent="Musket"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+billboard = 1
+alpha_cut = 1
+texture_filter = 0
+texture = SubResource("AtlasTexture_ams0u")
 
 [node name="Candy" type="Node3D" parent="."]
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Candy"]
-mesh = SubResource("SphereMesh_o6v8f")
-skeleton = NodePath("../../Musket")
+[node name="Sprite3D2" type="Sprite3D" parent="Candy"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+billboard = 1
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("3_ams0u")
 
 [node name="Fire" type="Node3D" parent="."]
 visible = false
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Fire"]
-mesh = SubResource("SphereMesh_l4oiw")
-skeleton = NodePath("../../Musket")
+[node name="Sprite3D3" type="Sprite3D" parent="Fire"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+billboard = 1
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("4_kek7i")
 
 [node name="Wood" type="Node3D" parent="."]
 visible = false
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Wood"]
-mesh = SubResource("SphereMesh_xh54f")
-skeleton = NodePath("../../Musket")
+[node name="Sprite3D4" type="Sprite3D" parent="Wood"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+billboard = 1
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("5_gla5h")
 
 [node name="Metal" type="Node3D" parent="."]
 visible = false
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Metal"]
-mesh = SubResource("SphereMesh_4nltg")
-skeleton = NodePath("../../Musket")
+[node name="Sprite3D5" type="Sprite3D" parent="Metal"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+billboard = 1
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("6_bdxq8")
 
 [node name="Plague" type="Node3D" parent="."]
 visible = false
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Plague"]
-mesh = SubResource("SphereMesh_kek7i")
-skeleton = NodePath("../../Musket")
+[node name="Sprite3D6" type="Sprite3D" parent="Plague"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+billboard = 1
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("7_fkqu1")
 
 [node name="Area3D" type="Area3D" parent="."]
 

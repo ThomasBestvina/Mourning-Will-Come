@@ -6,6 +6,7 @@ signal enemy_win(points)
 signal died(type, amount)
 
 @export var fire_placement: Node3D
+@export var anim_player: AnimationPlayer
 
 @export_category("Properties")
 @export var max_speed = 2.0
@@ -34,13 +35,24 @@ var fire_particles: GPUParticles3D
 
 @onready var death_explosion = preload("res://objects/explode.tscn")
 
+@onready var healthbar_display_preload = preload("res://objects/healthbar_display.tscn")
+
+var health_display: Node3D
+
 var modifier_stack = {
 	"plague": 0,
 	"fire": 0
 }
 
 func _ready() -> void:
-	health += get_parent().get_parent().current_difficulty*2
+	if(anim_player):
+		anim_player.play("1Walk")
+	health_display = healthbar_display_preload.instantiate()
+	add_child(health_display)
+	health_display.top_level = true
+	
+	health += get_parent().get_parent().current_difficulty*3
+	max_health += get_parent().get_parent().current_difficulty*3
 	plague_particles = plague_preload.instantiate()
 	add_child(plague_particles)
 	plague_particles.restart()
@@ -48,6 +60,7 @@ func _ready() -> void:
 	
 	fire_particles = fire_preload.instantiate()
 	add_child(fire_particles)
+	fire_particles.scale = Vector3(0.8,0.8,0.8)
 	fire_particles.restart()
 	fire_particles.emitting = true
 	
@@ -55,6 +68,9 @@ func _ready() -> void:
 	speed = max_speed
 
 func _process(delta: float) -> void:
+	health_display.global_position = global_position + Vector3(0,2,2)
+	health_display.get_node("SubViewport/TextureProgressBar").value = health/max_health * 100
+	
 	fire_particles.global_position = fire_placement.global_position
 	set_progress(get_progress() + speed * delta)
 	if health <= 0:

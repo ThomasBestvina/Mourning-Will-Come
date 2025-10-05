@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3gml4ecyo3mb"
-path.s3tc="res://.godot/imported/heartAndMusketBall.png-72219015079da873cbff7b6b10b0d581.s3tc.ctex"
+uid="uid://c56x48h6afagc"
+path.s3tc="res://.godot/imported/horseman_horseGuy.png-37f927af14bbf7dfa8c7922e404c0e00.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "5829a1fecb2e15298b9cca7f201c58ca"
+}
 
 [deps]
 
-source_file="res://assets/2d/hud/heartAndMusketBall.png"
-dest_files=["res://.godot/imported/heartAndMusketBall.png-72219015079da873cbff7b6b10b0d581.s3tc.ctex"]
+source_file="res://assets/3d/enemies/horseman_horseGuy.png"
+dest_files=["res://.godot/imported/horseman_horseGuy.png-37f927af14bbf7dfa8c7922e404c0e00.s3tc.ctex"]
 
 [params]
 

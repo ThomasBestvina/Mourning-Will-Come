@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://db8qwjk1jf5ro"]
+
+[ext_resource type="PackedScene" uid="uid://d136rq8dtb1v1" path="res://objects/texture_progress_bar.tscn" id="1_3ewsk"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3ewsk"]
+viewport_path = NodePath("SubViewport")
+
+[node name="HealthbarDisplay" type="Node3D"]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(64, 4)
+
+[node name="TextureProgressBar" parent="SubViewport" instance=ExtResource("1_3ewsk")]
+offset_right = 64.0
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 1
+transparent = false
+texture_filter = 0
+texture = SubResource("ViewportTexture_3ewsk")

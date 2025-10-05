@@ -33,6 +33,8 @@ func _process(delta: float) -> void:
 		$Rotator.rotation.x = 0
 		$Rotator.rotation.z = 0
 
+func upgrade():
+	grade += 1
 
 func _on_selector_mouse_entered() -> void:
 	hovered = true

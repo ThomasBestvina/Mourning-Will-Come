@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://d136rq8dtb1v1"]
+
+[ext_resource type="Texture2D" uid="uid://dx37adnffhqst" path="res://assets/2d/hud/healthBarSheet.png" id="1_43swa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mya47"]
+atlas = ExtResource("1_43swa")
+region = Rect2(128, 0, 64, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_na7d5"]
+atlas = ExtResource("1_43swa")
+region = Rect2(0, 0, 64, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43swa"]
+atlas = ExtResource("1_43swa")
+region = Rect2(64, 0, 64, 4)
+
+[node name="TextureProgressBar" type="TextureProgressBar"]
+offset_right = 40.0
+offset_bottom = 40.0
+value = 100.0
+texture_under = SubResource("AtlasTexture_mya47")
+texture_over = SubResource("AtlasTexture_na7d5")
+texture_progress = SubResource("AtlasTexture_43swa")

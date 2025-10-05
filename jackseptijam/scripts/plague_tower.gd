@@ -16,6 +16,8 @@ var is_selected: bool = false
 var is_placed: bool = false
 var is_on_ground = false
 
+var grade: int = 1
+
 func _ready() -> void:
 	add_to_group("tower")
 	if secondary == Globals.ETypes.WOOD:
@@ -84,19 +86,26 @@ func place():
 	$RangeDisplayMesh.visible = false
 	await StoatStash.repeat_call(fire, cooldown)
 
-
 func fire():
 	$PlagueParticle.restart()
 	for enemy: Enemy in get_tree().get_nodes_in_group("enemy"):
 		if enemy.global_position.distance_squared_to(global_position) <= fire_range**2:
-			enemy.give_plague(plague_duration)
+			enemy.give_plague(plague_duration+grade/2.0)
 			if secondary == Globals.ETypes.FIRE:
 				enemy.give_fire(1.5)
 			if secondary == Globals.ETypes.METAL:
-				enemy.take_damage(2)
+				enemy.take_damage(2+grade/4.0)
 	$PlagueParticle.emitting = true
 	StoatStash.play_sfx_3d(preload("res://assets/sound/plaguetower_fire.wav"), global_position, 0.6)
 
+
+func upgrade():
+	grade += 1
+	fire_range += 0.4
+	$RangeDisplayMesh.mesh.top_radius = fire_range
+	$RangeDisplayMesh.mesh.bottom_radius = fire_range
+	$RangeDisplayMeshRed.mesh.top_radius = fire_range
+	$RangeDisplayMeshRed.mesh.bottom_radius = fire_range
 
 func _on_static_body_3d_mouse_entered() -> void:
 	hovered = true

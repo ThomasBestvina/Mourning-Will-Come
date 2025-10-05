@@ -14,8 +14,8 @@ material = SubResource("StandardMaterial3D_l6fxl")
 [node name="CannonProjectile" type="Path3D"]
 curve = SubResource("Curve3D_ligi4")
 script = ExtResource("1_l6fxl")
-radius = 4.0
-damage = 4.0
+radius = 3.5
+damage = 3.8
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
 

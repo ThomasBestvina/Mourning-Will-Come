@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b545swvyr11wh"]
+
+[ext_resource type="Texture2D" uid="uid://duyx1rwoanl27" path="res://assets/2d/hud/pickupkey.png" id="1_ex2ll"]
+[ext_resource type="Texture2D" uid="uid://d2wpl6ea4hdlm" path="res://assets/2d/hud/enemykey.png" id="2_yk20f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_41qn3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ex2ll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_yk20f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Key" type="AnimatedSprite2D"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_41qn3")
+frame = 1

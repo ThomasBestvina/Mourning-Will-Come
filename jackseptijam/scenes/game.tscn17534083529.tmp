@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=4 uid="uid://dmafrs8n2rh5q"]
+[gd_scene load_steps=91 format=4 uid="uid://dmafrs8n2rh5q"]
 
 [ext_resource type="Script" uid="uid://chusptfwrxiit" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://l246u8chero8" path="res://objects/towers/plague_tower.tscn" id="3_vtaks"]
@@ -28,7 +28,6 @@
 [ext_resource type="Texture2D" uid="uid://cj2umognv6ttb" path="res://assets/2d/hud/progbar.png" id="25_sww3w"]
 [ext_resource type="Texture2D" uid="uid://beopud633whsa" path="res://assets/3d/props/rock_ROCK.png" id="26_bhx41"]
 [ext_resource type="Texture2D" uid="uid://cql7x5k6sdei3" path="res://assets/3d/props/smallrock_ROCK.png" id="26_qnb83"]
-[ext_resource type="Texture2D" uid="uid://stnohvfrgt8p" path="res://assets/2d/hud/nextButtonSheet.png" id="26_suyxu"]
 
 [sub_resource type="Curve3D" id="Curve3D_qnb83"]
 _data = {
@@ -1398,18 +1397,6 @@ load_path = "res://.godot/imported/heartAndMusketBall.png-72219015079da873cbff7b
 atlas = SubResource("CompressedTexture2D_sww3w")
 region = Rect2(23, 0, 22, 22)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qouja"]
-atlas = ExtResource("26_suyxu")
-region = Rect2(0, 0, 20, 26)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sgl2t"]
-atlas = ExtResource("26_suyxu")
-region = Rect2(20, 0, 20, 26)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wljb1"]
-atlas = ExtResource("26_suyxu")
-region = Rect2(40, 0, 20, 26)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ql0t"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qpdnc"]
@@ -2563,6 +2550,23 @@ layout_mode = 0
 offset_right = 410.91
 offset_bottom = 61.95
 
+[node name="NextTargetMode" type="Button" parent="UI/TowerOptions"]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 17.0
+offset_right = 261.0
+offset_bottom = 48.0
+text = ">"
+
+[node name="Label" type="Label" parent="UI/TowerOptions"]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 24.0
+offset_right = 219.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("13_kvuet")
+text = "Nearest"
+
 [node name="Sell" type="Button" parent="UI/TowerOptions"]
 layout_mode = 0
 offset_left = 362.0
@@ -2570,45 +2574,6 @@ offset_top = 16.0
 offset_right = 397.0
 offset_bottom = 47.0
 text = "Sell"
-
-[node name="Label" type="Label" parent="UI/TowerOptions"]
-custom_minimum_size = Vector2(86.68, 0)
-layout_mode = 0
-offset_left = 157.0
-offset_top = 25.0
-offset_right = 243.68
-offset_bottom = 40.0
-theme_override_fonts/font = ExtResource("13_kvuet")
-text = "Nearest"
-horizontal_alignment = 2
-
-[node name="NextTargetMode" type="TextureButton" parent="UI/TowerOptions"]
-layout_mode = 0
-offset_left = 247.0
-offset_top = 19.0
-offset_right = 267.0
-offset_bottom = 59.0
-texture_normal = SubResource("AtlasTexture_qouja")
-texture_pressed = SubResource("AtlasTexture_sgl2t")
-texture_hover = SubResource("AtlasTexture_wljb1")
-
-[node name="Upgrade" type="Button" parent="UI/TowerOptions"]
-layout_mode = 0
-offset_left = 16.0
-offset_right = 91.0
-offset_bottom = 31.0
-text = "Upgrade"
-
-[node name="UpgradeAmount" type="RichTextLabel" parent="UI/TowerOptions"]
-layout_mode = 0
-offset_left = 29.0
-offset_top = 33.0
-offset_right = 69.0
-offset_bottom = 56.0
-theme_override_fonts/normal_font = ExtResource("13_kvuet")
-bbcode_enabled = true
-text = "5+5"
-horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="UI"]
 layout_mode = 0
@@ -2726,9 +2691,8 @@ shape = SubResource("ConcavePolygonShape3D_suyxu")
 [connection signal="pressed" from="UI/BuyMenu/SecondSlotButtons/Metal" to="." method="_on_metal_pressed2"]
 [connection signal="pressed" from="UI/BuyMenu/SecondSlotButtons/Candy" to="." method="_on_candy_pressed3"]
 [connection signal="pressed" from="UI/BuyMenu/BuyButton" to="." method="_on_buy_button_pressed"]
-[connection signal="pressed" from="UI/TowerOptions/Sell" to="UI/TowerOptions" method="_on_sell_pressed"]
 [connection signal="pressed" from="UI/TowerOptions/NextTargetMode" to="UI/TowerOptions" method="_on_button_pressed"]
-[connection signal="pressed" from="UI/TowerOptions/Upgrade" to="UI/TowerOptions" method="_on_upgrade_pressed"]
+[connection signal="pressed" from="UI/TowerOptions/Sell" to="UI/TowerOptions" method="_on_sell_pressed"]
 [connection signal="toggled" from="UI/Button" to="." method="_on_pause_button_toggled"]
 [connection signal="drag_ended" from="UI/VolumeSlider" to="UI" method="_on_volume_slider_drag_ended"]
 [connection signal="timeout" from="IncreaseDifficulty" to="." method="_on_increase_difficulty_timeout"]
