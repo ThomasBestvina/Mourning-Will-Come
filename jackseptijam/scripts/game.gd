@@ -64,9 +64,9 @@ var enemies = {
 
 
 func _ready() -> void:
-	#var gb: Enemy = enemies[17][1].instantiate()
-	#$Prim.add_child(gb)
-	#StoatStash.safe_signal_connect(gb.enemy_win, enemy_win)
+	var gb: Enemy = enemies[3][1].instantiate()
+	$Prim.add_child(gb)
+	StoatStash.safe_signal_connect(gb.enemy_win, enemy_win)
 	#gb = enemies[3][0].instantiate()
 	#$Prim.add_child(gb)
 	#StoatStash.safe_signal_connect(gb.enemy_win, enemy_win)
