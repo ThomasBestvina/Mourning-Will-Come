@@ -42,58 +42,58 @@ func _process(delta: float) -> void:
 		if game.selected_tower is Balista:
 			$UpgradeAmount.text += game.WOOD_COLOR+str(upgrade_amount_primary)+"+"
 			upgrade_type_primary = Globals.ETypes.WOOD
-			if(game.amount_wood <= upgrade_amount_primary):
+			if(game.amount_wood < upgrade_amount_primary):
 				should_disable = true
-			if game.selected_tower.secondary == Globals.ETypes.WOOD and game.amount_wood <= upgrade_amount_primary*2:
+			if game.selected_tower.secondary == Globals.ETypes.WOOD and game.amount_wood < upgrade_amount_primary*2:
 				should_disable = true
 		if game.selected_tower is Plague:
 			$UpgradeAmount.text += game.PLAGUE_COLOR+str(upgrade_amount_primary)+"+"
 			upgrade_type_primary = Globals.ETypes.PLAGUE
-			if(game.amount_plague <= upgrade_amount_primary):
+			if(game.amount_plague < upgrade_amount_primary):
 				should_disable = true
-			if game.selected_tower.secondary == Globals.ETypes.PLAGUE and game.amount_plague <= upgrade_amount_primary*2:
+			if game.selected_tower.secondary == Globals.ETypes.PLAGUE and game.amount_plague < upgrade_amount_primary*2:
 				should_disable = true
 		if game.selected_tower is Sniper:
 			$UpgradeAmount.text += game.METAL_COLOR+str(upgrade_amount_primary)+"+"
 			upgrade_type_primary = Globals.ETypes.METAL
-			if(game.amount_metal <= upgrade_amount_primary):
+			if(game.amount_metal < upgrade_amount_primary):
 				should_disable = true
-			if game.selected_tower.secondary == Globals.ETypes.METAL and game.amount_metal <= upgrade_amount_primary*2:
+			if game.selected_tower.secondary == Globals.ETypes.METAL and game.amount_metal < upgrade_amount_primary*2:
 				should_disable = true
 		if game.selected_tower is Cannon:
 			$UpgradeAmount.text += game.FIRE_COLOR+str(upgrade_amount_primary)+"+"
 			upgrade_type_primary = Globals.ETypes.FIRE
-			if(game.amount_fire <= upgrade_amount_primary):
+			if(game.amount_fire < upgrade_amount_primary):
 				should_disable = true
-			if game.selected_tower.secondary == Globals.ETypes.FIRE and game.amount_fire <= upgrade_amount_primary*2:
+			if game.selected_tower.secondary == Globals.ETypes.FIRE and game.amount_fire < upgrade_amount_primary*2:
 				should_disable = true
 		if game.selected_tower is CandyCannon:
 			$UpgradeAmount.text += game.CANDY_COLOR+str(upgrade_amount_primary)+"+"
 			upgrade_type_primary = Globals.ETypes.CANDY
-			if(game.amount_candy <= upgrade_amount_primary):
+			if(game.amount_candy < upgrade_amount_primary):
 				should_disable = true
-			if game.selected_tower.secondary == Globals.ETypes.CANDY and game.amount_candy <= upgrade_amount_primary*2:
+			if game.selected_tower.secondary == Globals.ETypes.CANDY and game.amount_candy < upgrade_amount_primary*2:
 				should_disable = true
 		match game.selected_tower.secondary:
 			Globals.ETypes.WOOD:
 				$UpgradeAmount.text += game.WOOD_COLOR+str(upgrade_amount_primary)
-				if(game.amount_wood <= upgrade_amount_primary):
+				if(game.amount_wood < upgrade_amount_primary):
 					should_disable = true
 			Globals.ETypes.PLAGUE:
 				$UpgradeAmount.text += game.PLAGUE_COLOR+str(upgrade_amount_primary)
-				if(game.amount_plague <= upgrade_amount_primary):
+				if(game.amount_plague < upgrade_amount_primary):
 					should_disable = true
 			Globals.ETypes.METAL:
 				$UpgradeAmount.text += game.METAL_COLOR+str(upgrade_amount_primary)
-				if(game.amount_metal <= upgrade_amount_primary):
+				if(game.amount_metal < upgrade_amount_primary):
 					should_disable = true
 			Globals.ETypes.FIRE:
 				$UpgradeAmount.text += game.FIRE_COLOR+str(upgrade_amount_primary)
-				if(game.amount_fire <= upgrade_amount_primary):
+				if(game.amount_fire < upgrade_amount_primary):
 					should_disable = true
 			Globals.ETypes.CANDY:
 				$UpgradeAmount.text += game.CANDY_COLOR+str(upgrade_amount_primary)
-				if(game.amount_candy <= upgrade_amount_primary):
+				if(game.amount_candy < upgrade_amount_primary):
 					should_disable = true
 		$Upgrade.disabled = should_disable
 		

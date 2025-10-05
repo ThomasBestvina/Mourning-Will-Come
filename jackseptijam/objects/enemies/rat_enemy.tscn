@@ -430,8 +430,8 @@ shadow_mesh = SubResource("ArrayMesh_gngfs")
 [node name="RatEnemy" type="PathFollow3D" node_paths=PackedStringArray("fire_placement") groups=["enemy"]]
 script = ExtResource("1_4trik")
 fire_placement = NodePath("Node3D")
-max_speed = 6.5
-max_health = 7.0
+max_speed = 5.5
+max_health = 5.0
 type = 1
 drop_chance = 0.6
 
