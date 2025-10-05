@@ -25,7 +25,7 @@ var secondary = Globals.ETypes.WOOD
 var did_call: bool = false
 
 var hovered: bool = false
-var is_selected: bool = false
+var is_selected: bool = true
 
 var is_placed: bool = false
 
@@ -54,11 +54,10 @@ func _ready() -> void:
 
 func place():
 	is_placed = true
+	hovered = true
 	range_display_mesh.visible = false
-	if(secondary == Globals.ETypes.CANDY):
-		await StoatStash.repeat_call(shoot, cooldown-cooldown/20)
-	else:
-		await StoatStash.repeat_call(shoot, cooldown)
+	emit_signal("selected", self)
+	is_selected = true
 	await StoatStash.repeat_call(choose_target, 0.1)
 
 func _process(delta: float) -> void:

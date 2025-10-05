@@ -11,9 +11,11 @@ config_version=5
 [application]
 
 config/name="Mourning Will Come"
+config/description="A tower defense about killing things to build more towers."
 run/main_scene="uid://d5ieg34hnt1x"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://df132ojaw1cah"
+config/windows_native_icon="res://assets/2d/gameIcon.ico"
 
 [autoload]
 
@@ -23,6 +25,8 @@ Globals="*res://scripts/globals.gd"
 [display]
 
 window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
+mouse_cursor/custom_image="uid://eh6lhcsisdfq"
 
 [filesystem]
 

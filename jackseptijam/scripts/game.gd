@@ -1,7 +1,7 @@
 extends Node3D
 class_name Game
 
-@export var player_health = 25
+@export var player_health = 1
 var current_difficulty: int = 1
 var points: int = 2
 
@@ -24,11 +24,11 @@ var selected_tower: Node3D
 
 var placed_first_turret: bool = false
 
-var amount_wood: int = 500
-var amount_plague: int = 50
-var amount_fire: int = 50
-var amount_metal: int = 50
-var amount_candy: int = 50
+var amount_wood: int = 8
+var amount_plague: int = 0
+var amount_fire: int = 0
+var amount_metal: int = 0
+var amount_candy: int = 0
 var amount_musket_balls: int = 5
 
 const WOOD_COST_PRIMARY: int = 4
@@ -55,22 +55,15 @@ const TIME_BETWEEN_WAVES = 8
 const TIME_BETWEEN_DIFFICULTY_INCREASE = 30
 const TIME_BETWEEN_POINT_INCREASE = 6
 
+var has_died = false
+
 var enemies = {
 	3: [preload("res://objects/enemies/rat_enemy.tscn"), preload("res://objects/enemies/shrubkin.tscn"), preload("res://objects/enemies/candyguy.tscn")],
-	11: [preload("res://objects/enemies/torcher.tscn"), preload("res://objects/enemies/plaguedude.tscn"), preload("res://objects/enemies/robotenemy1.tscn")],
-	17: [preload("res://objects/enemies/horse_man.tscn"), preload("res://objects/enemies/robotenemy2.tscn")],
-	32: [preload("res://objects/enemies/candyman.tscn"), preload("res://objects/enemies/tree_enemy.tscn")]
+	11: [preload("res://objects/enemies/torcher.tscn"), preload("res://objects/enemies/robotenemy1.tscn")],
+	17: [preload("res://objects/enemies/horse_man.tscn"), preload("res://objects/enemies/robotenemy2.tscn"), preload("res://objects/enemies/plaguedude.tscn")],
+	32: [preload("res://objects/enemies/candyman.tscn"), preload("res://objects/enemies/tree_enemy.tscn")],
+	100: [preload("res://objects/enemies/boss.tscn")]
 }
-
-
-func _ready() -> void:
-	var gb: Enemy = enemies[3][1].instantiate()
-	$Prim.add_child(gb)
-	StoatStash.safe_signal_connect(gb.enemy_win, enemy_win)
-	#gb = enemies[3][0].instantiate()
-	#$Prim.add_child(gb)
-	#StoatStash.safe_signal_connect(gb.enemy_win, enemy_win)
-	pass
 
 func _process(delta: float) -> void:
 	manage_player_input()
@@ -79,6 +72,9 @@ func _process(delta: float) -> void:
 		spawn_enemies()
 	if selected_tower != null and not selected_tower.is_selected:
 		selected_tower = null
+	
+	if player_health <= 0:
+		has_died = true
 
 func increase_difficulty():
 	if(Globals.wave_paused): return
@@ -253,11 +249,17 @@ func manage_player_input():
 			StoatStash.safe_signal_connect(bought_tower.selected, selected)
 			StoatStash.safe_signal_connect(bought_tower.deselected, deselected)
 			bought_tower.place()
+			for i in $Towers.get_children():
+				i.is_selected = false
+			selected_tower = bought_tower
+			bought_tower.is_selected = true
 			bought_tower = null
 			buying_tower = false
 			if(not placed_first_turret and not Globals.wave_paused):
+				
 				$IncreaseDifficulty.start(TIME_BETWEEN_DIFFICULTY_INCREASE)
 				$IncreasePoints.start(TIME_BETWEEN_POINT_INCREASE)
+				$UI/StartLabel.hide()
 				StoatStash.repeat_call(increase_difficulty, 30.0)
 				StoatStash.repeat_call(increase_points, 10.0)
 				spawn_first_wave()
@@ -270,6 +272,7 @@ func manage_player_input():
 			StoatStash.play_sfx(preload("res://assets/sound/failed_tower_place.wav"))
 		if Input.is_action_just_pressed("cancel"):
 			bought_tower.sell(1.0)
+			StoatStash.play_sfx(preload("res://assets/sound/sell_tower.wav"), 0.8)
 			bought_tower = null
 			buying_tower = false
 		

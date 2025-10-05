@@ -106,7 +106,7 @@ func die():
 func _physics_process(delta: float) -> void:
 	if modifier_stack["plague"] > 0:
 		if StoatStash.chance(0.03):
-			take_damage(max_health/30)
+			take_damage(max_health/100)
 		modifier_stack["plague"] -= delta
 		speed = max_speed - max_speed / 4
 	else:
@@ -146,7 +146,8 @@ func give_plague(seconds):
 	modifier_stack["plague"] += seconds 
 
 func give_fire(seconds):
-	modifier_stack["fire"] += seconds
+	if modifier_stack["fire"] < seconds:
+		modifier_stack["fire"] = seconds
 
 func take_damage(damage: float):
 	health -= damage

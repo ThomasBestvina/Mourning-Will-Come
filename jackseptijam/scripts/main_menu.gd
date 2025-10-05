@@ -14,3 +14,7 @@ func _on_credits_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	StoatStash.play_sfx(preload("res://assets/sound/ui_pressed.wav"),0.8)
+
+
+func _on_options_pressed() -> void:
+	StoatStash.change_scene("res://scenes/options.tscn")

@@ -22,3 +22,8 @@ func _process(delta: float) -> void:
 			keys[i] = kk
 
 		keys[i].global_position = Vector2(238,20) + Vector2(i.progress_ratio*620,0)
+
+
+func _on_texture_button_pressed() -> void:
+	StoatStash.play_sfx(preload("res://assets/sound/ui_pressed.wav"),0.8)
+	get_tree().paused = !get_tree().paused

@@ -11,8 +11,8 @@ signal deselected(obj: Node3D)
 var game: Game
 var secondary = Globals.ETypes.WOOD
 
-var hovered: bool = false
-var is_selected: bool = false
+var hovered: bool = true
+var is_selected: bool = true
 var is_placed: bool = false
 var is_on_ground = false
 
@@ -87,6 +87,9 @@ func place():
 	$StaticBody3D/CollisionShape3D.disabled = false
 	is_placed = true
 	$RangeDisplayMesh.visible = false
+	emit_signal("selected", self)
+	hovered = true
+	is_selected = true
 	await StoatStash.repeat_call(fire, cooldown)
 
 func fire():
