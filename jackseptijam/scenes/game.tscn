@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=4 uid="uid://dmafrs8n2rh5q"]
+[gd_scene load_steps=123 format=4 uid="uid://dmafrs8n2rh5q"]
 
 [ext_resource type="Script" uid="uid://chusptfwrxiit" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://l246u8chero8" path="res://objects/towers/plague_tower.tscn" id="3_vtaks"]
@@ -37,6 +37,9 @@
 [ext_resource type="Script" uid="uid://bpoqure2okwvo" path="res://scripts/pause_menu.gd" id="31_gxtfn"]
 [ext_resource type="Texture2D" uid="uid://5rruvf02ol70" path="res://assets/2d/hud/menuBackground..png" id="31_js0lu"]
 [ext_resource type="PackedScene" uid="uid://dfh32oqrosx0k" path="res://objects/audio_interface.tscn" id="33_twgab"]
+[ext_resource type="Texture2D" uid="uid://df4adwl5st0av" path="res://assets/2d/hud/paused.png" id="35_7025r"]
+[ext_resource type="Texture2D" uid="uid://dni0wwrxxl3q8" path="res://assets/2d/hud/playbuttonSheet.png" id="36_m4url"]
+[ext_resource type="Texture2D" uid="uid://bcctklpkx6eie" path="res://assets/2d/hud/mainMenuSheet.png" id="37_m4url"]
 
 [sub_resource type="Curve3D" id="Curve3D_qnb83"]
 _data = {
@@ -285,6 +288,8 @@ bind/66/bone = -1
 bind/66/pose = Transform3D(7.620499e-09, 1.0737919e-06, -1.2868026, -1.2867987, -3.0216775e-08, -7.619192e-09, -3.0216633e-08, 1.286799, 1.3422398e-07, -0.114629775, -0.06000002, 1.0756388)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iywne"]
+radius = 0.26904297
+height = 1.8825684
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_264po"]
 render_priority = 0
@@ -1462,6 +1467,30 @@ region = Rect2(68, 0, 68, 20)
 atlas = ExtResource("27_sgl2t")
 region = Rect2(204, 0, 68, 20)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sl42"]
+atlas = ExtResource("36_m4url")
+region = Rect2(0, 0, 39, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaba0"]
+atlas = ExtResource("36_m4url")
+region = Rect2(78, 0, 39, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_458eo"]
+atlas = ExtResource("36_m4url")
+region = Rect2(39, 0, 39, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3rex"]
+atlas = ExtResource("37_m4url")
+region = Rect2(0, 0, 84, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fedci"]
+atlas = ExtResource("37_m4url")
+region = Rect2(168, 0, 84, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qswn"]
+atlas = ExtResource("37_m4url")
+region = Rect2(84, 0, 84, 20)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ql0t"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qpdnc"]
@@ -1547,7 +1576,7 @@ data = PackedVector3Array(-1, 1, -1, -0.92579997, 1, -0.045399997, -1, 1, -0.046
 size = Vector3(400, 1.061, 400)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qnb83"]
-size = Vector3(99.14673, 19.296936, 1)
+size = Vector3(100.19934, 19.296936, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1j0j"]
 resource_name = "Material.001"
@@ -1718,7 +1747,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.468464, 0.82665443, -4.36
 curve = SubResource("Curve3D_sww3w")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.132275, 2.0133965, 3.6761518)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.087545, 2.0133965, 3.6761518)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("4_lbhrr")
@@ -1732,6 +1761,7 @@ skin = SubResource("Skin_2o7n1")
 skeleton = NodePath("../../playerDoctor/metarig/Skeleton3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05871582, 0)
 shape = SubResource("CapsuleShape3D_iywne")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
@@ -2326,6 +2356,7 @@ theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "dsfsdfsdfsdwe"
 scroll_active = false
+horizontal_alignment = 1
 
 [node name="FirstSlotButtons" type="VBoxContainer" parent="UI/BuyMenu"]
 unique_name_in_owner = true
@@ -2739,6 +2770,7 @@ text = "Pause"
 
 [node name="PauseMenu" type="Control" parent="UI"]
 process_mode = 3
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -2750,10 +2782,37 @@ texture = ExtResource("31_js0lu")
 
 [node name="AudioInterface" parent="UI/PauseMenu" instance=ExtResource("33_twgab")]
 layout_mode = 1
-offset_left = 247.0
-offset_top = 151.0
-offset_right = 247.0
-offset_bottom = 151.0
+offset_left = 449.0
+offset_top = 239.0
+offset_right = 449.0
+offset_bottom = 239.0
+
+[node name="Paused" type="Sprite2D" parent="UI/PauseMenu"]
+position = Vector2(554, 190)
+scale = Vector2(2, 2)
+texture = ExtResource("35_7025r")
+
+[node name="ResumeButton" type="TextureButton" parent="UI/PauseMenu"]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 431.0
+offset_right = 555.0
+offset_bottom = 451.0
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_0sl42")
+texture_pressed = SubResource("AtlasTexture_oaba0")
+texture_hover = SubResource("AtlasTexture_458eo")
+
+[node name="MainMenuButton" type="TextureButton" parent="UI/PauseMenu"]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 377.0
+offset_right = 555.0
+offset_bottom = 397.0
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_h3rex")
+texture_pressed = SubResource("AtlasTexture_fedci")
+texture_hover = SubResource("AtlasTexture_8qswn")
 
 [node name="Map" type="Node3D" parent="."]
 
@@ -2788,19 +2847,19 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Map/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15100098, 10.139763, 23.471579)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37530518, 10.139763, 23.80758)
 shape = SubResource("BoxShape3D_qnb83")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Map/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15100098, 10.139763, -23.343403)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15100098, 10.139763, -23.521328)
 shape = SubResource("BoxShape3D_qnb83")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Map/StaticBody3D2"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -49.94674, 10.139763, -23.343403)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -50.400455, 10.139763, -23.343403)
 shape = SubResource("BoxShape3D_qnb83")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Map/StaticBody3D2"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 49.510086, 10.139763, -23.343403)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 50.5091, 10.139763, -23.343403)
 shape = SubResource("BoxShape3D_qnb83")
 
 [node name="IncreaseDifficulty" type="Timer" parent="."]
@@ -2822,8 +2881,49 @@ surface_material_override/0 = SubResource("StandardMaterial3D_sww3w")
 transform = Transform3D(0.49077192, 0, 0, 0, 0.49077192, 0, 0, 0, 0.49077192, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_qnb83")
 
+[node name="SmallRock2" type="StaticBody3D" parent="Props"]
+transform = Transform3D(0.9749324, 0, 0.22250149, 0, 1, 0, -0.22250149, 0, 0.9749324, -6.2916336, 1.4667349, 8.522911)
+
+[node name="Cube" type="MeshInstance3D" parent="Props/SmallRock2"]
+transform = Transform3D(0.49077192, 0, 0, 0, 0.49077192, 0, 0, 0, 0.49077192, 0, 0, 0)
+mesh = SubResource("ArrayMesh_hiaak")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_sww3w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/SmallRock2"]
+transform = Transform3D(0.49077192, 0, 0, 0, 0.49077192, 0, 0, 0, 0.49077192, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_qnb83")
+
+[node name="SmallRock3" type="StaticBody3D" parent="Props"]
+transform = Transform3D(0.85814553, 0, -0.5134064, 0, 1, 0, 0.5134064, 0, 0.85814553, -2.1739774, 1.4667349, 9.0600195)
+
+[node name="Cube" type="MeshInstance3D" parent="Props/SmallRock3"]
+transform = Transform3D(0.49077192, 0, 0, 0, 0.49077192, 0, 0, 0, 0.49077192, 0, 0, 0)
+mesh = SubResource("ArrayMesh_hiaak")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_sww3w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/SmallRock3"]
+transform = Transform3D(0.49077192, 0, 0, 0, 0.49077192, 0, 0, 0, 0.49077192, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_qnb83")
+
+[node name="SmallRock4" type="StaticBody3D" parent="Props"]
+transform = Transform3D(0.27463084, 0, -0.50517607, 0, 0.575, 0, 0.50517607, 0, 0.27463084, -2.8094673, 1.2417412, 9.993878)
+
+[node name="Cube" type="MeshInstance3D" parent="Props/SmallRock4"]
+transform = Transform3D(0.49077192, 0, 0, 0, 0.49077192, 0, 0, 0, 0.49077192, 0, 0, 0)
+mesh = SubResource("ArrayMesh_hiaak")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_sww3w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/SmallRock4"]
+transform = Transform3D(0.49077192, 0, 0, 0, 0.49077192, 0, 0, 0, 0.49077192, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_qnb83")
+
 [node name="BigRock" type="StaticBody3D" parent="Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.20339, 1.8514228, 13.264465)
+transform = Transform3D(0.8066097, 0, -0.5910844, 0, 1, 0, 0.5910844, 0, 0.8066097, -3.8430343, 1.8514228, 8.101454)
+collision_layer = 3
+collision_mask = 3
 
 [node name="BigRock" type="MeshInstance3D" parent="Props/BigRock"]
 mesh = SubResource("ArrayMesh_haxie")
@@ -2862,5 +2962,7 @@ shape = SubResource("ConcavePolygonShape3D_suyxu")
 [connection signal="pressed" from="UI/TowerOptions/NextTargetMode" to="UI/TowerOptions" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/TowerOptions/Upgrade" to="UI/TowerOptions" method="_on_upgrade_pressed"]
 [connection signal="toggled" from="UI/Button" to="." method="_on_pause_button_toggled"]
+[connection signal="pressed" from="UI/PauseMenu/ResumeButton" to="UI/PauseMenu" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/MainMenuButton" to="UI/PauseMenu" method="_on_main_menu_button_pressed"]
 [connection signal="timeout" from="IncreaseDifficulty" to="." method="_on_increase_difficulty_timeout"]
 [connection signal="timeout" from="IncreasePoints" to="." method="_on_increase_points_timeout"]

@@ -24,11 +24,11 @@ var selected_tower: Node3D
 
 var placed_first_turret: bool = false
 
-var amount_wood: int = 8
-var amount_plague: int = 0
-var amount_fire: int = 0
-var amount_metal: int = 0
-var amount_candy: int = 0
+var amount_wood: int = 500
+var amount_plague: int = 500
+var amount_fire: int = 500
+var amount_metal: int = 500
+var amount_candy: int = 500
 var amount_musket_balls: int = 5
 
 const WOOD_COST_PRIMARY: int = 4
@@ -47,7 +47,7 @@ const WOOD_COLOR = "[color=fcb103]"
 const PLAGUE_COLOR = "[color=12bc00]"
 const FIRE_COLOR = "[color=e07b00]"
 const METAL_COLOR = "[color=00606b]"
-const CANDY_COLOR = "[color=8520f9]"
+const CANDY_COLOR = "[color=f344fc]"
 
 var first_wave_spawned = false
 
@@ -64,10 +64,11 @@ var enemies = {
 
 
 func _ready() -> void:
-	var gb = enemies[11][0].instantiate()
-	$Prim.add_child(gb)
+	#var gb = enemies[11][0].instantiate()
+	#$Prim.add_child(gb)
 	#var gb = enemies[3][2].instantiate()
 	#$Prim.add_child(gb)
+	pass
 
 func _process(delta: float) -> void:
 	manage_player_input()

@@ -1265,6 +1265,7 @@ func delete_save(filename: String = "save_game.dat"):
 ##################################################################################
 func _ready():
 	set_process(true)
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _process(delta: float) -> void:
 	_update_tracked_inputs()

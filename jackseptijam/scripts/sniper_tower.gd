@@ -3,10 +3,10 @@ class_name Sniper
 func _ready() -> void:
 	$Selector/CollisionShape3D.disabled = true
 	super._ready()
-	$RangeDisplayMesh.mesh.top_radius = 1.0
-	$RangeDisplayMesh.mesh.bottom_radius = 1.0
-	$RangeDisplayMeshRed.mesh.top_radius = 1.0
-	$RangeDisplayMeshRed.mesh.bottom_radius = 1.0
+	$RangeDisplayMesh.mesh.inner_radius = 0.9
+	$RangeDisplayMesh.mesh.outer_radius = 1.0
+	$RangeDisplayMeshRed.mesh.inner_radius = 0.9
+	$RangeDisplayMeshRed.mesh.outer_radius = 1.0
 	var lst = [$Rotator/gunBase, $Rotator/scope, $Rotator/scopeConnector, $Rotator/pillarSmall, $Rotator/smallGear2, $Rotator/smallGear1, $PillarTop, $pillarBottom, $base, $mediumGear, $bigGear, $bigGear2]
 	for i in lst:
 		i.set_surface_override_material(0,i.get_active_material(0).duplicate())
@@ -35,6 +35,10 @@ func _process(delta: float) -> void:
 
 func upgrade():
 	grade += 1
+	$RangeDisplayMesh.mesh.inner_radius = 0.9
+	$RangeDisplayMesh.mesh.outer_radius = 1.0
+	$RangeDisplayMeshRed.mesh.inner_radius = 0.9
+	$RangeDisplayMeshRed.mesh.outer_radius = 1.0
 
 func _on_selector_mouse_entered() -> void:
 	hovered = true

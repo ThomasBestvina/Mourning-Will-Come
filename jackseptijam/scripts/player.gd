@@ -4,7 +4,7 @@ class_name Player
 @export var shoot_cooldown = 1.5
 
 const SPRINT_SPEED = 13.0
-const SPEED = 9.0
+const SPEED = 9.5
 const JUMP_VELOCITY = 4.5
 
 var canshoot: bool = true
