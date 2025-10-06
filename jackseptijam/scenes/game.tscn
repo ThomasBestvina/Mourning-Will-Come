@@ -7406,6 +7406,8 @@ skeleton = NodePath("")
 transform = Transform3D(0.43832424, 0.21581419, -0.061756093, -0.19435145, 0.43265083, 0.1325086, 0.11232578, -0.09356956, 0.47026104, 0.29256248, 3.1802037, -0.5338955)
 shape = SubResource("ConvexPolygonShape3D_rm0al")
 
+[node name="Pickups" type="Node3D" parent="."]
+
 [connection signal="timeout" from="CharacterBody3D/ShootTimer" to="CharacterBody3D" method="_on_shoot_timer_timeout"]
 [connection signal="pressed" from="UI/BuyMenu/FirstSlotButtons/Wood" to="." method="_on_wood_pressed"]
 [connection signal="pressed" from="UI/BuyMenu/FirstSlotButtons/Plague" to="." method="_on_plague_pressed"]

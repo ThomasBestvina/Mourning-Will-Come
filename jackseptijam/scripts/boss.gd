@@ -59,7 +59,7 @@ func spawn_drops(amount: int, musket: bool):
 	for i in amount:
 		var drop: RigidBody3D = pickable_drop.instantiate()
 		
-		get_tree().root.add_child(drop)
+		get_parent().get_parent().get_node("Pickups").add_child(drop)
 		
 		drop.global_position = global_position
 		

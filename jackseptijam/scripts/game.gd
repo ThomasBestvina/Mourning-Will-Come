@@ -62,15 +62,15 @@ var elapsed_time = 0.0
 var enemies_killed: int = 0
 
 var enemies = {
-	3: [preload("res://objects/enemies/shrubkin.tscn"),preload("res://objects/enemies/candyguy.tscn"),preload("res://objects/enemies/rat_enemy.tscn")],
-	11: [preload("res://objects/enemies/torcher.tscn"), preload("res://objects/enemies/robotenemy1.tscn")],
-	17: [preload("res://objects/enemies/horse_man.tscn"), preload("res://objects/enemies/robotenemy2.tscn"), preload("res://objects/enemies/plaguedude.tscn")],
-	32: [preload("res://objects/enemies/candyman.tscn"), preload("res://objects/enemies/tree_enemy.tscn")],
+	4: [preload("res://objects/enemies/shrubkin.tscn"),preload("res://objects/enemies/candyguy.tscn"),preload("res://objects/enemies/rat_enemy.tscn")],
+	14: [preload("res://objects/enemies/torcher.tscn"), preload("res://objects/enemies/robotenemy1.tscn")],
+	22: [preload("res://objects/enemies/horse_man.tscn"), preload("res://objects/enemies/robotenemy2.tscn"), preload("res://objects/enemies/plaguedude.tscn")],
+	39: [preload("res://objects/enemies/candyman.tscn"), preload("res://objects/enemies/tree_enemy.tscn")],
 	100: [preload("res://objects/enemies/boss.tscn")]
 }
 
 func _ready() -> void:
-	for i in $Prim.get_children()+$Second.get_children():
+	for i in $Pickups.get_children():
 		i.queue_free()
 
 func _process(delta: float) -> void:
