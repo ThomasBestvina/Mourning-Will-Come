@@ -3321,11 +3321,37 @@ text = "Pause"
 
 [node name="PauseMenu" type="Control" parent="UI"]
 process_mode = 3
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("31_gxtfn")
+
+[node name="tip" type="RichTextLabel" parent="UI/PauseMenu"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 220.0
+offset_top = 487.0
+offset_right = 888.0
+offset_bottom = 639.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("13_kvuet")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Pro tips: 
+Every resource makes its own tower and has its own modifier.
+Every enemy drops a resouce (based on its type) and a chance to drop a musket ball
+Combine metal and wood to make a magnet.
+Press space to use your musket on enemies
+The musket has limited ammo. 
+Upgrade and change target of towers by clicking on them
+Upgardes increase attack speed, range, and damage (with some exceptions).
+Enemies scale wtih time.
+There is no end
+
+"
+scroll_active = false
+horizontal_alignment = 1
 
 [node name="MenuBackground_" type="Sprite2D" parent="UI/PauseMenu"]
 position = Vector2(554, 312)
@@ -3364,6 +3390,27 @@ scale = Vector2(2, 2)
 texture_normal = SubResource("AtlasTexture_h3rex")
 texture_pressed = SubResource("AtlasTexture_fedci")
 texture_hover = SubResource("AtlasTexture_8qswn")
+
+[node name="contols" type="RichTextLabel" parent="UI/PauseMenu"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 695.0
+offset_top = 384.0
+offset_right = 869.0
+offset_bottom = 477.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("13_kvuet")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Controls
+WASD - Movement
+LMB - Interact with UI
+RMB - Quick Upgrade
+Spacebar - Shoot
+Esc - Pause"
+scroll_active = false
+horizontal_alignment = 1
 
 [node name="EndMenu" type="Control" parent="UI"]
 process_mode = 3
