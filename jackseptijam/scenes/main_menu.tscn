@@ -1,13 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://d5ieg34hnt1x"]
+[gd_scene load_steps=24 format=3 uid="uid://d5ieg34hnt1x"]
 
 [ext_resource type="Script" uid="uid://d6qply6q10mg" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://dni0wwrxxl3q8" path="res://assets/2d/hud/playbuttonSheet.png" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://bfwxrbsavdtbd" path="res://assets/2d/cover art.png" id="2_5dd4i"]
 [ext_resource type="Texture2D" uid="uid://so27ut4yb5iu" path="res://assets/2d/hud/creditsbuttonSheet.png" id="3_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://c0ptx5gu0th76" path="res://assets/2d/hud/optionsButtonSheet.png" id="3_tbmy8"]
 [ext_resource type="PackedScene" uid="uid://je5pptfqv7i8" path="res://objects/has_fire.tscn" id="3_wu84c"]
 [ext_resource type="PackedScene" uid="uid://b7gn0ew1modak" path="res://objects/has_plague.tscn" id="4_8ln24"]
 [ext_resource type="Texture2D" uid="uid://bhb054ku2y2we" path="res://assets/2d/hud/quitbuttonSheet.png" id="4_oa1go"]
 [ext_resource type="PackedScene" uid="uid://dgsx16hkkxjxx" path="res://objects/explode.tscn" id="5_8ln24"]
+[ext_resource type="PackedScene" uid="uid://bqxxxv1wlrvav" path="res://objects/plague_particle.tscn" id="6_jk1qb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l6cm7"]
 atlas = ExtResource("1_l6cm7")
@@ -69,6 +71,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ekxnf")
 
+[node name="CoverArt" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("2_5dd4i")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 4.0
@@ -101,6 +108,9 @@ layout_mode = 2
 texture_normal = SubResource("AtlasTexture_5dd4i")
 texture_pressed = SubResource("AtlasTexture_lgwnu")
 texture_hover = SubResource("AtlasTexture_flqon")
+
+[node name="PlagueParticle" parent="." instance=ExtResource("6_jk1qb")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 40.167892)
 
 [node name="HasFire" parent="." instance=ExtResource("3_wu84c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40.167892)

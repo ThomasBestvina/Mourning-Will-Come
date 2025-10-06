@@ -7,6 +7,7 @@ func _ready() -> void:
 	$Music_Volume.value = StoatStash._music_volume*100
 	$SfxCheckbox.button_pressed = !StoatStash._sfx_muted
 	$MusicCheckbox.button_pressed = !StoatStash._sfx_muted
+	visible = get_parent().visible
 
 func _on_sfx_checkbox_toggled(toggled_on: bool) -> void:
 	if(visible):

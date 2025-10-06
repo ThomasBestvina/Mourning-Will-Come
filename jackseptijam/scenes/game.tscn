@@ -1,4 +1,4 @@
-[gd_scene load_steps=169 format=4 uid="uid://dmafrs8n2rh5q"]
+[gd_scene load_steps=171 format=4 uid="uid://dmafrs8n2rh5q"]
 
 [ext_resource type="Script" uid="uid://chusptfwrxiit" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://l246u8chero8" path="res://objects/towers/plague_tower.tscn" id="3_vtaks"]
@@ -45,6 +45,8 @@
 [ext_resource type="Texture2D" uid="uid://b6lqbqwmt0nh0" path="res://assets/2d/hud/settingsButton.png" id="38_05nbr"]
 [ext_resource type="Texture2D" uid="uid://ccay1pqrqe5ux" path="res://assets/3d/props/tree2_treePallete.png" id="41_pr1ej"]
 [ext_resource type="Texture2D" uid="uid://bhhqooqrmpv5n" path="res://assets/3d/props/tree1_treePallete.png" id="42_05nbr"]
+[ext_resource type="Texture2D" uid="uid://f0sxuc0wqmgs" path="res://assets/2d/hud/watchHand.png" id="42_h3rex"]
+[ext_resource type="Texture2D" uid="uid://dfgrxbdn2wiqi" path="res://assets/2d/hud/watch.png" id="46_458eo"]
 
 [sub_resource type="Environment" id="Environment_pr1ej"]
 background_mode = 1
@@ -2826,6 +2828,10 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("12_bt5mj")
 
+[node name="Watch" type="Sprite2D" parent="UI"]
+position = Vector2(109, 71)
+texture = ExtResource("46_458eo")
+
 [node name="TimeSpent" type="RichTextLabel" parent="UI"]
 custom_minimum_size = Vector2(0, 26.435)
 layout_mode = 1
@@ -2834,10 +2840,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 23.0
-offset_top = 51.0
-offset_right = 111.0
-offset_bottom = 77.435
+offset_left = 25.0
+offset_top = 86.0
+offset_right = 113.0
+offset_bottom = 112.435
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -2845,7 +2851,7 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "25"
+text = "00:00"
 scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
@@ -3419,6 +3425,10 @@ texture_normal = SubResource("AtlasTexture_pf7vy")
 texture_pressed = SubResource("AtlasTexture_o8ni1")
 texture_hover = SubResource("AtlasTexture_3hbvx")
 texture_disabled = SubResource("AtlasTexture_q8j3a")
+
+[node name="WatchHand" type="Sprite2D" parent="UI"]
+position = Vector2(109, 70)
+texture = ExtResource("42_h3rex")
 
 [node name="Map" type="Node3D" parent="."]
 

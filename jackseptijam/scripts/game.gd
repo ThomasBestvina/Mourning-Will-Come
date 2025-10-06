@@ -1,7 +1,7 @@
 extends Node3D
 class_name Game
 
-@export var player_health = 1
+@export var player_health = 25
 var current_difficulty: int = 1
 var points: int = 2
 
@@ -86,6 +86,11 @@ func _process(delta: float) -> void:
 	var minutes = int(elapsed_time) / 60
 	var seconds = int(elapsed_time) % 60
 	$UI/TimeSpent.text = "%02d:%02d" % [minutes, seconds]
+	$UI/WatchHand.rotation = remap_to_circle(current_difficulty)
+
+func remap_to_circle(value: int) -> float:
+	var clamped = clamp(value, 0, 99)
+	return (clamped / 99.0) * (1.9 * PI)
 
 func increase_difficulty():
 	if(Globals.wave_paused): return

@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bppe7qhl2sabi"]
+[gd_scene load_steps=9 format=3 uid="uid://bppe7qhl2sabi"]
 
 [ext_resource type="Script" uid="uid://da284e7xgosb5" path="res://scripts/options.gd" id="1_1sggn"]
+[ext_resource type="Texture2D" uid="uid://bfwxrbsavdtbd" path="res://assets/2d/cover art.png" id="2_1sggn"]
 [ext_resource type="Texture2D" uid="uid://5rruvf02ol70" path="res://assets/2d/hud/menuBackground..png" id="2_e6vpq"]
 [ext_resource type="PackedScene" uid="uid://dfh32oqrosx0k" path="res://objects/audio_interface.tscn" id="3_o7i7e"]
 [ext_resource type="Texture2D" uid="uid://bcctklpkx6eie" path="res://assets/2d/hud/mainMenuSheet.png" id="5_85aq5"]
@@ -26,23 +27,28 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1sggn")
 
+[node name="CoverArt" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("2_1sggn")
+
 [node name="MenuBackground_" type="Sprite2D" parent="."]
-position = Vector2(554, 312)
+position = Vector2(554, 360)
 texture = ExtResource("2_e6vpq")
 
 [node name="AudioInterface" parent="." instance=ExtResource("3_o7i7e")]
 layout_mode = 1
 offset_left = 449.0
-offset_top = 239.0
+offset_top = 287.0
 offset_right = 449.0
-offset_bottom = 239.0
+offset_bottom = 287.0
 
 [node name="MainMenuButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 471.0
-offset_top = 420.0
+offset_top = 468.0
 offset_right = 555.0
-offset_bottom = 440.0
+offset_bottom = 488.0
 scale = Vector2(2, 2)
 texture_normal = SubResource("AtlasTexture_rftt1")
 texture_pressed = SubResource("AtlasTexture_0un6s")

@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://dksldk87syykg"]
+
+[ext_resource type="Script" uid="uid://da284e7xgosb5" path="res://scripts/options.gd" id="1_2fbfq"]
+[ext_resource type="Texture2D" uid="uid://5rruvf02ol70" path="res://assets/2d/hud/menuBackground..png" id="2_8gwij"]
+[ext_resource type="Texture2D" uid="uid://bfwxrbsavdtbd" path="res://assets/2d/cover art.png" id="2_mah5v"]
+[ext_resource type="FontFile" uid="uid://bfjyly3mynpq8" path="res://assets/fonts/alagard.ttf" id="4_2fbfq"]
+[ext_resource type="Texture2D" uid="uid://bcctklpkx6eie" path="res://assets/2d/hud/mainMenuSheet.png" id="4_kyhnv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rftt1"]
+atlas = ExtResource("4_kyhnv")
+region = Rect2(0, 0, 84, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0un6s"]
+atlas = ExtResource("4_kyhnv")
+region = Rect2(168, 0, 84, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kywri"]
+atlas = ExtResource("4_kyhnv")
+region = Rect2(84, 0, 84, 20)
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2fbfq")
+
+[node name="CoverArt" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("2_mah5v")
+
+[node name="MenuBackground_" type="Sprite2D" parent="."]
+position = Vector2(554, 348)
+texture = ExtResource("2_8gwij")
+
+[node name="MainMenuButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 456.0
+offset_right = 555.0
+offset_bottom = 476.0
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_rftt1")
+texture_pressed = SubResource("AtlasTexture_0un6s")
+texture_hover = SubResource("AtlasTexture_kywri")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 183.0
+offset_right = 869.0
+offset_bottom = 513.0
+theme_override_fonts/normal_font = ExtResource("4_2fbfq")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[color=\"353535\"]A game by
+
+Keenan Shafer
+Thomas Bestvina
+Zachary Wooldridge
+"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]

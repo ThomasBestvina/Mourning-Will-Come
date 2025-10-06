@@ -11,11 +11,14 @@ func _on_play_pressed() -> void:
 
 func _on_credits_pressed() -> void:
 	StoatStash.play_sfx(preload("res://assets/sound/ui_pressed.wav"),0.8)
+	StoatStash.change_scene("res://scenes/credits.tscn")
 
 
 func _on_quit_pressed() -> void:
 	StoatStash.play_sfx(preload("res://assets/sound/ui_pressed.wav"),0.8)
+	get_tree().quit()
 
 
 func _on_options_pressed() -> void:
+	StoatStash.play_sfx(preload("res://assets/sound/ui_pressed.wav"),0.8)
 	StoatStash.change_scene("res://scenes/options.tscn")
