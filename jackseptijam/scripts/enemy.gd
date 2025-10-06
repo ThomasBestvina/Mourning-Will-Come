@@ -79,11 +79,11 @@ func _process(delta: float) -> void:
 	if health <= 0:
 		var drops = 0
 		for i in max_drops:
-			if(StoatStash.chance(drop_chance/ min(get_parent().get_parent().current_difficulty/10,1)) ):
+			if(StoatStash.chance(drop_chance/ clamp(get_parent().get_parent().current_difficulty/10, 1, 15) ) ):
 				drops += 1
 		emit_signal("died", type, drops)
 		spawn_drops(drops, false)
-		if(StoatStash.chance(0.05)):
+		if(StoatStash.chance(0.1)):
 			spawn_drops(1, true)
 		StoatStash.play_sfx_3d(preload("res://assets/sound/enemydie.wav"), global_position)
 		die()
