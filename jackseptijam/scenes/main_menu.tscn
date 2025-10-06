@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d5ieg34hnt1x"]
+[gd_scene load_steps=26 format=3 uid="uid://d5ieg34hnt1x"]
 
 [ext_resource type="Script" uid="uid://d6qply6q10mg" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://dni0wwrxxl3q8" path="res://assets/2d/hud/playbuttonSheet.png" id="1_l6cm7"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bhb054ku2y2we" path="res://assets/2d/hud/quitbuttonSheet.png" id="4_oa1go"]
 [ext_resource type="PackedScene" uid="uid://dgsx16hkkxjxx" path="res://objects/explode.tscn" id="5_8ln24"]
 [ext_resource type="PackedScene" uid="uid://bqxxxv1wlrvav" path="res://objects/plague_particle.tscn" id="6_jk1qb"]
+[ext_resource type="PackedScene" uid="uid://civ5uqxqca0w0" path="res://objects/cannon_splode.tscn" id="12_flqon"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l6cm7"]
 atlas = ExtResource("1_l6cm7")
@@ -132,16 +133,19 @@ texture_pressed = SubResource("AtlasTexture_lgwnu")
 texture_hover = SubResource("AtlasTexture_flqon")
 
 [node name="PlagueParticle" parent="." instance=ExtResource("6_jk1qb")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 40.167892)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 46.254814)
 
 [node name="HasFire" parent="." instance=ExtResource("3_wu84c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40.167892)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 34.648045)
 
 [node name="HasPlague" parent="." instance=ExtResource("4_8ln24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40.167892)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50.95412)
 
 [node name="Explode" parent="." instance=ExtResource("5_8ln24")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 40.167892)
+
+[node name="GPUParticles3D" parent="." instance=ExtResource("12_flqon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28.073929)
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]

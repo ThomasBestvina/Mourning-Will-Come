@@ -198,8 +198,12 @@ outer_radius = 4.0
 
 [node name="ballista" type="Node3D" node_paths=PackedStringArray("spawn_point", "range_display_mesh")]
 script = ExtResource("1_cjyl8")
+target_mode = null
 spawn_point = NodePath("rotator/Spawnpoint")
+fire_range = null
 projectile_scene = ExtResource("2_wugx5")
+cooldown = null
+damage = null
 range_display_mesh = NodePath("RangeDisplayMesh")
 
 [node name="Cube" type="MeshInstance3D" parent="."]

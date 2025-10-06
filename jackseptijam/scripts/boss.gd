@@ -16,7 +16,7 @@ func _ready() -> void:
 	add_child(health_display)
 	health_display.top_level = true
 	
-	max_health += max(get_parent().get_parent().current_difficulty-3,0)*4
+	max_health += max(get_parent().get_parent().current_difficulty-3,0)*6.4
 	
 	plague_particles = plague_preload.instantiate()
 	add_child(plague_particles)
