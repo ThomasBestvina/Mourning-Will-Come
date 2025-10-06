@@ -26,7 +26,6 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.2509804, 0.21176471, 0.22352941, 1)
-corner_radius_bottom_left = 4
 corner_detail = 6
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i6ra6"]
@@ -70,6 +69,7 @@ offset_bottom = 108.69
 theme_override_icons/grabber = SubResource("AtlasTexture_d25t7")
 theme_override_icons/grabber_highlight = SubResource("AtlasTexture_g2jyg")
 theme_override_styles/slider = SubResource("StyleBoxFlat_ntdjn")
+value = 29.0
 
 [node name="MusicCheckbox" type="CheckBox" parent="."]
 layout_mode = 0
