@@ -90,7 +90,7 @@ func _process(delta: float) -> void:
 
 func remap_to_circle(value: int) -> float:
 	var clamped = clamp(value, 0, 99)
-	return (clamped / 99.0) * (1.9 * PI)
+	return (clamped / 99.0) * (1.95 * PI)
 
 func increase_difficulty():
 	if(Globals.wave_paused): return
@@ -282,7 +282,7 @@ func manage_player_input():
 			StoatStash.play_sfx(preload("res://assets/sound/sell_tower.wav"), 0.8)
 			bought_tower = null
 			buying_tower = false
-		
+	
 
 func selected(tower: Node3D):
 	for i in $Towers.get_children():

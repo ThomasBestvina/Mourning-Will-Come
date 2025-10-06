@@ -75,7 +75,14 @@ func _process(delta: float) -> void:
 	else:
 		$RangeDisplayMesh.hide()
 		$RangeDisplayMeshRed.hide()
-
+	
+		
+	#if is_selected and Input.is_action_just_pressed("upgrade"):
+	#	if get_parent().get_parent().get_node("UI/TowerOptions/Upgrade").disabled:
+	#		StoatStash.play_sfx(preload("res://assets/sound/failed_tower_place.wav"), 0.8, 1.2)
+	#	else:
+	#		get_parent().get_parent()._on_upgrade_pressed()
+	#		StoatStash.play_sfx(preload("res://assets/sound/upgrade_tower.wav"), 0.8)
 
 func is_near_other_tower() -> bool:
 	for i: Node3D in get_tree().get_nodes_in_group("tower"):

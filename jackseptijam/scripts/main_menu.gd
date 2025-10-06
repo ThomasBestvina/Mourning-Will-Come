@@ -1,8 +1,11 @@
 extends Control
 
 func _ready() -> void:
-	if !StoatStash.is_music_playing():
-		StoatStash.play_music(preload("res://assets/music/main menu.wav"), 1.0)
+	$PlagueParticle.emitting = true
+	$HasFire.emitting = true
+	$HasPlague.emitting = true
+	$Explode.emitting = true
+	$GPUParticles3D.emitting = true
 
 func _on_play_pressed() -> void:
 	StoatStash.change_scene_with_simple_transition("res://scenes/game.tscn", 1.0)
