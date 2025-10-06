@@ -60,6 +60,7 @@ theme_override_icons/grabber = SubResource("AtlasTexture_d25t7")
 theme_override_icons/grabber_highlight = SubResource("AtlasTexture_g2jyg")
 theme_override_styles/slider = SubResource("StyleBoxFlat_ntdjn")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_enx30")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_enx30")
 
 [node name="Sfx" type="Sprite2D" parent="."]
 position = Vector2(186, 20)
@@ -76,6 +77,7 @@ theme_override_icons/grabber = SubResource("AtlasTexture_d25t7")
 theme_override_icons/grabber_highlight = SubResource("AtlasTexture_g2jyg")
 theme_override_styles/slider = SubResource("StyleBoxFlat_ntdjn")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_enx30")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_enx30")
 value = 51.0
 
 [node name="MusicCheckbox" type="CheckBox" parent="."]
