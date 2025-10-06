@@ -25,7 +25,6 @@ Globals="*res://scripts/globals.gd"
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/scale_mode="integer"
 mouse_cursor/custom_image="uid://eh6lhcsisdfq"
 
 [filesystem]

@@ -433,6 +433,7 @@ fire_placement = NodePath("Node3D")
 max_speed = 5.5
 max_health = 5.0
 type = 1
+max_drops = 2
 drop_chance = 0.6
 
 [node name="Node3D" type="Node3D" parent="."]

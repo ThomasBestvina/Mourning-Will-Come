@@ -62,7 +62,7 @@ var elapsed_time = 0.0
 var enemies_killed: int = 0
 
 var enemies = {
-	3: [preload("res://objects/enemies/rat_enemy.tscn"), preload("res://objects/enemies/shrubkin.tscn"), preload("res://objects/enemies/candyguy.tscn")],
+	3: [preload("res://objects/enemies/shrubkin.tscn"),preload("res://objects/enemies/candyguy.tscn"),preload("res://objects/enemies/rat_enemy.tscn")],
 	11: [preload("res://objects/enemies/torcher.tscn"), preload("res://objects/enemies/robotenemy1.tscn")],
 	17: [preload("res://objects/enemies/horse_man.tscn"), preload("res://objects/enemies/robotenemy2.tscn"), preload("res://objects/enemies/plaguedude.tscn")],
 	32: [preload("res://objects/enemies/candyman.tscn"), preload("res://objects/enemies/tree_enemy.tscn")],

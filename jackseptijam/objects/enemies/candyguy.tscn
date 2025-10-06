@@ -295,7 +295,8 @@ max_speed = 3.5
 max_health = 11.0
 strength_score = 2.5
 type = 4
-drop_chance = 0.9
+max_drops = 2
+drop_chance = 0.6
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19516718, 0.69176996, 0.051823854)

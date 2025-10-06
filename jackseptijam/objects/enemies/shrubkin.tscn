@@ -283,7 +283,7 @@ walk_string = "1walk"
 max_speed = 1.2
 max_health = 16.0
 max_drops = 2
-drop_chance = 0.5
+drop_chance = 0.6
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.053836703, 1.3073344, 0)
