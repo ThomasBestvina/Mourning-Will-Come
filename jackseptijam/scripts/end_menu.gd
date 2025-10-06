@@ -8,7 +8,8 @@ func _process(delta: float) -> void:
 		visible = true
 		has_died = true
 		get_tree().paused = true
-	
+		var time: String = get_parent().get_node("TimeSpent").text
+		$DiedFlavorText.text = "You have allowed too many\nto survive.\nTime Spent: " + time + "\n Enemies Killed: " + get_parent().get_parent().enemies_killed
 
 
 func _on_resume_button_pressed() -> void:

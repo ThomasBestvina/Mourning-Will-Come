@@ -1,4 +1,4 @@
-[gd_scene load_steps=170 format=4 uid="uid://dmafrs8n2rh5q"]
+[gd_scene load_steps=169 format=4 uid="uid://dmafrs8n2rh5q"]
 
 [ext_resource type="Script" uid="uid://chusptfwrxiit" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://l246u8chero8" path="res://objects/towers/plague_tower.tscn" id="3_vtaks"]
@@ -24,15 +24,16 @@
 [ext_resource type="Script" uid="uid://btgoy25a3q14w" path="res://scripts/tower_options.gd" id="15_ir15t"]
 [ext_resource type="Texture2D" uid="uid://bcbkp5haxtni0" path="res://assets/2d/hud/buyBackground2.png" id="15_wljb1"]
 [ext_resource type="Texture2D" uid="uid://dml1rs74008p8" path="res://assets/2d/hud/textBox.png" id="16_v2yb1"]
-[ext_resource type="Texture2D" uid="uid://c3gml4ecyo3mb" path="res://assets/2d/hud/heartAndMusketBall.png" id="23_pl11u"]
 [ext_resource type="Texture2D" uid="uid://c0drbr7ksdobd" path="res://assets/2d/hud/buyButtonSheet.png" id="24_02fa5"]
 [ext_resource type="Texture2D" uid="uid://8qn8aovfvvpk" path="res://assets/3d/props/mediumrock_ROCK.png" id="25_pl11u"]
 [ext_resource type="Texture2D" uid="uid://cj2umognv6ttb" path="res://assets/2d/hud/progbar.png" id="25_sww3w"]
+[ext_resource type="Texture2D" uid="uid://b743ovwkdmc6t" path="res://assets/2d/hud/heart.png" id="26_0sl42"]
 [ext_resource type="Texture2D" uid="uid://beopud633whsa" path="res://assets/3d/props/rock_ROCK.png" id="26_bhx41"]
 [ext_resource type="Texture2D" uid="uid://cql7x5k6sdei3" path="res://assets/3d/props/smallrock_ROCK.png" id="26_qnb83"]
 [ext_resource type="Texture2D" uid="uid://bh66ury18vts1" path="res://assets/2d/hud/sellButtonSheet.png" id="26_qouja"]
 [ext_resource type="Texture2D" uid="uid://stnohvfrgt8p" path="res://assets/2d/hud/nextButtonSheet.png" id="26_suyxu"]
 [ext_resource type="Texture2D" uid="uid://b6tlp2b8oq1gg" path="res://assets/2d/hud/towerOptionsBackground.png" id="26_wljb1"]
+[ext_resource type="Texture2D" uid="uid://cmlqjamf6yjp8" path="res://assets/2d/hud/musketBall.png" id="27_oaba0"]
 [ext_resource type="Texture2D" uid="uid://deapiym8dy65f" path="res://assets/2d/hud/upgradeButtonSheet.png" id="27_sgl2t"]
 [ext_resource type="Script" uid="uid://bpoqure2okwvo" path="res://scripts/pause_menu.gd" id="31_gxtfn"]
 [ext_resource type="Texture2D" uid="uid://5rruvf02ol70" path="res://assets/2d/hud/menuBackground..png" id="31_js0lu"]
@@ -1413,17 +1414,6 @@ region = Rect2(33, 0, 33, 20)
 atlas = ExtResource("24_02fa5")
 region = Rect2(99, 0, 33, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sww3w"]
-atlas = ExtResource("23_pl11u")
-region = Rect2(0, 0, 21, 22)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sww3w"]
-load_path = "res://.godot/imported/heartAndMusketBall.png-72219015079da873cbff7b6b10b0d581.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_suyxu"]
-atlas = SubResource("CompressedTexture2D_sww3w")
-region = Rect2(23, 0, 22, 22)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_twgab"]
 atlas = ExtResource("26_qouja")
 region = Rect2(0, 0, 32, 20)
@@ -1499,6 +1489,10 @@ region = Rect2(80, 0, 40, 40)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3hbvx"]
 atlas = ExtResource("38_05nbr")
 region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8j3a"]
+atlas = ExtResource("38_05nbr")
+region = Rect2(120, 0, 40, 40)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ql0t"]
 
@@ -2832,6 +2826,30 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("12_bt5mj")
 
+[node name="TimeSpent" type="RichTextLabel" parent="UI"]
+custom_minimum_size = Vector2(0, 26.435)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 51.0
+offset_right = 111.0
+offset_bottom = 77.435
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("13_kvuet")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "25"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+
 [node name="StartLabel" type="RichTextLabel" parent="UI"]
 layout_mode = 0
 offset_left = 187.0
@@ -3066,9 +3084,9 @@ horizontal_alignment = 1
 [node name="PlagueAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
 offset_left = -72.0
-offset_top = -444.0
+offset_top = -446.0
 offset_right = -16.0
-offset_bottom = -417.985
+offset_bottom = -419.985
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
@@ -3082,9 +3100,9 @@ horizontal_alignment = 1
 [node name="FireAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
 offset_left = -72.0
-offset_top = -401.0
+offset_top = -407.0
 offset_right = -16.0
-offset_bottom = -374.985
+offset_bottom = -380.985
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
@@ -3098,9 +3116,9 @@ horizontal_alignment = 1
 [node name="MetalAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
 offset_left = -72.0
-offset_top = -360.0
+offset_top = -367.0
 offset_right = -16.0
-offset_bottom = -333.985
+offset_bottom = -340.985
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
@@ -3114,9 +3132,9 @@ horizontal_alignment = 1
 [node name="CandyAmount" type="RichTextLabel" parent="UI/BuyMenu"]
 layout_mode = 0
 offset_left = -72.0
-offset_top = -318.0
+offset_top = -327.0
 offset_right = -16.0
-offset_bottom = -291.985
+offset_bottom = -300.985
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_kvuet")
@@ -3160,12 +3178,12 @@ autowrap_mode = 2
 horizontal_alignment = 1
 
 [node name="HeartIcon" type="Sprite2D" parent="UI"]
-position = Vector2(1027, 35)
-texture = SubResource("AtlasTexture_sww3w")
+position = Vector2(1019, 35)
+texture = ExtResource("26_0sl42")
 
 [node name="MusketIcon" type="Sprite2D" parent="UI"]
-position = Vector2(1027, 64)
-texture = SubResource("AtlasTexture_suyxu")
+position = Vector2(1019, 68)
+texture = ExtResource("27_oaba0")
 
 [node name="Health" type="RichTextLabel" parent="UI"]
 custom_minimum_size = Vector2(0, 26.435)
@@ -3176,9 +3194,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 971.0
-offset_top = -17.000002
+offset_top = -19.0
 offset_right = 1059.0
-offset_bottom = 9.434998
+offset_bottom = 7.4349976
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -3200,9 +3218,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 971.0
-offset_top = 11.0
+offset_top = 16.0
 offset_right = 1059.0
-offset_bottom = 36.770004
+offset_bottom = 41.770004
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -3353,6 +3371,21 @@ script = ExtResource("38_0sl42")
 position = Vector2(554, 312)
 texture = ExtResource("31_js0lu")
 
+[node name="DiedFlavorText" type="RichTextLabel" parent="UI/EndMenu"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 155.0
+offset_right = 951.0
+offset_bottom = 355.0
+theme_override_fonts/normal_font = ExtResource("13_kvuet")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "You have allowed to many
+too survive
+Time Spent: 50"
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+
 [node name="MainMenuButton" type="TextureButton" parent="UI/EndMenu"]
 layout_mode = 0
 offset_left = 471.0
@@ -3385,6 +3418,7 @@ offset_bottom = 53.0
 texture_normal = SubResource("AtlasTexture_pf7vy")
 texture_pressed = SubResource("AtlasTexture_o8ni1")
 texture_hover = SubResource("AtlasTexture_3hbvx")
+texture_disabled = SubResource("AtlasTexture_q8j3a")
 
 [node name="Map" type="Node3D" parent="."]
 

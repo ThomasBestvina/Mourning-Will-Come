@@ -57,6 +57,10 @@ const TIME_BETWEEN_POINT_INCREASE = 6
 
 var has_died = false
 
+var elapsed_time = 0.0
+
+var enemies_killed: int = 0
+
 var enemies = {
 	3: [preload("res://objects/enemies/rat_enemy.tscn"), preload("res://objects/enemies/shrubkin.tscn"), preload("res://objects/enemies/candyguy.tscn")],
 	11: [preload("res://objects/enemies/torcher.tscn"), preload("res://objects/enemies/robotenemy1.tscn")],
@@ -75,6 +79,13 @@ func _process(delta: float) -> void:
 	
 	if player_health <= 0:
 		has_died = true
+	
+	if placed_first_turret:
+		elapsed_time += delta
+	
+	var minutes = int(elapsed_time) / 60
+	var seconds = int(elapsed_time) % 60
+	$UI/TimeSpent.text = "%02d:%02d" % [minutes, seconds]
 
 func increase_difficulty():
 	if(Globals.wave_paused): return
@@ -147,22 +158,11 @@ func spawn_first_wave():
 
 func enemy_win(point):
 	player_health -= point
-	print(point)
 	StoatStash.play_sfx(preload("res://assets/sound/lose.wav"), 0.8)
 
 func enemy_die(type, amount):
-	return
-	match type:
-		Globals.ETypes.WOOD:
-			amount_wood += amount
-		Globals.ETypes.FIRE:
-			amount_fire += amount
-		Globals.ETypes.PLAGUE:
-			amount_plague += amount
-		Globals.ETypes.CANDY:
-			amount_candy += amount
-		Globals.ETypes.METAL:
-			amount_metal += amount
+	enemies_killed += 1
+
 
 func spawn_enemies():
 	if(Globals.wave_paused): return
@@ -184,10 +184,12 @@ func spawn_enemies():
 			alternator = !alternator
 		StoatStash.safe_signal_connect(thing.enemy_win, enemy_win)
 		StoatStash.safe_signal_connect(thing.died, enemy_die)
-		if current_difficulty < 30:
-			await get_tree().create_timer(0.9).timeout
-		else:
+		if current_difficulty > 80:
+			await get_tree().create_timer(0.09).timeout
+		elif current_difficulty > 30:
 			await get_tree().create_timer(0.2).timeout
+		else:
+			await get_tree().create_timer(0.9).timeout
 	spawning = false
 
 # use points to spawn enemies of various values
