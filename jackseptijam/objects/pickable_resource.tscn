@@ -1,16 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1rc0b8rg3xtw"]
+[gd_scene load_steps=10 format=3 uid="uid://c1rc0b8rg3xtw"]
 
 [ext_resource type="Script" uid="uid://cd0ujxnxhfuad" path="res://scripts/pickable_resource.gd" id="1_o6v8f"]
-[ext_resource type="Texture2D" uid="uid://c3gml4ecyo3mb" path="res://assets/2d/hud/heartAndMusketBall.png" id="2_p4m8j"]
+[ext_resource type="Texture2D" uid="uid://cmlqjamf6yjp8" path="res://assets/2d/hud/musketBall.png" id="2_kek7i"]
 [ext_resource type="Texture2D" uid="uid://cem0o12dbfpk2" path="res://assets/2d/textures/Elements/candyElement.png" id="3_ams0u"]
 [ext_resource type="Texture2D" uid="uid://ctw85qo28ojiy" path="res://assets/2d/textures/Elements/fireElement.png" id="4_kek7i"]
 [ext_resource type="Texture2D" uid="uid://bynwiofaudko" path="res://assets/2d/textures/Elements/woodElement.png" id="5_gla5h"]
 [ext_resource type="Texture2D" uid="uid://cwhtohvweyj5" path="res://assets/2d/textures/Elements/metalElement.png" id="6_bdxq8"]
 [ext_resource type="Texture2D" uid="uid://1sujlq2p4md6" path="res://assets/2d/textures/Elements/plagueElement.png" id="7_fkqu1"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ams0u"]
-atlas = ExtResource("2_p4m8j")
-region = Rect2(22, 0, 20, 20)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o6v8f"]
 radius = 1.0198852
@@ -31,7 +27,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 billboard = 1
 alpha_cut = 1
 texture_filter = 0
-texture = SubResource("AtlasTexture_ams0u")
+texture = ExtResource("2_kek7i")
 
 [node name="Candy" type="Node3D" parent="."]
 visible = false

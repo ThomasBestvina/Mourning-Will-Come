@@ -70,6 +70,8 @@ var enemies = {
 }
 
 func _process(delta: float) -> void:
+	if(bought_tower != null):
+		$UI/BuyMenu/BuyButton.disabled = true
 	manage_player_input()
 	process_ui()
 	if placed_first_turret and ($Prim.get_children() + $Second.get_children()).is_empty():
