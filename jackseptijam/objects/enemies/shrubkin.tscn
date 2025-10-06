@@ -281,7 +281,7 @@ fire_placement = NodePath("Node3D")
 anim_player = NodePath("shrubkin2/AnimationPlayer")
 walk_string = "1walk"
 max_speed = 1.2
-max_health = 16.0
+max_health = 13.0
 max_drops = 2
 drop_chance = 0.6
 

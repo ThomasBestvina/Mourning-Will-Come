@@ -29,7 +29,7 @@ var amount_plague: int = 0
 var amount_fire: int = 0
 var amount_metal: int = 0
 var amount_candy: int = 0
-var amount_musket_balls: int = 5
+var amount_musket_balls: int = 10
 
 const WOOD_COST_PRIMARY: int = 4
 const PLAGUE_COST_PRIMARY: int = 5
@@ -68,6 +68,10 @@ var enemies = {
 	32: [preload("res://objects/enemies/candyman.tscn"), preload("res://objects/enemies/tree_enemy.tscn")],
 	100: [preload("res://objects/enemies/boss.tscn")]
 }
+
+func _ready() -> void:
+	for i in $Prim.get_children()+$Second.get_children():
+		i.queue_free()
 
 func _process(delta: float) -> void:
 	if(bought_tower != null):
